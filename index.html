@@ -1,583 +1,2080 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Shadow Moons — Clover Origins</title>
+<title>The Shadow Moons | Clover Origins</title>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #020107;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+/* =========================================================
+   COSMIC BACKGROUND
+========================================================= */
+
+.space {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(100, 38, 155, 0.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(71, 28, 110, 0.10),
+            transparent 30%
+        ),
+        #020107;
+}
+
+.moon {
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    left: 50%;
+    top: 43%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,255,255,0.95),
+            rgba(210,203,218,0.9) 28%,
+            rgba(124,113,134,0.7) 58%,
+            rgba(31,25,39,0.95) 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(220,210,230,0.25),
+        0 0 100px rgba(133,70,182,0.22),
+        0 0 180px rgba(102,39,150,0.15);
+
+    opacity: 0.18;
+
+    animation: moonFloat 12s ease-in-out infinite,
+               moonPulse 7s ease-in-out infinite;
+}
+
+@keyframes moonFloat {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -52%) scale(1.04);
+    }
+}
+
+@keyframes moonPulse {
+
+    0%, 100% {
+        opacity: 0.13;
+    }
+
+    50% {
+        opacity: 0.22;
+    }
+}
+
+.moon-glow {
+    position: absolute;
+
+    width: 900px;
+    height: 900px;
+
+    left: 50%;
+    top: 43%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(147,71,201,0.12),
+            transparent 65%
+        );
+
+    animation: glowPulse 8s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes glowPulse {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    opacity: 0.4;
+
+    animation:
+        starFloat linear infinite,
+        starTwinkle ease-in-out infinite;
+}
+
+@keyframes starFloat {
+
+    from {
+        transform: translateY(0) translateX(0);
+    }
+
+    to {
+        transform: translateY(-120px) translateX(30px);
+    }
+}
+
+@keyframes starTwinkle {
+
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* =========================================================
+   PURPLE PARTICLES
+========================================================= */
+
+.particles {
+    position: absolute;
+    inset: 0;
+}
+
+.particle {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #a95ee4;
+
+    box-shadow:
+        0 0 8px #a95ee4,
+        0 0 18px rgba(169,94,228,0.5);
+
+    opacity: 0.5;
+
+    animation: particleMove linear infinite;
+}
+
+@keyframes particleMove {
+
+    0% {
+        transform:
+            translateY(110vh)
+            translateX(0);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform:
+            translateY(-20vh)
+            translateX(80px);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 82px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    z-index: 100;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(2,1,7,0.90),
+            rgba(2,1,7,0)
+        );
+
+    backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.nav-logo img {
+    width: 44px;
+    height: 44px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(153,68,214,0.8)
+        );
+}
+
+.nav-links {
+    display: flex;
+    gap: 26px;
+}
+
+.nav-links a {
+    color: #aaa3b0;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transition: 0.35s ease;
+}
+
+.nav-links a:hover {
+    color: #c478ff;
+
+    text-shadow:
+        0 0 15px
+        rgba(196,120,255,0.8);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    padding:
+        120px
+        20px
+        80px;
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1000px;
+}
+
+.hero-logo {
+    width: 280px;
+
+    max-width: 65vw;
+
+    margin-bottom: 30px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(149,64,210,0.7)
+        )
+        drop-shadow(
+            0 0 35px
+            rgba(120,40,180,0.35)
+        );
+
+    animation:
+        logoFloat
+        6s
+        ease-in-out
+        infinite;
+}
+
+@keyframes logoFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.eyebrow {
+    color: #a45fd1;
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-top: 18px;
+
+    font-size:
+        clamp(
+            42px,
+            8vw,
+            94px
+        );
+
+    letter-spacing: 9px;
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 15px
+        rgba(190,112,245,0.25),
+
+        0 0 50px
+        rgba(130,50,190,0.2);
+}
+
+.divider {
+    width: 120px;
+
+    height: 1px;
+
+    margin:
+        32px
+        auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #b061e4,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(176,97,228,0.7);
+}
+
+.tagline {
+    color: #aaa2b1;
+
+    max-width: 600px;
+
+    margin:
+        0
+        auto
+        40px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    position: relative;
+
+    overflow: hidden;
+
+    display: inline-block;
+
+    padding:
+        15px
+        28px;
+
+    border:
+        1px
+        solid
+        rgba(177,91,232,0.55);
+
+    background:
+        rgba(100,38,140,0.13);
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transition: 0.4s ease;
+
+    backdrop-filter: blur(5px);
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+
+    border-color: #c47aff;
+
+    box-shadow:
+        0 0 20px
+        rgba(168,76,226,0.35);
+}
+
+.btn-primary {
+    background:
+        rgba(117,45,167,0.28);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section:not(.hero) {
+    position: relative;
+
+    padding:
+        130px
+        6%;
+
+    max-width: 1500px;
+
+    margin: auto;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+.section-heading h2 {
+    margin-top: 15px;
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            58px
+        );
+
+    letter-spacing: 6px;
+
+    font-weight: 400;
+
+    text-transform: uppercase;
+}
+
+.section-heading p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #8f8798;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+/* =========================================================
+   HOUSE GRID
+========================================================= */
+
+.houses-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                280px,
+                1fr
+            )
+        );
+
+    gap: 24px;
+}
+
+.house-card {
+    position: relative;
+
+    min-height: 350px;
+
+    padding: 38px 28px;
+
+    text-align: center;
+
+    border:
+        1px
+        solid
+        rgba(161,83,214,0.20);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(80,30,110,0.18),
+            rgba(10,5,18,0.65)
+        );
+
+    backdrop-filter: blur(12px);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.house-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(183,93,239,0.15),
+            transparent
+        );
+
+    transform: translateX(-100%);
+
+    transition: 0.8s ease;
+}
+
+.house-card:hover::before {
+    transform: translateX(100%);
+}
+
+.house-card:hover {
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    border-color:
+        rgba(194,110,255,0.65);
+
+    box-shadow:
+        0 20px 60px
+        rgba(90,30,130,0.25),
+        0 0 30px
+        rgba(160,70,220,0.12);
+}
+
+.house-symbol {
+    font-size: 48px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(190,100,255,0.5)
+        );
+}
+
+.house-card h3 {
+    font-size: 24px;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.house-card > span {
+    color: #a45fd1;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+.house-stars {
+    margin: 24px 0;
+
+    font-size: 24px;
+
+    color: #f1d68a;
+
+    text-shadow:
+        0 0 15px
+        rgba(241,214,138,0.4);
+}
+
+.house-card p {
+    color: #82798b;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+.house-card .btn {
+    font-size: 8px;
+}
+
+/* =========================================================
+   LEADERBOARD
+========================================================= */
+
+.leaderboard {
+    max-width: 950px;
+
+    margin: auto;
+
+    border:
+        1px
+        solid
+        rgba(161,83,214,0.20);
+
+    background:
+        rgba(9,4,15,0.65);
+
+    backdrop-filter: blur(14px);
+}
+
+.leader-row {
+    display: grid;
+
+    grid-template-columns:
+        80px
+        1fr
+        150px;
+
+    align-items: center;
+
+    padding:
+        22px
+        28px;
+
+    border-bottom:
+        1px
+        solid
+        rgba(255,255,255,0.05);
+
+    transition:
+        0.35s ease;
+}
+
+.leader-row:last-child {
+    border-bottom: none;
+}
+
+.leader-row:hover {
+    background:
+        rgba(147,71,201,0.08);
+
+    padding-left: 38px;
+}
+
+.leader-row strong {
+    color: #756c7e;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+.leader-row span {
+    font-size: 16px;
+
+    letter-spacing: 1px;
+}
+
+.leader-row b {
+    text-align: right;
+
+    color: #f1d68a;
+
+    font-size: 17px;
+
+    text-shadow:
+        0 0 12px
+        rgba(241,214,138,0.35);
+}
+
+.leader-row.first {
+    border-left:
+        3px
+        solid
+        #e8c96a;
+
+    box-shadow:
+        inset 25px 0 50px
+        rgba(232,201,106,0.035);
+}
+
+.leader-row.second {
+    border-left:
+        3px
+        solid
+        #c8c8d0;
+}
+
+.leader-row.third {
+    border-left:
+        3px
+        solid
+        #b87955;
+}
+
+/* =========================================================
+   LEADERSHIP
+========================================================= */
+
+.leadership-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                280px,
+                1fr
+            )
+        );
+
+    gap: 30px;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.leader-card {
+    padding: 55px 30px;
+
+    text-align: center;
+
+    border:
+        1px
+        solid
+        rgba(161,83,214,0.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(85,30,120,0.18),
+            rgba(5,3,10,0.7)
+        );
+
+    backdrop-filter: blur(12px);
+
+    transition: 0.5s ease;
+}
+
+.leader-card:hover {
+    transform: translateY(-10px);
+
+    border-color:
+        rgba(196,120,255,0.65);
+
+    box-shadow:
+        0 20px 60px
+        rgba(90,30,130,0.25);
+}
+
+.leader-symbol {
+    font-size: 55px;
+
+    margin-bottom: 20px;
+}
+
+.leader-card > span {
+    color: #a45fd1;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+.leader-card h3 {
+    margin-top: 18px;
+
+    font-size: 32px;
+
+    font-weight: 400;
+}
+
+.leader-card p {
+    margin-top: 10px;
+
+    color: #8f8798;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   DOSSIER MODAL
+========================================================= */
+
+.dossier {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.78);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.dossier.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.dossier-box {
+    position: relative;
+
+    width: min(650px, 100%);
+
+    padding: 55px 45px;
+
+    text-align: center;
+
+    border:
+        1px
+        solid
+        rgba(192,103,255,0.55);
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(102,38,145,0.35),
+            rgba(5,3,10,0.97) 65%
+        );
+
+    box-shadow:
+        0 0 80px
+        rgba(126,45,180,0.25);
+
+    transform:
+        scale(0.85)
+        translateY(30px);
+
+    transition:
+        transform 0.5s ease;
+}
+
+.dossier.active .dossier-box {
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+.dossier-symbol {
+    font-size: 65px;
+
+    margin-bottom: 20px;
+}
+
+.dossier-box .eyebrow {
+    margin-bottom: 12px;
+}
+
+.dossier-box h2 {
+    font-size: 38px;
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+}
+
+.dossier-box .dossier-role {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #a45fd1;
+
+    letter-spacing: 3px;
+
+    font-size: 10px;
+}
+
+.dossier-box p {
+    margin:
+        28px
+        auto;
+
+    max-width: 500px;
+
+    color: #a9a0b1;
+
+    line-height: 1.9;
+
+    font-size: 15px;
+}
+
+.close-dossier {
+    position: absolute;
+
+    top: 18px;
+    right: 22px;
+
+    border: none;
+
+    background: none;
+
+    color: #aaa;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.close-dossier:hover {
+    color: #d58aff;
+
+    transform: rotate(90deg);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding:
+        60px
+        20px;
+
+    text-align: center;
+
+    border-top:
+        1px
+        solid
+        rgba(154,78,220,0.12);
+
+    color: #5e5666;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    line-height: 2;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        height: 70px;
+
+        padding:
+            0
+            20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-logo {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .nav-logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .moon {
+        width: 430px;
+        height: 430px;
+    }
+
+    .moon-glow {
+        width: 600px;
+        height: 600px;
+    }
+
+    .hero-logo {
+        width: 210px;
+    }
+
+    h1 {
+        letter-spacing: 4px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    section:not(.hero) {
+        padding:
+            90px
+            20px;
+    }
+
+    .leader-row {
+        grid-template-columns:
+            50px
+            1fr
+            100px;
+
+        padding:
+            18px
+            15px;
+    }
+
+    .leader-row span {
+        font-size: 13px;
+    }
+
+    .leader-row b {
+        font-size: 13px;
+    }
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dossier-box {
+        padding:
+            45px
+            25px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- ================================
-         COSMIC BACKGROUND
-    ================================= -->
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
 
-    <div class="space">
-        <div class="moon"></div>
-        <div class="moon-glow"></div>
+<div class="space">
 
-        <div class="stars" id="stars"></div>
-        <div class="particles" id="particles"></div>
+    <div class="moon"></div>
+
+    <div class="moon-glow"></div>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="particles" id="particles"></div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <div class="nav-logo">
+
+        <img
+            src="Shadow moons.png"
+            alt="Shadow Moons"
+        >
+
+        <span>
+            THE SHADOW MOONS
+        </span>
+
     </div>
 
 
-    <!-- ================================
-         NAVIGATION
-    ================================= -->
+    <div class="nav-links">
 
-    <nav>
+        <a href="#home">Home</a>
 
-        <div class="nav-logo">
-            <img src="Shadow moons.png" alt="Shadow Moons">
-            <span>THE SHADOW MOONS</span>
+        <a href="#houses">Houses</a>
+
+        <a href="#leaderboard">Leaderboard</a>
+
+        <a href="#leadership">Leadership</a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <img
+            src="Shadow moons.png"
+            alt="Shadow Moons"
+            class="hero-logo"
+        >
+
+        <div class="eyebrow">
+            THE NINE GREAT HOUSES
         </div>
 
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#houses">Houses</a>
-            <a href="#leaderboard">Leaderboard</a>
-            <a href="#leadership">Leadership</a>
-        </div>
+        <h1>
+            CLOVER ORIGINS
+        </h1>
 
-    </nav>
+        <div class="divider"></div>
 
+        <p class="tagline">
+            Nine houses. One guild.
+            A legacy written in stars.
+        </p>
 
-    <!-- ================================
-         HERO
-    ================================= -->
+        <div class="hero-buttons">
 
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <img
-                src="Shadow moons.png"
-                alt="The Shadow Moons"
-                class="hero-logo"
+            <a
+                href="#houses"
+                class="btn btn-primary"
             >
+                Discover the Houses
+            </a>
 
-            <div class="eyebrow">
-                THE NINE GREAT HOUSES
-            </div>
-
-            <h1>
-                CLOVER ORIGINS
-            </h1>
-
-            <div class="divider"></div>
-
-            <p class="tagline">
-                Nine houses. One guild.
-                A legacy written in stars.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#houses" class="btn btn-primary">
-                    Discover the Houses
-                </a>
-
-                <a href="#leaderboard" class="btn">
-                    View Rankings
-                </a>
-
-            </div>
+            <a
+                href="#leaderboard"
+                class="btn"
+            >
+                View Rankings
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================================
-         THE NINE GREAT HOUSES
-    ================================= -->
+<!-- =========================================================
+     HOUSES
+========================================================= -->
 
-    <section id="houses">
+<section id="houses">
 
-        <div class="section-heading">
+    <div class="section-heading">
 
-            <div class="eyebrow">
-                THE GREAT HOUSES
+        <div class="eyebrow">
+            THE GREAT HOUSES
+        </div>
+
+        <h2>
+            NINE HOUSES
+        </h2>
+
+        <div class="divider"></div>
+
+        <p>
+            Nine great houses stand beneath
+            the banner of the guild. Each has
+            its own purpose, lord, and legacy.
+        </p>
+
+    </div>
+
+
+    <div class="houses-grid">
+
+
+        <!-- AETHERION -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                🌸
             </div>
 
-            <h2>
-                NINE HOUSES
-            </h2>
+            <h3>
+                House Aetherion
+            </h3>
 
-            <div class="divider"></div>
+            <span>
+                PVP
+            </span>
+
+            <div class="house-stars">
+                308 ⭐
+            </div>
 
             <p>
-                Each house carries its own purpose,
-                lord, legacy, and place within
-                the guild.
+                Lord: Yami Sukehiro
             </p>
 
-        </div>
-
-
-        <div class="houses-grid">
-
-
-            <!-- AETHERION -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    🌸
-                </div>
-
-                <h3>
-                    House Aetherion
-                </h3>
-
-                <span>
-                    THE PVP HOUSE
-                </span>
-
-                <div class="house-stars">
-                    308 ⭐
-                </div>
-
-                <p>
-                    Lord: Yami Sukehiro
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- KIRA -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    💫
-                </div>
-
-                <h3>
-                    House Kira
-                </h3>
-
-                <span>
-                    INTERNAL AFFAIRS
-                </span>
-
-                <div class="house-stars">
-                    229 ⭐
-                </div>
-
-                <p>
-                    Lord: Damnatio Kira
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- LUCIFERO -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    🌀
-                </div>
-
-                <h3>
-                    House Lucifero
-                </h3>
-
-                <span>
-                    EXTERNAL AFFAIRS
-                </span>
-
-                <div class="house-stars">
-                    135 ⭐
-                </div>
-
-                <p>
-                    Lord: Lucifer
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- SHADOW -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    ✨
-                </div>
-
-                <h3>
-                    House Shadow
-                </h3>
-
-                <span>
-                    INTELLIGENCE & RECON
-                </span>
-
-                <div class="house-stars">
-                    80 ⭐
-                </div>
-
-                <p>
-                    Lord: Vangeance
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- CHRONOAETERNA -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    💫
-                </div>
-
-                <h3>
-                    House Chronoaeterna
-                </h3>
-
-                <span>
-                    WISDOM & GUIDANCE
-                </span>
-
-                <div class="house-stars">
-                    45 ⭐
-                </div>
-
-                <p>
-                    Lord: Chrono Lord Kai
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- SILVA -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    💎
-                </div>
-
-                <h3>
-                    House Silva
-                </h3>
-
-                <span>
-                    ADMINISTRATION
-                </span>
-
-                <div class="house-stars">
-                    40 ⭐
-                </div>
-
-                <p>
-                    Lord: Nozel Silva
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- VERMILLION -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    🔥
-                </div>
-
-                <h3>
-                    House Vermillion
-                </h3>
-
-                <span>
-                    DEFENSE & MILITARY
-                </span>
-
-                <div class="house-stars">
-                    40 ⭐
-                </div>
-
-                <p>
-                    Lord: Fuegoleon Vermillion
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- LUNARETH -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    💮
-                </div>
-
-                <h3>
-                    House Lunareth
-                </h3>
-
-                <span>
-                    RECRUITMENT & TRAINING
-                </span>
-
-                <div class="house-stars">
-                    30 ⭐
-                </div>
-
-                <p>
-                    Lord: Aizen
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-
-            <!-- ECLIPSE -->
-
-            <article class="house-card">
-
-                <div class="house-symbol">
-                    ♣️
-                </div>
-
-                <h3>
-                    House Eclipse
-                </h3>
-
-                <span>
-                    RESOURCES & DEVELOPMENT
-                </span>
-
-                <div class="house-stars">
-                    25 ⭐
-                </div>
-
-                <p>
-                    Lord: Sir Prime
-                </p>
-
-                <button class="btn">
-                    Open Dossier
-                </button>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================================
-         LEADERBOARD
-    ================================= -->
-
-    <section id="leaderboard">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                THE STARS DECIDE
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '🌸',
+                    'House Aetherion',
+                    'PVP',
+                    'Yami Sukehiro',
+                    'The distinguished house of combat and competition. House Aetherion currently stands first among the Nine Great Houses with 308 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- KIRA -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                💫
             </div>
 
-            <h2>
-                HOUSE LEADERBOARD
-            </h2>
+            <h3>
+                House Kira
+            </h3>
 
-            <div class="divider"></div>
+            <span>
+                INTERNAL AFFAIRS & POLITICAL DIPLOMACY
+            </span>
+
+            <div class="house-stars">
+                229 ⭐
+            </div>
 
             <p>
-                The standing of the Nine Great Houses,
-                measured by their accumulated stars.
+                Lord: Damnatio Kira
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💫',
+                    'House Kira',
+                    'Internal Affairs & Political Diplomacy',
+                    'Damnatio Kira',
+                    'The dignified house entrusted with matters of internal affairs and political diplomacy. House Kira currently holds second position with 229 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- LUCIFERO -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                🌀
+            </div>
+
+            <h3>
+                House Lucifero
+            </h3>
+
+            <span>
+                EXTERNAL AFFAIRS
+            </span>
+
+            <div class="house-stars">
+                135 ⭐
+            </div>
+
+            <p>
+                Lord: Lucifer
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '🌀',
+                    'House Lucifero',
+                    'External Affairs',
+                    'Lucifer',
+                    'The house responsible for external affairs and dealings beyond the guild. House Lucifero currently holds third position with 135 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- SHADOW -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                ✨
+            </div>
+
+            <h3>
+                House Shadow
+            </h3>
+
+            <span>
+                INTELLIGENCE & RECONNAISSANCE
+            </span>
+
+            <div class="house-stars">
+                80 ⭐
+            </div>
+
+            <p>
+                Lord: Vangeance
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '✨',
+                    'House Shadow',
+                    'Intelligence & Reconnaissance',
+                    'Vangeance',
+                    'The house dedicated to intelligence, reconnaissance, and information gathering. It currently stands fourth with 80 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- CHRONOAETERNA -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                💫
+            </div>
+
+            <h3>
+                House Chronoaeterna
+            </h3>
+
+            <span>
+                WISDOM & GUIDANCE
+            </span>
+
+            <div class="house-stars">
+                45 ⭐
+            </div>
+
+            <p>
+                Lord: Chrono Lord Kai
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💫',
+                    'House Chronoaeterna',
+                    'Wisdom & Guidance',
+                    'Chrono Lord Kai',
+                    'The house of the Great Chronos, devoted to wisdom and guidance. It currently holds fifth position with 45 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- SILVA -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                💎
+            </div>
+
+            <h3>
+                House Silva
+            </h3>
+
+            <span>
+                ADMINISTRATION
+            </span>
+
+            <div class="house-stars">
+                40 ⭐
+            </div>
+
+            <p>
+                Lord: Nozel Silva
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💎',
+                    'House Silva',
+                    'Administration',
+                    'Nozel Silva',
+                    'One of the two great royal houses, entrusted with administration. House Silva currently shares sixth position with 40 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- VERMILLION -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                🔥
+            </div>
+
+            <h3>
+                House Vermillion
+            </h3>
+
+            <span>
+                DEFENSE & MILITARY AFFAIRS
+            </span>
+
+            <div class="house-stars">
+                40 ⭐
+            </div>
+
+            <p>
+                Lord: Fuegoleon Vermillion
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '🔥',
+                    'House Vermillion',
+                    'Defense & Military Affairs',
+                    'Fuegoleon Vermillion',
+                    'One of the two great royal houses, responsible for defense and military affairs. It shares sixth position with 40 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- LUNARETH -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                💮
+            </div>
+
+            <h3>
+                House Lunareth
+            </h3>
+
+            <span>
+                RECRUITMENT & TRAINING
+            </span>
+
+            <div class="house-stars">
+                30 ⭐
+            </div>
+
+            <p>
+                Lord: Aizen
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💮',
+                    'House Lunareth',
+                    'Recruitment & Training',
+                    'Aizen',
+                    'The honoured house responsible for bringing new members into the guild and preparing them for their duties. It currently holds eighth position with 30 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+
+        <!-- ECLIPSE -->
+
+        <article class="house-card">
+
+            <div class="house-symbol">
+                ♣️
+            </div>
+
+            <h3>
+                House Eclipse
+            </h3>
+
+            <span>
+                RESOURCES & DEVELOPMENT
+            </span>
+
+            <div class="house-stars">
+                25 ⭐
+            </div>
+
+            <p>
+                Lord: Sir Prime
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '♣️',
+                    'House Eclipse',
+                    'Resources & Development',
+                    'Sir Prime',
+                    'The house responsible for resources and development within the guild. It currently holds ninth position with 25 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LEADERBOARD
+========================================================= -->
+
+<section id="leaderboard">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            THE STARS DECIDE
         </div>
 
+        <h2>
+            HOUSE LEADERBOARD
+        </h2>
 
-        <div class="leaderboard">
+        <div class="divider"></div>
 
-            <div class="leader-row first">
-                <strong>01</strong>
-                <span>🌸 House Aetherion</span>
-                <b>308 ⭐</b>
-            </div>
+        <p>
+            The current standing of the Nine Great Houses,
+            determined by their accumulated stars.
+        </p>
 
-            <div class="leader-row second">
-                <strong>02</strong>
-                <span>💫 House Kira</span>
-                <b>229 ⭐</b>
-            </div>
+    </div>
 
-            <div class="leader-row third">
-                <strong>03</strong>
-                <span>🌀 House Lucifero</span>
-                <b>135 ⭐</b>
-            </div>
 
-            <div class="leader-row">
-                <strong>04</strong>
-                <span>✨ House Shadow</span>
-                <b>80 ⭐</b>
-            </div>
+    <div class="leaderboard">
 
-            <div class="leader-row">
-                <strong>05</strong>
-                <span>💫 House Chronoaeterna</span>
-                <b>45 ⭐</b>
-            </div>
-
-            <div class="leader-row">
-                <strong>06</strong>
-                <span>💎 House Silva</span>
-                <b>40 ⭐</b>
-            </div>
-
-            <div class="leader-row">
-                <strong>06</strong>
-                <span>🔥 House Vermillion</span>
-                <b>40 ⭐</b>
-            </div>
-
-            <div class="leader-row">
-                <strong>08</strong>
-                <span>💮 House Lunareth</span>
-                <b>30 ⭐</b>
-            </div>
-
-            <div class="leader-row">
-                <strong>09</strong>
-                <span>♣️ House Eclipse</span>
-                <b>25 ⭐</b>
-            </div>
-
+        <div class="leader-row first">
+            <strong>01</strong>
+            <span>🌸 House Aetherion</span>
+            <b>308 ⭐</b>
         </div>
 
-    </section>
+        <div class="leader-row second">
+            <strong>02</strong>
+            <span>💫 House Kira</span>
+            <b>229 ⭐</b>
+        </div>
+
+        <div class="leader-row third">
+            <strong>03</strong>
+            <span>🌀 House Lucifero</span>
+            <b>135 ⭐</b>
+        </div>
+
+        <div class="leader-row">
+            <strong>04</strong>
+            <span>✨ House Shadow</span>
+            <b>80 ⭐</b>
+        </div>
+
+        <div class="leader-row">
+            <strong>05</strong>
+            <span>💫 House Chronoaeterna</span>
+            <b>45 ⭐</b>
+        </div>
+
+        <div class="leader-row">
+            <strong>06</strong>
+            <span>💎 House Silva</span>
+            <b>40 ⭐</b>
+        </div>
+
+        <div class="leader-row">
+            <strong>06</strong>
+            <span>🔥 House Vermillion</span>
+            <b>40 ⭐</b>
+        </div>
+
+        <div class="leader-row">
+            <strong>08</strong>
+            <span>💮 House Lunareth</span>
+            <b>30 ⭐</b>
+        </div>
+
+        <div class="leader-row">
+            <strong>09</strong>
+            <span>♣️ House Eclipse</span>
+            <b>25 ⭐</b>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- ================================
-         LEADERSHIP
-    ================================= -->
+<!-- =========================================================
+     LEADERSHIP
+========================================================= -->
 
-    <section id="leadership">
+<section id="leadership">
 
-        <div class="section-heading">
+    <div class="section-heading">
 
-            <div class="eyebrow">
-                THE SHADOW MOONS
+        <div class="eyebrow">
+            THE SHADOW MOONS
+        </div>
+
+        <h2>
+            LEADERSHIP
+        </h2>
+
+        <div class="divider"></div>
+
+        <p>
+            The two figures who stand above the
+            Nine Great Houses.
+        </p>
+
+    </div>
+
+
+    <div class="leadership-grid">
+
+        <article class="leader-card">
+
+            <div class="leader-symbol">
+                👑
             </div>
 
-            <h2>
-                LEADERSHIP
-            </h2>
+            <span>
+                CAPTAIN
+            </span>
 
-            <div class="divider"></div>
+            <h3>
+                𝔇𝔯𝔞𝔤𝔬𝔫
+            </h3>
 
+            <p>
+                King of the Shadows
+            </p>
+
+        </article>
+
+
+        <article class="leader-card">
+
+            <div class="leader-symbol">
+                🌘
+            </div>
+
+            <span>
+                VICE CAPTAIN
+            </span>
+
+            <h3>
+                Carl El
+            </h3>
+
+            <p>
+                Twilight Sentinel
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DOSSIER
+========================================================= -->
+
+<div class="dossier" id="dossier">
+
+    <div class="dossier-box">
+
+        <button
+            class="close-dossier"
+            onclick="closeDossier()"
+        >
+            ×
+        </button>
+
+        <div
+            class="dossier-symbol"
+            id="dossierSymbol"
+        ></div>
+
+        <div class="eyebrow">
+            HOUSE DOSSIER
         </div>
 
+        <h2 id="dossierName">
+            House
+        </h2>
 
-        <div class="leadership-grid">
+        <span
+            class="dossier-role"
+            id="dossierRole"
+        ></span>
 
-            <article class="leader-card">
+        <p id="dossierText">
+        </p>
 
-                <div class="leader-symbol">
-                    👑
-                </div>
+        <div class="divider"></div>
 
-                <span>
-                    CAPTAIN
-                </span>
+        <p>
+            <strong>Lord:</strong>
+            <span id="dossierLord"></span>
+        </p>
 
-                <h3>
-                    𝔇𝔯𝔞𝔤𝔬𝔫
-                </h3>
+        <button
+            class="btn btn-primary"
+            onclick="closeDossier()"
+        >
+            Close Archive
+        </button>
 
-                <p>
-                    King of the Shadows
-                </p>
+    </div>
 
-            </article>
-
-
-            <article class="leader-card">
-
-                <div class="leader-symbol">
-                    🌘
-                </div>
-
-                <span>
-                    VICE CAPTAIN
-                </span>
-
-                <h3>
-                    Carl El
-                </h3>
-
-                <p>
-                    Twilight Sentinel
-                </p>
-
-            </article>
-
-        </div>
-
-    </section>
+</div>
 
 
-    <!-- ================================
-         FOOTER
-    ================================= -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-    <footer>
+<footer>
 
-        THE SHADOW MOONS
-        <br>
-        CLOVER ORIGINS
+    THE SHADOW MOONS
+    <br>
 
-    </footer>
+    CLOVER ORIGINS
+
+</footer>
 
 
-    <script src="script.js"></script>
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   STARS
+========================================================= */
+
+const stars = document.getElementById("stars");
+
+if (stars) {
+
+    for (let i = 0; i < 180; i++) {
+
+        const star =
+            document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+        star.style.animationDuration =
+            (3 + Math.random() * 7) + "s";
+
+        star.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        stars.appendChild(star);
+
+    }
+
+}
+
+
+/* =========================================================
+   PURPLE PARTICLES
+========================================================= */
+
+const particles =
+    document.getElementById("particles");
+
+if (particles) {
+
+    for (let i = 0; i < 35; i++) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+        particle.style.animationDuration =
+            (8 + Math.random() * 12) + "s";
+
+        particle.style.animationDelay =
+            Math.random() * 10 + "s";
+
+        particles.appendChild(particle);
+
+    }
+
+}
+
+
+/* =========================================================
+   HOUSE DOSSIERS
+========================================================= */
+
+function openDossier(
+    symbol,
+    name,
+    role,
+    lord,
+    text
+) {
+
+    document.getElementById(
+        "dossierSymbol"
+    ).textContent = symbol;
+
+    document.getElementById(
+        "dossierName"
+    ).textContent = name;
+
+    document.getElementById(
+        "dossierRole"
+    ).textContent = role;
+
+    document.getElementById(
+        "dossierLord"
+    ).textContent = lord;
+
+    document.getElementById(
+        "dossierText"
+    ).textContent = text;
+
+    document.getElementById(
+        "dossier"
+    ).classList.add("active");
+
+}
+
+
+function closeDossier() {
+
+    document.getElementById(
+        "dossier"
+    ).classList.remove("active");
+
+}
+
+
+/* =========================================================
+   CLOSE DOSSIER WITH ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeDossier();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.getElementById(
+    "dossier"
+).addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === this
+        ) {
+
+            closeDossier();
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
-
 </html>
 ```

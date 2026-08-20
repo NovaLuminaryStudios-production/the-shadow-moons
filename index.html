@@ -61,15 +61,11 @@ a {
 
 .moon {
     position: absolute;
-
     width: 620px;
     height: 620px;
-
     left: 50%;
     top: 43%;
-
     transform: translate(-50%, -50%);
-
     border-radius: 50%;
 
     background:
@@ -88,8 +84,9 @@ a {
 
     opacity: 0.18;
 
-    animation: moonFloat 12s ease-in-out infinite,
-               moonPulse 7s ease-in-out infinite;
+    animation:
+        moonFloat 12s ease-in-out infinite,
+        moonPulse 7s ease-in-out infinite;
 }
 
 @keyframes moonFloat {
@@ -116,15 +113,11 @@ a {
 
 .moon-glow {
     position: absolute;
-
     width: 900px;
     height: 900px;
-
     left: 50%;
     top: 43%;
-
     transform: translate(-50%, -50%);
-
     border-radius: 50%;
 
     background:
@@ -135,7 +128,6 @@ a {
         );
 
     animation: glowPulse 8s ease-in-out infinite;
-
     pointer-events: none;
 }
 
@@ -161,14 +153,10 @@ a {
 
 .star {
     position: absolute;
-
     width: 2px;
     height: 2px;
-
     border-radius: 50%;
-
     background: #fff;
-
     opacity: 0.4;
 
     animation:
@@ -211,10 +199,8 @@ a {
 
 .particle {
     position: absolute;
-
     width: 3px;
     height: 3px;
-
     border-radius: 50%;
 
     background: #a95ee4;
@@ -261,20 +247,16 @@ a {
 
 nav {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 82px;
 
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
     padding: 0 6%;
-
     z-index: 100;
 
     background:
@@ -317,7 +299,6 @@ nav {
 
 .nav-links a {
     color: #aaa3b0;
-
     text-decoration: none;
 
     font-size: 10px;
@@ -335,6 +316,14 @@ nav {
         rgba(196,120,255,0.8);
 }
 
+.discord-nav {
+    color: #c478ff !important;
+
+    text-shadow:
+        0 0 12px
+        rgba(196,120,255,0.35);
+}
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -343,7 +332,6 @@ nav {
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -359,17 +347,13 @@ nav {
 
 .hero-content {
     position: relative;
-
     z-index: 5;
-
     max-width: 1000px;
 }
 
 .hero-logo {
     width: 280px;
-
     max-width: 65vw;
-
     margin-bottom: 30px;
 
     filter:
@@ -404,9 +388,7 @@ nav {
     color: #a45fd1;
 
     font-size: 11px;
-
     letter-spacing: 7px;
-
     text-transform: uppercase;
 }
 
@@ -421,11 +403,8 @@ h1 {
         );
 
     letter-spacing: 9px;
-
     line-height: 1;
-
     font-weight: 400;
-
     text-transform: uppercase;
 
     text-shadow:
@@ -438,7 +417,6 @@ h1 {
 
 .divider {
     width: 120px;
-
     height: 1px;
 
     margin:
@@ -469,9 +447,7 @@ h1 {
         40px;
 
     font-size: 17px;
-
     line-height: 1.8;
-
     letter-spacing: 1px;
 }
 
@@ -479,9 +455,15 @@ h1 {
    BUTTONS
 ========================================================= */
 
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .btn {
     position: relative;
-
     overflow: hidden;
 
     display: inline-block;
@@ -503,9 +485,7 @@ h1 {
     text-decoration: none;
 
     font-size: 10px;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
 
     transition: 0.4s ease;
@@ -530,11 +510,16 @@ h1 {
         rgba(117,45,167,0.28);
 }
 
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+.discord-btn {
+    border-color:
+        rgba(196,120,255,0.75);
+
+    background:
+        rgba(117,45,167,0.38);
+
+    box-shadow:
+        0 0 20px
+        rgba(168,76,226,0.12);
 }
 
 /* =========================================================
@@ -555,7 +540,6 @@ section:not(.hero) {
 
 .section-heading {
     text-align: center;
-
     margin-bottom: 70px;
 }
 
@@ -570,9 +554,7 @@ section:not(.hero) {
         );
 
     letter-spacing: 6px;
-
     font-weight: 400;
-
     text-transform: uppercase;
 }
 
@@ -584,7 +566,6 @@ section:not(.hero) {
     color: #8f8798;
 
     line-height: 1.8;
-
     font-size: 15px;
 }
 
@@ -679,7 +660,6 @@ section:not(.hero) {
 
 .house-symbol {
     font-size: 48px;
-
     margin-bottom: 20px;
 
     filter:
@@ -789,13 +769,11 @@ section:not(.hero) {
     color: #756c7e;
 
     font-size: 14px;
-
     letter-spacing: 2px;
 }
 
 .leader-row span {
     font-size: 16px;
-
     letter-spacing: 1px;
 }
 
@@ -894,7 +872,6 @@ section:not(.hero) {
 
 .leader-symbol {
     font-size: 55px;
-
     margin-bottom: 20px;
 }
 
@@ -902,7 +879,6 @@ section:not(.hero) {
     color: #a45fd1;
 
     font-size: 10px;
-
     letter-spacing: 5px;
 }
 
@@ -956,7 +932,6 @@ section:not(.hero) {
 
 .dossier.active {
     opacity: 1;
-
     visibility: visible;
 }
 
@@ -1001,12 +976,7 @@ section:not(.hero) {
 
 .dossier-symbol {
     font-size: 65px;
-
     margin-bottom: 20px;
-}
-
-.dossier-box .eyebrow {
-    margin-bottom: 12px;
 }
 
 .dossier-box h2 {
@@ -1101,10 +1071,7 @@ footer {
 
     nav {
         height: 70px;
-
-        padding:
-            0
-            20px;
+        padding: 0 20px;
     }
 
     .nav-links {
@@ -1113,7 +1080,6 @@ footer {
 
     .nav-logo {
         font-size: 10px;
-
         letter-spacing: 2px;
     }
 
@@ -1178,12 +1144,15 @@ footer {
             45px
             25px;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================================================
      BACKGROUND
@@ -1224,13 +1193,30 @@ footer {
 
     <div class="nav-links">
 
-        <a href="#home">Home</a>
+        <a href="#home">
+            Home
+        </a>
 
-        <a href="#houses">Houses</a>
+        <a href="#houses">
+            Houses
+        </a>
 
-        <a href="#leaderboard">Leaderboard</a>
+        <a href="#leaderboard">
+            Leaderboard
+        </a>
 
-        <a href="#leadership">Leadership</a>
+        <a href="#leadership">
+            Leadership
+        </a>
+
+        <a
+            href="https://discord.gg/8nP5gZ5uD"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="discord-nav"
+        >
+            Discord
+        </a>
 
     </div>
 
@@ -1269,10 +1255,19 @@ footer {
         <div class="hero-buttons">
 
             <a
-                href="#houses"
-                class="btn btn-primary"
+                href="https://discord.gg/8nP5gZ5uD"
+                class="btn discord-btn"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-                Discover the Houses
+                Join The Guild
+            </a>
+
+            <a
+                href="#houses"
+                class="btn"
+            >
+                Discover The Houses
             </a>
 
             <a
@@ -1319,8 +1314,6 @@ footer {
     <div class="houses-grid">
 
 
-        <!-- AETHERION -->
-
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1358,8 +1351,6 @@ footer {
 
         </article>
 
-
-        <!-- KIRA -->
 
         <article class="house-card">
 
@@ -1399,8 +1390,6 @@ footer {
         </article>
 
 
-        <!-- LUCIFERO -->
-
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1438,8 +1427,6 @@ footer {
 
         </article>
 
-
-        <!-- SHADOW -->
 
         <article class="house-card">
 
@@ -1479,8 +1466,6 @@ footer {
         </article>
 
 
-        <!-- CHRONOAETERNA -->
-
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1518,8 +1503,6 @@ footer {
 
         </article>
 
-
-        <!-- SILVA -->
 
         <article class="house-card">
 
@@ -1559,8 +1542,6 @@ footer {
         </article>
 
 
-        <!-- VERMILLION -->
-
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1599,8 +1580,6 @@ footer {
         </article>
 
 
-        <!-- LUNARETH -->
-
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1638,8 +1617,6 @@ footer {
 
         </article>
 
-
-        <!-- ECLIPSE -->
 
         <article class="house-card">
 
@@ -1789,8 +1766,8 @@ footer {
         <div class="divider"></div>
 
         <p>
-            The two figures who stand above the
-            Nine Great Houses.
+            The two figures who stand above
+            the Nine Great Houses.
         </p>
 
     </div>
@@ -1845,10 +1822,13 @@ footer {
 
 
 <!-- =========================================================
-     DOSSIER
+     DOSSIER MODAL
 ========================================================= -->
 
-<div class="dossier" id="dossier">
+<div
+    class="dossier"
+    id="dossier"
+>
 
     <div class="dossier-box">
 
@@ -1923,7 +1903,8 @@ footer {
    STARS
 ========================================================= */
 
-const stars = document.getElementById("stars");
+const stars =
+    document.getElementById("stars");
 
 if (stars) {
 
@@ -1932,7 +1913,8 @@ if (stars) {
         const star =
             document.createElement("div");
 
-        star.className = "star";
+        star.className =
+            "star";
 
         star.style.left =
             Math.random() * 100 + "%";
@@ -2035,7 +2017,7 @@ function closeDossier() {
 
 
 /* =========================================================
-   CLOSE DOSSIER WITH ESC
+   ESCAPE KEY
 ========================================================= */
 
 document.addEventListener(
@@ -2053,7 +2035,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   CLOSE WHEN CLICKING OUTSIDE
+   CLICK OUTSIDE DOSSIER
 ========================================================= */
 
 document.getElementById(
@@ -2062,9 +2044,7 @@ document.getElementById(
     "click",
     function(event) {
 
-        if (
-            event.target === this
-        ) {
+        if (event.target === this) {
 
             closeDossier();
 

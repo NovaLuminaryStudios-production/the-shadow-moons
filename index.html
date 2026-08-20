@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +29,411 @@ body {
     overflow-x: hidden;
 }
 
+body.intro-active {
+    overflow: hidden;
+}
+
 button,
 a {
     font-family: inherit;
+}
+
+/* =========================================================
+   CINEMATIC INTRO
+========================================================= */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(93, 35, 130, 0.18),
+            transparent 35%
+        ),
+        #010106;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+.intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.intro-stars {
+    position: absolute;
+    inset: 0;
+}
+
+.intro-star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    opacity: 0;
+
+    animation: introStarAppear 4s ease forwards;
+}
+
+@keyframes introStarAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+}
+
+.intro-credit {
+    position: absolute;
+
+    top: 42%;
+
+    width: 100%;
+
+    color: rgba(255,255,255,0.72);
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        creditFade 4s ease forwards;
+}
+
+@keyframes creditFade {
+
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.intro-main {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    opacity: 0;
+
+    animation:
+        introReveal 3s ease 3.5s forwards;
+}
+
+@keyframes introReveal {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    45% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.intro-logo {
+    width: 260px;
+    max-width: 65vw;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(169,82,230,0.8)
+        )
+        drop-shadow(
+            0 0 55px
+            rgba(125,45,180,0.45)
+        );
+
+    animation:
+        introLogoFloat 5s ease-in-out infinite;
+}
+
+@keyframes introLogoFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.intro-title {
+    margin-top: 25px;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            55px
+        );
+
+    letter-spacing:
+        clamp(5px, 1vw, 12px);
+
+    font-weight: 400;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px
+        rgba(194,112,255,0.35);
+}
+
+.intro-subtitle {
+    margin-top: 15px;
+
+    color: #a45fd1;
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+}
+
+.enter-screen {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    padding-bottom: 11vh;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(1,1,6,0.95),
+            transparent 45%
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    animation:
+        enterAppear 2s ease 6.5s forwards;
+}
+
+@keyframes enterAppear {
+
+    to {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.enter-button {
+    position: relative;
+
+    padding:
+        17px
+        38px;
+
+    border:
+        1px
+        solid
+        rgba(196,120,255,0.65);
+
+    background:
+        rgba(85,30,120,0.18);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    letter-spacing: 4px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        0.4s ease;
+
+    box-shadow:
+        0 0 25px
+        rgba(150,60,210,0.12);
+}
+
+.enter-button:hover {
+    transform: translateY(-5px);
+
+    border-color: #d28aff;
+
+    background:
+        rgba(115,40,160,0.32);
+
+    box-shadow:
+        0 0 35px
+        rgba(170,75,230,0.3);
+}
+
+.enter-hint {
+    position: absolute;
+
+    bottom: 6vh;
+
+    color: rgba(255,255,255,0.25);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   MUSIC STATUS
+========================================================= */
+
+.music-status {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 200;
+
+    padding:
+        10px
+        15px;
+
+    border:
+        1px
+        solid
+        rgba(177,91,232,0.2);
+
+    background:
+        rgba(5,3,10,0.65);
+
+    backdrop-filter: blur(8px);
+
+    color: #81778c;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    transition: 0.5s ease;
+}
+
+.music-status.active {
+    opacity: 1;
+}
+
+.music-dot {
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-right: 7px;
+
+    border-radius: 50%;
+
+    background: #a95ee4;
+
+    box-shadow:
+        0 0 8px
+        #a95ee4;
+
+    animation:
+        musicPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+
+    0%, 100% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 }
 
 /* =========================================================
@@ -61,11 +462,16 @@ a {
 
 .moon {
     position: absolute;
+
     width: 620px;
     height: 620px;
+
     left: 50%;
     top: 43%;
-    transform: translate(-50%, -50%);
+
+    transform:
+        translate(-50%, -50%);
+
     border-radius: 50%;
 
     background:
@@ -92,11 +498,15 @@ a {
 @keyframes moonFloat {
 
     0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
+        transform:
+            translate(-50%, -50%)
+            scale(1);
     }
 
     50% {
-        transform: translate(-50%, -52%) scale(1.04);
+        transform:
+            translate(-50%, -52%)
+            scale(1.04);
     }
 }
 
@@ -113,11 +523,16 @@ a {
 
 .moon-glow {
     position: absolute;
+
     width: 900px;
     height: 900px;
+
     left: 50%;
     top: 43%;
-    transform: translate(-50%, -50%);
+
+    transform:
+        translate(-50%, -50%);
+
     border-radius: 50%;
 
     background:
@@ -127,18 +542,24 @@ a {
             transparent 65%
         );
 
-    animation: glowPulse 8s ease-in-out infinite;
+    animation:
+        glowPulse 8s ease-in-out infinite;
+
     pointer-events: none;
 }
 
 @keyframes glowPulse {
 
     0%, 100% {
-        transform: translate(-50%, -50%) scale(0.9);
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
     }
 
     50% {
-        transform: translate(-50%, -50%) scale(1.1);
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
     }
 }
 
@@ -153,10 +574,14 @@ a {
 
 .star {
     position: absolute;
+
     width: 2px;
     height: 2px;
+
     border-radius: 50%;
+
     background: #fff;
+
     opacity: 0.4;
 
     animation:
@@ -167,11 +592,15 @@ a {
 @keyframes starFloat {
 
     from {
-        transform: translateY(0) translateX(0);
+        transform:
+            translateY(0)
+            translateX(0);
     }
 
     to {
-        transform: translateY(-120px) translateX(30px);
+        transform:
+            translateY(-120px)
+            translateX(30px);
     }
 }
 
@@ -199,8 +628,10 @@ a {
 
 .particle {
     position: absolute;
+
     width: 3px;
     height: 3px;
+
     border-radius: 50%;
 
     background: #a95ee4;
@@ -211,7 +642,8 @@ a {
 
     opacity: 0.5;
 
-    animation: particleMove linear infinite;
+    animation:
+        particleMove linear infinite;
 }
 
 @keyframes particleMove {
@@ -247,16 +679,20 @@ a {
 
 nav {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 82px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     padding: 0 6%;
+
     z-index: 100;
 
     background:
@@ -271,11 +707,15 @@ nav {
 
 .nav-logo {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 
     font-size: 14px;
+
     letter-spacing: 4px;
+
     font-weight: bold;
 }
 
@@ -294,15 +734,19 @@ nav {
 
 .nav-links {
     display: flex;
+
     gap: 26px;
 }
 
 .nav-links a {
     color: #aaa3b0;
+
     text-decoration: none;
 
     font-size: 10px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 
     transition: 0.35s ease;
@@ -332,6 +776,7 @@ nav {
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -347,13 +792,17 @@ nav {
 
 .hero-content {
     position: relative;
+
     z-index: 5;
+
     max-width: 1000px;
 }
 
 .hero-logo {
     width: 280px;
+
     max-width: 65vw;
+
     margin-bottom: 30px;
 
     filter:
@@ -376,11 +825,13 @@ nav {
 @keyframes logoFloat {
 
     0%, 100% {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-12px);
+        transform:
+            translateY(-12px);
     }
 }
 
@@ -388,7 +839,9 @@ nav {
     color: #a45fd1;
 
     font-size: 11px;
+
     letter-spacing: 7px;
+
     text-transform: uppercase;
 }
 
@@ -403,8 +856,11 @@ h1 {
         );
 
     letter-spacing: 9px;
+
     line-height: 1;
+
     font-weight: 400;
+
     text-transform: uppercase;
 
     text-shadow:
@@ -417,6 +873,7 @@ h1 {
 
 .divider {
     width: 120px;
+
     height: 1px;
 
     margin:
@@ -447,7 +904,9 @@ h1 {
         40px;
 
     font-size: 17px;
+
     line-height: 1.8;
+
     letter-spacing: 1px;
 }
 
@@ -457,13 +916,17 @@ h1 {
 
 .hero-buttons {
     display: flex;
+
     justify-content: center;
+
     gap: 15px;
+
     flex-wrap: wrap;
 }
 
 .btn {
     position: relative;
+
     overflow: hidden;
 
     display: inline-block;
@@ -485,10 +948,13 @@ h1 {
     text-decoration: none;
 
     font-size: 10px;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
 
-    transition: 0.4s ease;
+    transition:
+        0.4s ease;
 
     backdrop-filter: blur(5px);
 
@@ -496,9 +962,11 @@ h1 {
 }
 
 .btn:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
-    border-color: #c47aff;
+    border-color:
+        #c47aff;
 
     box-shadow:
         0 0 20px
@@ -554,7 +1022,9 @@ section:not(.hero) {
         );
 
     letter-spacing: 6px;
+
     font-weight: 400;
+
     text-transform: uppercase;
 }
 
@@ -566,6 +1036,7 @@ section:not(.hero) {
     color: #8f8798;
 
     line-height: 1.8;
+
     font-size: 15px;
 }
 
@@ -634,13 +1105,16 @@ section:not(.hero) {
             transparent
         );
 
-    transform: translateX(-100%);
+    transform:
+        translateX(-100%);
 
-    transition: 0.8s ease;
+    transition:
+        0.8s ease;
 }
 
 .house-card:hover::before {
-    transform: translateX(100%);
+    transform:
+        translateX(100%);
 }
 
 .house-card:hover {
@@ -660,6 +1134,7 @@ section:not(.hero) {
 
 .house-symbol {
     font-size: 48px;
+
     margin-bottom: 20px;
 
     filter:
@@ -680,11 +1155,15 @@ section:not(.hero) {
 }
 
 .house-card > span {
+    display: block;
+
     color: #a45fd1;
 
     font-size: 9px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+
+    line-height: 1.6;
 }
 
 .house-stars {
@@ -729,6 +1208,8 @@ section:not(.hero) {
         rgba(9,4,15,0.65);
 
     backdrop-filter: blur(14px);
+
+    overflow: hidden;
 }
 
 .leader-row {
@@ -769,11 +1250,13 @@ section:not(.hero) {
     color: #756c7e;
 
     font-size: 14px;
+
     letter-spacing: 2px;
 }
 
 .leader-row span {
     font-size: 16px;
+
     letter-spacing: 1px;
 }
 
@@ -838,7 +1321,9 @@ section:not(.hero) {
 }
 
 .leader-card {
-    padding: 55px 30px;
+    padding:
+        55px
+        30px;
 
     text-align: center;
 
@@ -856,11 +1341,13 @@ section:not(.hero) {
 
     backdrop-filter: blur(12px);
 
-    transition: 0.5s ease;
+    transition:
+        0.5s ease;
 }
 
 .leader-card:hover {
-    transform: translateY(-10px);
+    transform:
+        translateY(-10px);
 
     border-color:
         rgba(196,120,255,0.65);
@@ -872,6 +1359,7 @@ section:not(.hero) {
 
 .leader-symbol {
     font-size: 55px;
+
     margin-bottom: 20px;
 }
 
@@ -879,6 +1367,7 @@ section:not(.hero) {
     color: #a45fd1;
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
@@ -932,15 +1421,22 @@ section:not(.hero) {
 
 .dossier.active {
     opacity: 1;
+
     visibility: visible;
 }
 
 .dossier-box {
     position: relative;
 
-    width: min(650px, 100%);
+    width:
+        min(
+            650px,
+            100%
+        );
 
-    padding: 55px 45px;
+    padding:
+        55px
+        45px;
 
     text-align: center;
 
@@ -976,6 +1472,7 @@ section:not(.hero) {
 
 .dossier-symbol {
     font-size: 65px;
+
     margin-bottom: 20px;
 }
 
@@ -1035,7 +1532,8 @@ section:not(.hero) {
 .close-dossier:hover {
     color: #d58aff;
 
-    transform: rotate(90deg);
+    transform:
+        rotate(90deg);
 }
 
 /* =========================================================
@@ -1071,7 +1569,10 @@ footer {
 
     nav {
         height: 70px;
-        padding: 0 20px;
+
+        padding:
+            0
+            20px;
     }
 
     .nav-links {
@@ -1080,6 +1581,7 @@ footer {
 
     .nav-logo {
         font-size: 10px;
+
         letter-spacing: 2px;
     }
 
@@ -1145,13 +1647,104 @@ footer {
             25px;
     }
 
+    .music-status {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .intro-logo {
+        width: 210px;
+    }
+
+    .intro-title {
+        font-size: 25px;
+    }
+
+    .intro-credit {
+        font-size: 8px;
+        letter-spacing: 4px;
+    }
+
 }
 
 </style>
 </head>
 
+<body class="intro-active">
 
-<body>
+<!-- =========================================================
+     CINEMATIC INTRO
+========================================================= -->
+
+<div class="intro" id="intro">
+
+    <div class="intro-content">
+
+        <div
+            class="intro-stars"
+            id="introStars"
+        ></div>
+
+        <div class="intro-credit">
+            A LEGACY FORGED IN SHADOW
+        </div>
+
+        <div class="intro-main">
+
+            <img
+                src="Shadow moons.png"
+                alt="The Shadow Moons"
+                class="intro-logo"
+            >
+
+            <div class="intro-title">
+                THE SHADOW MOONS
+            </div>
+
+            <div class="intro-subtitle">
+                CLOVER ORIGINS
+            </div>
+
+        </div>
+
+        <div class="enter-screen">
+
+            <button
+                class="enter-button"
+                id="enterButton"
+            >
+                Enter The Shadow Moons
+            </button>
+
+            <div class="enter-hint">
+                Begin The Chronicle
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MUSIC
+========================================================= -->
+
+<audio
+    id="musicPlayer"
+    preload="auto"
+></audio>
+
+<div
+    class="music-status"
+    id="musicStatus"
+>
+    <span class="music-dot"></span>
+    <span id="musicTrackName">
+        The Shadow Moons
+    </span>
+</div>
 
 
 <!-- =========================================================
@@ -1164,9 +1757,15 @@ footer {
 
     <div class="moon-glow"></div>
 
-    <div class="stars" id="stars"></div>
+    <div
+        class="stars"
+        id="stars"
+    ></div>
 
-    <div class="particles" id="particles"></div>
+    <div
+        class="particles"
+        id="particles"
+    ></div>
 
 </div>
 
@@ -1189,7 +1788,6 @@ footer {
         </span>
 
     </div>
-
 
     <div class="nav-links">
 
@@ -1227,7 +1825,10 @@ footer {
      HERO
 ========================================================= -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
 
     <div class="hero-content">
 
@@ -1857,8 +2458,7 @@ footer {
             id="dossierRole"
         ></span>
 
-        <p id="dossierText">
-        </p>
+        <p id="dossierText"></p>
 
         <div class="divider"></div>
 
@@ -1900,7 +2500,42 @@ footer {
 <script>
 
 /* =========================================================
-   STARS
+   INTRO STARS
+========================================================= */
+
+const introStars =
+    document.getElementById("introStars");
+
+if (introStars) {
+
+    for (let i = 0; i < 140; i++) {
+
+        const star =
+            document.createElement("div");
+
+        star.className =
+            "intro-star";
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+        star.style.animationDelay =
+            (Math.random() * 4) + "s";
+
+        star.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
+
+        introStars.appendChild(star);
+    }
+
+}
+
+
+/* =========================================================
+   BACKGROUND STARS
 ========================================================= */
 
 const stars =
@@ -1929,7 +2564,6 @@ if (stars) {
             Math.random() * 5 + "s";
 
         stars.appendChild(star);
-
     }
 
 }
@@ -1962,8 +2596,178 @@ if (particles) {
             Math.random() * 10 + "s";
 
         particles.appendChild(particle);
-
     }
+
+}
+
+
+/* =========================================================
+   MUSIC SYSTEM
+========================================================= */
+
+const musicPlayer =
+    document.getElementById("musicPlayer");
+
+const musicStatus =
+    document.getElementById("musicStatus");
+
+const musicTrackName =
+    document.getElementById("musicTrackName");
+
+const tracks = [
+
+    {
+        file:
+            "music/kulakovka-epic-trailer-277924.mp3",
+
+        name:
+            "The Awakening"
+    },
+
+    {
+        file:
+            "music/the_mountain-epic-trailer-576568.mp3",
+
+        name:
+            "The Mountain"
+    },
+
+    {
+        file:
+            "music/audiocopper-dark-571483.mp3",
+
+        name:
+            "Into The Shadows"
+    }
+
+];
+
+let currentTrack = 0;
+
+
+/* =========================================================
+   PLAY TRACK
+========================================================= */
+
+function playTrack(index) {
+
+    if (!musicPlayer) {
+        return;
+    }
+
+    currentTrack = index;
+
+    musicPlayer.src =
+        tracks[index].file;
+
+    musicPlayer.load();
+
+    musicPlayer.play()
+        .then(function() {
+
+            if (musicStatus) {
+
+                musicStatus.classList.add(
+                    "active"
+                );
+
+                musicTrackName.textContent =
+                    tracks[index].name;
+            }
+
+        })
+        .catch(function(error) {
+
+            console.log(
+                "Music playback was blocked:",
+                error
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   AUTOMATIC TRACK PROGRESSION
+========================================================= */
+
+if (musicPlayer) {
+
+    musicPlayer.addEventListener(
+        "ended",
+        function() {
+
+            if (currentTrack < tracks.length - 1) {
+
+                playTrack(
+                    currentTrack + 1
+                );
+
+            } else {
+
+                /*
+                 * Third track finished.
+                 * Restart the third track.
+                 */
+
+                playTrack(2);
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ENTER THE SHADOW MOONS
+========================================================= */
+
+const enterButton =
+    document.getElementById("enterButton");
+
+const intro =
+    document.getElementById("intro");
+
+if (enterButton) {
+
+    enterButton.addEventListener(
+        "click",
+        function() {
+
+            document.body.classList.remove(
+                "intro-active"
+            );
+
+            /*
+             * User interaction allows
+             * audio playback.
+             */
+
+            playTrack(0);
+
+            /*
+             * Fade out cinematic intro.
+             */
+
+            intro.classList.add(
+                "hidden"
+            );
+
+            /*
+             * Bring the user to
+             * the beginning of the site.
+             */
+
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+
+        }
+    );
 
 }
 
@@ -2002,7 +2806,9 @@ function openDossier(
 
     document.getElementById(
         "dossier"
-    ).classList.add("active");
+    ).classList.add(
+        "active"
+    );
 
 }
 
@@ -2011,7 +2817,9 @@ function closeDossier() {
 
     document.getElementById(
         "dossier"
-    ).classList.remove("active");
+    ).classList.remove(
+        "active"
+    );
 
 }
 
@@ -2057,4 +2865,3 @@ document.getElementById(
 
 </body>
 </html>
-```

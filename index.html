@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020107">
-
 <title>The Shadow Moons | Clover Origins</title>
 
 <style>
@@ -46,7 +44,7 @@ a {
     background:
         radial-gradient(
             circle at center,
-            rgba(91, 34, 130, 0.22),
+            rgba(91,34,130,0.22),
             transparent 35%
         ),
         #020107;
@@ -83,7 +81,10 @@ a {
     opacity: 0.3;
 
     animation:
-        introStar 4s ease-in-out infinite;
+        introStar
+        4s
+        ease-in-out
+        infinite;
 }
 
 @keyframes introStar {
@@ -101,19 +102,14 @@ a {
 .intro-content {
     position: relative;
     z-index: 5;
-
     text-align: center;
-
     width: min(900px, 90%);
 }
 
 .credit {
     position: absolute;
-
     left: 50%;
-
     transform: translateX(-50%);
-
     width: 90%;
 
     opacity: 0;
@@ -121,13 +117,14 @@ a {
     color: #aaa2b1;
 
     font-size: 12px;
-
     letter-spacing: 6px;
-
     text-transform: uppercase;
 
     animation:
-        creditRoll 14s ease forwards;
+        creditRoll
+        14s
+        ease
+        forwards;
 }
 
 .credit-one {
@@ -147,24 +144,25 @@ a {
 }
 
 @keyframes creditRoll {
+
     0% {
         opacity: 0;
-        transform: translate(-50%, 25px);
+        transform: translate(-50%,25px);
     }
 
     10% {
         opacity: 1;
-        transform: translate(-50%, 0);
+        transform: translate(-50%,0);
     }
 
     22% {
         opacity: 1;
-        transform: translate(-50%, -10px);
+        transform: translate(-50%,-10px);
     }
 
     30%,100% {
         opacity: 0;
-        transform: translate(-50%, -30px);
+        transform: translate(-50%,-30px);
     }
 }
 
@@ -179,12 +177,16 @@ a {
         drop-shadow(0 0 60px rgba(120,40,180,0.5));
 
     animation:
-        introLogo 4s ease forwards;
+        introLogo
+        4s
+        ease
+        forwards;
 
     animation-delay: 9.5s;
 }
 
 @keyframes introLogo {
+
     0% {
         opacity: 0;
         transform: scale(0.65);
@@ -199,7 +201,11 @@ a {
         transform: scale(1.08);
     }
 
-    70%,100% {
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
         opacity: 1;
         transform: scale(1);
     }
@@ -211,10 +217,13 @@ a {
     opacity: 0;
 
     font-size:
-        clamp(30px, 6vw, 70px);
+        clamp(
+            30px,
+            6vw,
+            70px
+        );
 
     letter-spacing: 12px;
-
     font-weight: 400;
 
     text-transform: uppercase;
@@ -224,12 +233,16 @@ a {
         0 0 60px rgba(130,50,190,0.25);
 
     animation:
-        introTitle 3s ease forwards;
+        introTitle
+        3s
+        ease
+        forwards;
 
     animation-delay: 11s;
 }
 
 @keyframes introTitle {
+
     from {
         opacity: 0;
         letter-spacing: 25px;
@@ -256,12 +269,16 @@ a {
         );
 
     box-shadow:
-        0 0 18px rgba(176,97,228,0.8);
+        0 0 18px
+        rgba(176,97,228,0.8);
 
     opacity: 0;
 
     animation:
-        introLine 2s ease forwards;
+        introLine
+        2s
+        ease
+        forwards;
 
     animation-delay: 11.8s;
 }
@@ -276,13 +293,15 @@ a {
     color: #8f8798;
 
     font-size: 11px;
-
     letter-spacing: 5px;
 
     opacity: 0;
 
     animation:
-        fadeIn 2s ease forwards;
+        fadeIn
+        2s
+        ease
+        forwards;
 
     animation-delay: 12.3s;
 }
@@ -302,7 +321,8 @@ a {
     padding: 10px 18px;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(180,90,240,0.35);
 
     background:
@@ -311,7 +331,6 @@ a {
     color: #8d8495;
 
     font-size: 9px;
-
     letter-spacing: 3px;
 
     text-transform: uppercase;
@@ -327,7 +346,8 @@ a {
     border-color: #c478ff;
 
     box-shadow:
-        0 0 20px rgba(168,76,226,0.25);
+        0 0 20px
+        rgba(168,76,226,0.25);
 }
 
 /* =========================================================
@@ -366,7 +386,7 @@ a {
     top: 43%;
 
     transform:
-        translate(-50%, -50%);
+        translate(-50%,-50%);
 
     border-radius: 50%;
 
@@ -392,6 +412,7 @@ a {
 }
 
 @keyframes moonFloat {
+
     0%,100% {
         transform:
             translate(-50%,-50%)
@@ -406,6 +427,7 @@ a {
 }
 
 @keyframes moonPulse {
+
     0%,100% {
         opacity: 0.13;
     }
@@ -437,12 +459,16 @@ a {
         );
 
     animation:
-        glowPulse 8s ease-in-out infinite;
+        glowPulse
+        8s
+        ease-in-out
+        infinite;
 
     pointer-events: none;
 }
 
 @keyframes glowPulse {
+
     0%,100% {
         transform:
             translate(-50%,-50%)
@@ -479,11 +505,16 @@ a {
     opacity: 0.4;
 
     animation:
-        starFloat linear infinite,
-        starTwinkle ease-in-out infinite;
+        starFloat
+        linear
+        infinite,
+        starTwinkle
+        ease-in-out
+        infinite;
 }
 
 @keyframes starFloat {
+
     from {
         transform:
             translateY(0)
@@ -498,6 +529,7 @@ a {
 }
 
 @keyframes starTwinkle {
+
     0%,100% {
         opacity: 0.15;
         transform: scale(0.7);
@@ -526,10 +558,13 @@ a {
     opacity: 0.5;
 
     animation:
-        particleMove linear infinite;
+        particleMove
+        linear
+        infinite;
 }
 
 @keyframes particleMove {
+
     0% {
         transform:
             translateY(110vh)
@@ -556,7 +591,7 @@ a {
 }
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 nav {
@@ -644,10 +679,14 @@ nav {
 
 .discord-nav {
     color: #c478ff !important;
+
+    text-shadow:
+        0 0 12px
+        rgba(196,120,255,0.35);
 }
 
 /* =========================================================
-   GENERAL
+   HERO
 ========================================================= */
 
 .hero {
@@ -662,7 +701,10 @@ nav {
 
     position: relative;
 
-    padding: 120px 20px 80px;
+    padding:
+        120px
+        20px
+        80px;
 }
 
 .hero-content {
@@ -675,6 +717,7 @@ nav {
 
 .hero-logo {
     width: 280px;
+
     max-width: 65vw;
 
     margin-bottom: 30px;
@@ -697,6 +740,7 @@ nav {
 }
 
 @keyframes logoFloat {
+
     0%,100% {
         transform: translateY(0);
     }
@@ -720,7 +764,11 @@ h1 {
     margin-top: 18px;
 
     font-size:
-        clamp(42px, 8vw, 94px);
+        clamp(
+            42px,
+            8vw,
+            94px
+        );
 
     letter-spacing: 9px;
 
@@ -737,6 +785,7 @@ h1 {
 
 .divider {
     width: 120px;
+
     height: 1px;
 
     margin: 32px auto;
@@ -759,7 +808,10 @@ h1 {
 
     max-width: 600px;
 
-    margin: 0 auto 40px;
+    margin:
+        0
+        auto
+        40px;
 
     font-size: 17px;
 
@@ -789,10 +841,13 @@ h1 {
 
     display: inline-block;
 
-    padding: 15px 28px;
+    padding:
+        15px
+        28px;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(177,91,232,0.55);
 
     background:
@@ -849,7 +904,9 @@ h1 {
 section:not(.hero) {
     position: relative;
 
-    padding: 130px 6%;
+    padding:
+        130px
+        6%;
 
     max-width: 1500px;
 
@@ -866,7 +923,11 @@ section:not(.hero) {
     margin-top: 15px;
 
     font-size:
-        clamp(32px, 5vw, 58px);
+        clamp(
+            32px,
+            5vw,
+            58px
+        );
 
     letter-spacing: 6px;
 
@@ -897,7 +958,10 @@ section:not(.hero) {
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(280px, 1fr)
+            minmax(
+                280px,
+                1fr
+            )
         );
 
     gap: 24px;
@@ -906,14 +970,17 @@ section:not(.hero) {
 .house-card {
     position: relative;
 
-    min-height: 350px;
+    min-height: 390px;
 
-    padding: 38px 28px;
+    padding:
+        38px
+        28px;
 
     text-align: center;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(161,83,214,0.20);
 
     background:
@@ -948,13 +1015,15 @@ section:not(.hero) {
             transparent
         );
 
-    transform: translateX(-100%);
+    transform:
+        translateX(-100%);
 
     transition: 0.8s ease;
 }
 
 .house-card:hover::before {
-    transform: translateX(100%);
+    transform:
+        translateX(100%);
 }
 
 .house-card:hover {
@@ -995,8 +1064,6 @@ section:not(.hero) {
 }
 
 .house-card > span {
-    display: block;
-
     color: #a45fd1;
 
     font-size: 9px;
@@ -1021,7 +1088,11 @@ section:not(.hero) {
 
     font-size: 13px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+}
+
+.house-card .btn {
+    font-size: 8px;
 }
 
 /* =========================================================
@@ -1034,7 +1105,8 @@ section:not(.hero) {
     margin: auto;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(161,83,214,0.20);
 
     background:
@@ -1053,10 +1125,13 @@ section:not(.hero) {
 
     align-items: center;
 
-    padding: 22px 28px;
+    padding:
+        22px
+        28px;
 
     border-bottom:
-        1px solid
+        1px
+        solid
         rgba(255,255,255,0.05);
 
     transition: 0.35s ease;
@@ -1101,54 +1176,69 @@ section:not(.hero) {
 
 .leader-row.first {
     border-left:
-        3px solid
+        3px
+        solid
         #e8c96a;
 }
 
 .leader-row.second {
     border-left:
-        3px solid
+        3px
+        solid
         #c8c8d0;
 }
 
 .leader-row.third {
     border-left:
-        3px solid
+        3px
+        solid
         #b87955;
 }
 
 /* =========================================================
-   LORDS SECTION
+   EVENTS
 ========================================================= */
 
-.lords-grid {
+.events-grid {
     display: grid;
 
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(250px, 1fr)
+            minmax(
+                280px,
+                1fr
+            )
         );
 
     gap: 24px;
+
+    max-width: 1050px;
+
+    margin: auto;
 }
 
-.lord-card {
+.event-card {
     position: relative;
 
-    padding: 30px 25px;
+    min-height: 250px;
+
+    padding:
+        40px
+        30px;
 
     text-align: center;
 
     border:
-        1px solid
-        rgba(161,83,214,0.22);
+        1px
+        solid
+        rgba(161,83,214,0.25);
 
     background:
         linear-gradient(
             145deg,
-            rgba(70,25,100,0.22),
-            rgba(5,3,10,0.78)
+            rgba(76,27,108,0.20),
+            rgba(6,3,12,0.75)
         );
 
     backdrop-filter: blur(12px);
@@ -1156,135 +1246,102 @@ section:not(.hero) {
     overflow: hidden;
 
     transition:
-        0.5s ease;
-
-    cursor: pointer;
+        transform 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
 }
 
-.lord-card:hover {
+.event-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(169,94,228,0.10);
+
+    filter: blur(5px);
+
+    transition: 0.5s;
+}
+
+.event-card:hover {
     transform:
         translateY(-10px);
 
     border-color:
-        rgba(196,120,255,0.7);
+        rgba(196,120,255,0.65);
 
     box-shadow:
         0 20px 60px
-        rgba(90,30,130,0.3),
-        0 0 30px
-        rgba(160,70,220,0.15);
+        rgba(90,30,130,0.25);
 }
 
-.lord-pfp {
-    width: 145px;
-    height: 145px;
+.event-card:hover::after {
+    transform: scale(1.5);
+}
 
-    margin: 0 auto 22px;
+.event-icon {
+    font-size: 50px;
 
-    object-fit: cover;
+    margin-bottom: 20px;
 
-    border-radius: 50%;
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(190,100,255,0.55)
+        );
+}
+
+.event-card h3 {
+    font-size: 24px;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 14px;
+}
+
+.event-status {
+    display: inline-block;
+
+    padding:
+        7px
+        15px;
 
     border:
-        1px solid
-        rgba(194,110,255,0.55);
+        1px
+        solid
+        rgba(196,120,255,0.45);
 
-    box-shadow:
-        0 0 25px
-        rgba(160,70,220,0.25);
+    background:
+        rgba(117,45,167,0.18);
 
-    transition:
-        0.5s ease;
-}
-
-.lord-card:hover .lord-pfp {
-    transform:
-        scale(1.06);
-
-    box-shadow:
-        0 0 45px
-        rgba(180,90,240,0.45);
-}
-
-.lord-card .role {
-    display: block;
-
-    color: #a45fd1;
+    color: #c478ff;
 
     font-size: 9px;
 
     letter-spacing: 3px;
 
-    margin-bottom: 10px;
-}
-
-.lord-card h3 {
-    font-size: 23px;
-
-    font-weight: 400;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 8px;
-}
-
-.lord-card p {
-    color: #81788b;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-}
-
-.lord-card .pfp-hint {
-    display: block;
-
-    margin-top: 18px;
-
-    color: #625a69;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
     text-transform: uppercase;
+
+    margin-bottom: 20px;
 }
 
-.lord-no-pfp {
-    cursor: default;
-}
+.event-card p {
+    color: #82798b;
 
-.lord-no-pfp:hover {
-    transform: translateY(-6px);
-}
+    line-height: 1.7;
 
-.no-pfp {
-    width: 145px;
-    height: 145px;
-
-    margin: 0 auto 22px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.08);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(100,38,140,0.15),
-            rgba(5,3,10,0.8)
-        );
-
-    color: #51495a;
-
-    font-size: 42px;
+    font-size: 13px;
 }
 
 /* =========================================================
@@ -1297,7 +1354,10 @@ section:not(.hero) {
     grid-template-columns:
         repeat(
             2,
-            minmax(280px, 1fr)
+            minmax(
+                280px,
+                1fr
+            )
         );
 
     gap: 30px;
@@ -1310,12 +1370,15 @@ section:not(.hero) {
 .leader-card {
     position: relative;
 
-    padding: 55px 30px;
+    padding:
+        55px
+        30px;
 
     text-align: center;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(161,83,214,0.22);
 
     background:
@@ -1334,6 +1397,29 @@ section:not(.hero) {
     overflow: hidden;
 }
 
+.leader-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(180,90,240,0.12),
+            transparent 60%
+        );
+
+    opacity: 0;
+
+    transition: 0.5s;
+}
+
+.leader-card:hover::before {
+    opacity: 1;
+}
+
 .leader-card:hover {
     transform:
         translateY(-10px);
@@ -1347,12 +1433,20 @@ section:not(.hero) {
 }
 
 .leader-symbol {
+    position: relative;
+
+    z-index: 2;
+
     font-size: 55px;
 
     margin-bottom: 20px;
 }
 
 .leader-card > span {
+    position: relative;
+
+    z-index: 2;
+
     color: #a45fd1;
 
     font-size: 10px;
@@ -1361,6 +1455,10 @@ section:not(.hero) {
 }
 
 .leader-card h3 {
+    position: relative;
+
+    z-index: 2;
+
     margin-top: 18px;
 
     font-size: 32px;
@@ -1369,6 +1467,10 @@ section:not(.hero) {
 }
 
 .leader-card p {
+    position: relative;
+
+    z-index: 2;
+
     margin-top: 10px;
 
     color: #8f8798;
@@ -1377,184 +1479,25 @@ section:not(.hero) {
 }
 
 .profile-hint {
+    position: relative;
+
+    z-index: 2;
+
     display: block;
 
     margin-top: 25px;
 
-    color: #706777 !important;
-
-    font-size: 8px !important;
-
-    letter-spacing: 3px !important;
-
-    text-transform: uppercase;
-}
-
-.leader-pfp {
-    width: 160px;
-    height: 160px;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    margin-bottom: 25px;
-
-    border:
-        1px solid
-        rgba(194,110,255,0.55);
-
-    box-shadow:
-        0 0 35px
-        rgba(160,70,220,0.3);
-
-    transition: 0.5s ease;
-}
-
-.leader-card:hover .leader-pfp {
-    transform:
-        scale(1.06);
-
-    box-shadow:
-        0 0 55px
-        rgba(180,90,240,0.5);
-}
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-.events-container {
-    max-width: 1000px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px, 1fr)
-        );
-
-    gap: 25px;
-}
-
-.event-card {
-    position: relative;
-
-    min-height: 250px;
-
-    padding: 40px 30px;
-
-    text-align: center;
-
-    border:
-        1px solid
-        rgba(161,83,214,0.25);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(78,28,108,0.20),
-            rgba(5,3,10,0.75)
-        );
-
-    backdrop-filter: blur(14px);
-
-    overflow: hidden;
-
-    transition: 0.5s ease;
-}
-
-.event-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    top: -90px;
-    right: -90px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(168,76,226,0.10);
-
-    filter: blur(5px);
-
-    transition: 0.5s ease;
-}
-
-.event-card:hover {
-    transform:
-        translateY(-10px);
-
-    border-color:
-        rgba(196,120,255,0.65);
-
-    box-shadow:
-        0 20px 60px
-        rgba(90,30,130,0.25);
-}
-
-.event-icon {
-    font-size: 48px;
-
-    margin-bottom: 18px;
-
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(190,100,255,0.45)
-        );
-}
-
-.event-status {
-    display: inline-block;
-
-    padding: 7px 13px;
-
-    margin-bottom: 15px;
-
-    border:
-        1px solid
-        rgba(196,120,255,0.4);
-
-    color: #c478ff;
+    color: #706777;
 
     font-size: 8px;
 
     letter-spacing: 3px;
 
     text-transform: uppercase;
-
-    background:
-        rgba(100,38,140,0.12);
-}
-
-.event-card h3 {
-    font-size: 24px;
-
-    font-weight: 400;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 15px;
-}
-
-.event-card p {
-    color: #82798b;
-
-    font-size: 13px;
-
-    line-height: 1.8;
 }
 
 /* =========================================================
-   DOSSIER MODAL
+   DOSSIER
 ========================================================= */
 
 .dossier {
@@ -1572,7 +1515,7 @@ section:not(.hero) {
     padding: 20px;
 
     background:
-        rgba(0,0,0,0.78);
+        rgba(0,0,0,0.80);
 
     backdrop-filter: blur(12px);
 
@@ -1594,21 +1537,28 @@ section:not(.hero) {
 .dossier-box {
     position: relative;
 
-    width: min(650px, 100%);
+    width: min(700px,100%);
 
-    padding: 55px 45px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding:
+        50px
+        45px;
 
     text-align: center;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(192,103,255,0.55);
 
     background:
         radial-gradient(
             circle at top,
             rgba(102,38,145,0.35),
-            rgba(5,3,10,0.97) 65%
+            rgba(5,3,10,0.98) 65%
         );
 
     box-shadow:
@@ -1632,7 +1582,7 @@ section:not(.hero) {
 .dossier-symbol {
     font-size: 65px;
 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .dossier-box h2 {
@@ -1643,7 +1593,7 @@ section:not(.hero) {
     letter-spacing: 3px;
 }
 
-.dossier-role {
+.dossier-box .dossier-role {
     display: block;
 
     margin-top: 12px;
@@ -1657,15 +1607,103 @@ section:not(.hero) {
 
 .dossier-box p {
     margin:
-        28px auto;
+        24px
+        auto;
 
-    max-width: 500px;
+    max-width: 520px;
 
     color: #a9a0b1;
 
     line-height: 1.9;
 
     font-size: 15px;
+}
+
+/* =========================================================
+   LORD PROFILE
+========================================================= */
+
+.lord-profile-section {
+    margin-top: 25px;
+}
+
+.lord-profile-label {
+    color: #706777;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.lord-profile-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 110px;
+    height: 110px;
+
+    padding: 5px;
+
+    border:
+        1px
+        solid
+        rgba(194,110,255,0.55);
+
+    border-radius: 50%;
+
+    background:
+        rgba(30,10,42,0.8);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.lord-profile-button:hover {
+    transform:
+        scale(1.08);
+
+    border-color:
+        #c478ff;
+
+    box-shadow:
+        0 0 35px
+        rgba(168,76,226,0.45);
+}
+
+.lord-profile-button img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border:
+        1px
+        solid
+        rgba(255,255,255,0.08);
+}
+
+.lord-name {
+    margin-top: 12px;
+
+    color: #d4c8dc;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
 }
 
 .close-dossier {
@@ -1712,7 +1750,7 @@ section:not(.hero) {
     padding: 20px;
 
     background:
-        rgba(0,0,0,0.88);
+        rgba(0,0,0,0.90);
 
     backdrop-filter: blur(16px);
 
@@ -1734,9 +1772,9 @@ section:not(.hero) {
 .profile-box {
     position: relative;
 
-    width: min(520px, 90vw);
+    width: min(500px,90vw);
 
-    padding: 20px;
+    padding: 18px;
 
     display: flex;
 
@@ -1744,7 +1782,8 @@ section:not(.hero) {
     justify-content: center;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(194,110,255,0.65);
 
     background:
@@ -1782,7 +1821,8 @@ section:not(.hero) {
     object-fit: contain;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(255,255,255,0.08);
 
     box-shadow:
@@ -1800,7 +1840,8 @@ section:not(.hero) {
     height: 40px;
 
     border:
-        1px solid
+        1px
+        solid
         rgba(194,110,255,0.65);
 
     border-radius: 50%;
@@ -1834,12 +1875,15 @@ section:not(.hero) {
 ========================================================= */
 
 footer {
-    padding: 60px 20px;
+    padding:
+        60px
+        20px;
 
     text-align: center;
 
     border-top:
-        1px solid
+        1px
+        solid
         rgba(154,78,220,0.12);
 
     color: #5e5666;
@@ -1855,12 +1899,14 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
 
     nav {
         height: 70px;
 
-        padding: 0 20px;
+        padding:
+            0
+            20px;
     }
 
     .nav-links {
@@ -1902,7 +1948,8 @@ footer {
 
     section:not(.hero) {
         padding:
-            90px 20px;
+            90px
+            20px;
     }
 
     .leader-row {
@@ -1912,7 +1959,8 @@ footer {
             100px;
 
         padding:
-            18px 15px;
+            18px
+            15px;
     }
 
     .leader-row span {
@@ -1927,38 +1975,35 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .lord-pfp,
-    .no-pfp {
-        width: 125px;
-        height: 125px;
-    }
-
-    .leader-pfp {
-        width: 135px;
-        height: 135px;
-    }
-
     .dossier-box {
         padding:
-            45px 25px;
+            45px
+            25px;
     }
 
     .profile-box {
-        width: min(380px, 88vw);
+        width:
+            min(
+                380px,
+                88vw
+            );
 
-        padding: 15px;
+        padding: 12px;
     }
 
     .skip-intro {
         right: 20px;
-
         bottom: 20px;
     }
 
     .credit {
         letter-spacing: 3px;
-
         font-size: 9px;
+    }
+
+    .lord-profile-button {
+        width: 90px;
+        height: 90px;
     }
 }
 </style>
@@ -2114,10 +2159,6 @@ footer {
             Leaderboard
         </a>
 
-        <a href="#lords">
-            Lords
-        </a>
-
         <a href="#events">
             Events
         </a>
@@ -2236,9 +2277,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                🌸
-            </div>
+            <div class="house-symbol">🌸</div>
 
             <h3>
                 House Aetherion
@@ -2263,6 +2302,7 @@ footer {
                     'House Aetherion',
                     'PVP',
                     'Yami Sukehiro',
+                    'aetherion.png',
                     'The distinguished house of combat and competition. House Aetherion currently stands first among the Nine Great Houses with 308 stars.'
                 )"
             >
@@ -2276,9 +2316,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                💫
-            </div>
+            <div class="house-symbol">💫</div>
 
             <h3>
                 House Kira
@@ -2303,6 +2341,7 @@ footer {
                     'House Kira',
                     'Internal Affairs & Political Diplomacy',
                     'Damnatio Kira',
+                    'kira.png',
                     'The dignified house entrusted with matters of internal affairs and political diplomacy. House Kira currently holds second position with 229 stars.'
                 )"
             >
@@ -2316,9 +2355,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                🌀
-            </div>
+            <div class="house-symbol">🌀</div>
 
             <h3>
                 House Lucifero
@@ -2343,6 +2380,7 @@ footer {
                     'House Lucifero',
                     'External Affairs',
                     'Lucifer',
+                    'lucifero.png',
                     'The house responsible for external affairs and dealings beyond the guild. House Lucifero currently holds third position with 135 stars.'
                 )"
             >
@@ -2356,9 +2394,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                ✨
-            </div>
+            <div class="house-symbol">✨</div>
 
             <h3>
                 House Shadow
@@ -2383,6 +2419,7 @@ footer {
                     'House Shadow',
                     'Intelligence & Reconnaissance',
                     'Vangeance',
+                    'shadow.png',
                     'The house dedicated to intelligence, reconnaissance, and information gathering. It currently stands fourth with 80 stars.'
                 )"
             >
@@ -2396,9 +2433,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                💫
-            </div>
+            <div class="house-symbol">💫</div>
 
             <h3>
                 House Chronoaeterna
@@ -2423,6 +2458,7 @@ footer {
                     'House Chronoaeterna',
                     'Wisdom & Guidance',
                     'Chrono Lord Kai',
+                    'chronoaeterna.png',
                     'The house of the Great Chronos, devoted to wisdom and guidance. It currently holds fifth position with 45 stars.'
                 )"
             >
@@ -2436,9 +2472,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                💎
-            </div>
+            <div class="house-symbol">💎</div>
 
             <h3>
                 House Silva
@@ -2463,6 +2497,7 @@ footer {
                     'House Silva',
                     'Administration',
                     'Nozel Silva',
+                    'silva.png',
                     'One of the two great royal houses, entrusted with administration. House Silva currently shares sixth position with 40 stars.'
                 )"
             >
@@ -2476,9 +2511,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                🔥
-            </div>
+            <div class="house-symbol">🔥</div>
 
             <h3>
                 House Vermillion
@@ -2503,6 +2536,7 @@ footer {
                     'House Vermillion',
                     'Defense & Military Affairs',
                     'Fuegoleon Vermillion',
+                    'vermillion.png',
                     'One of the two great royal houses, responsible for defense and military affairs. It shares sixth position with 40 stars.'
                 )"
             >
@@ -2516,9 +2550,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                💮
-            </div>
+            <div class="house-symbol">💮</div>
 
             <h3>
                 House Lunareth
@@ -2543,6 +2575,7 @@ footer {
                     'House Lunareth',
                     'Recruitment & Training',
                     'Aizen',
+                    'lunareth.png',
                     'The honoured house responsible for bringing new members into the guild and preparing them for their duties. It currently holds eighth position with 30 stars.'
                 )"
             >
@@ -2556,9 +2589,7 @@ footer {
 
         <article class="house-card">
 
-            <div class="house-symbol">
-                ♣️
-            </div>
+            <div class="house-symbol">♣️</div>
 
             <h3>
                 House Eclipse
@@ -2583,6 +2614,7 @@ footer {
                     'House Eclipse',
                     'Resources & Development',
                     'Sir Prime',
+                    'eclipse.png',
                     'The house responsible for resources and development within the guild. It currently holds ninth position with 25 stars.'
                 )"
             >
@@ -2683,321 +2715,6 @@ footer {
 
 
 <!-- =========================================================
-     LORDS
-========================================================= -->
-
-<section id="lords">
-
-    <div class="section-heading">
-
-        <div class="eyebrow">
-            THE NINE GREAT HOUSES
-        </div>
-
-        <h2>
-            LORDS OF THE HOUSES
-        </h2>
-
-        <div class="divider"></div>
-
-        <p>
-            The lords who command the Nine Great Houses.
-            Click a portrait to reveal their full profile.
-        </p>
-
-    </div>
-
-    <div class="lords-grid">
-
-
-        <!-- AETHERION -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('aetherion.png')"
-        >
-
-            <img
-                src="aetherion.png"
-                class="lord-pfp"
-                alt="Yami Sukehiro"
-            >
-
-            <span class="role">
-                LORD OF HOUSE AETHERION
-            </span>
-
-            <h3>
-                Yami Sukehiro
-            </h3>
-
-            <p>
-                Lord of the house of PVP.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- KIRA -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('kira.png')"
-        >
-
-            <img
-                src="kira.png"
-                class="lord-pfp"
-                alt="Damnatio Kira"
-            >
-
-            <span class="role">
-                LORD OF HOUSE KIRA
-            </span>
-
-            <h3>
-                Damnatio Kira
-            </h3>
-
-            <p>
-                Lord of internal affairs and political diplomacy.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- LUCIFERO -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('lucifero.png')"
-        >
-
-            <img
-                src="lucifero.png"
-                class="lord-pfp"
-                alt="Lucifer"
-            >
-
-            <span class="role">
-                LORD OF HOUSE LUCIFERO
-            </span>
-
-            <h3>
-                Lucifer
-            </h3>
-
-            <p>
-                Lord of external affairs.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- SHADOW -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('shadow.png')"
-        >
-
-            <img
-                src="shadow.png"
-                class="lord-pfp"
-                alt="Vangeance"
-            >
-
-            <span class="role">
-                LORD OF HOUSE SHADOW
-            </span>
-
-            <h3>
-                Vangeance
-            </h3>
-
-            <p>
-                Lord of intelligence and reconnaissance.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- CHRONOAETERNA -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('chronoaeterna.png')"
-        >
-
-            <img
-                src="chronoaeterna.png"
-                class="lord-pfp"
-                alt="Chrono Lord Kai"
-            >
-
-            <span class="role">
-                LORD OF HOUSE CHRONOAETERNA
-            </span>
-
-            <h3>
-                Chrono Lord Kai
-            </h3>
-
-            <p>
-                Lord of wisdom and guidance.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- SILVA -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('silva.png')"
-        >
-
-            <img
-                src="silva.png"
-                class="lord-pfp"
-                alt="Nozel Silva"
-            >
-
-            <span class="role">
-                LORD OF HOUSE SILVA
-            </span>
-
-            <h3>
-                Nozel Silva
-            </h3>
-
-            <p>
-                Lord of administration.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- VERMILLION -->
-
-        <article class="lord-card lord-no-pfp">
-
-            <div class="no-pfp">
-                🔥
-            </div>
-
-            <span class="role">
-                LORD OF HOUSE VERMILLION
-            </span>
-
-            <h3>
-                Fuegoleon Vermillion
-            </h3>
-
-            <p>
-                Lord of defense and military affairs.
-            </p>
-
-            <span class="pfp-hint">
-                Portrait unavailable
-            </span>
-
-        </article>
-
-
-        <!-- LUNARETH -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('lunareth.png')"
-        >
-
-            <img
-                src="lunareth.png"
-                class="lord-pfp"
-                alt="Aizen"
-            >
-
-            <span class="role">
-                LORD OF HOUSE LUNARETH
-            </span>
-
-            <h3>
-                Aizen
-            </h3>
-
-            <p>
-                Lord of recruitment and training.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-
-        <!-- ECLIPSE -->
-
-        <article
-            class="lord-card"
-            onclick="openProfile('eclipse.png')"
-        >
-
-            <img
-                src="eclipse.png"
-                class="lord-pfp"
-                alt="Sir Prime"
-            >
-
-            <span class="role">
-                LORD OF HOUSE ECLIPSE
-            </span>
-
-            <h3>
-                Sir Prime
-            </h3>
-
-            <p>
-                Lord of resources and development.
-            </p>
-
-            <span class="pfp-hint">
-                Click to view portrait
-            </span>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
      EVENTS
 ========================================================= -->
 
@@ -3016,14 +2733,13 @@ footer {
         <div class="divider"></div>
 
         <p>
-            Battles, competitions, gatherings and
-            special occasions of the guild.
+            Battles, trials, tournaments and gatherings
+            await the members of the Nine Great Houses.
         </p>
 
     </div>
 
-    <div class="events-container">
-
+    <div class="events-grid">
 
         <article class="event-card">
 
@@ -3031,17 +2747,17 @@ footer {
                 ⚔️
             </div>
 
-            <div class="event-status">
-                COMING SOON
-            </div>
-
             <h3>
-                Shadow Wars
+                House Wars
             </h3>
+
+            <div class="event-status">
+                Coming Soon
+            </div>
 
             <p>
                 The Nine Great Houses will eventually
-                clash in a battle for glory and stars.
+                clash for glory, stars, and supremacy.
             </p>
 
         </article>
@@ -3053,17 +2769,17 @@ footer {
                 🏆
             </div>
 
-            <div class="event-status">
-                COMING SOON
-            </div>
-
             <h3>
-                House Tournament
+                Shadow Tournament
             </h3>
 
+            <div class="event-status">
+                Coming Soon
+            </div>
+
             <p>
-                A tournament where the strongest members
-                of every house will compete.
+                A tournament where warriors from across
+                the guild will fight beneath the Shadow Moon.
             </p>
 
         </article>
@@ -3075,17 +2791,17 @@ footer {
                 🌑
             </div>
 
-            <div class="event-status">
-                COMING SOON
-            </div>
-
             <h3>
-                Eclipse Gathering
+                Moonfall
             </h3>
 
+            <div class="event-status">
+                Coming Soon
+            </div>
+
             <p>
-                A special guild gathering beneath the
-                shadow of the Eclipse.
+                A mysterious guild-wide event whose
+                true purpose remains hidden.
             </p>
 
         </article>
@@ -3097,17 +2813,17 @@ footer {
                 👑
             </div>
 
-            <div class="event-status">
-                COMING SOON
-            </div>
-
             <h3>
                 Royal Assembly
             </h3>
 
+            <div class="event-status">
+                Coming Soon
+            </div>
+
             <p>
                 The lords of the Nine Great Houses
-                gather to discuss the future of the guild.
+                gather under the banner of the guild.
             </p>
 
         </article>
@@ -3144,19 +2860,16 @@ footer {
 
     <div class="leadership-grid">
 
-
         <!-- CAPTAIN -->
 
         <article
             class="leader-card"
-            onclick="openProfile('captain.png')"
+            onclick="openProfile('captain.png','Captain')"
         >
 
-            <img
-                src="captain.png"
-                class="leader-pfp"
-                alt="Captain"
-            >
+            <div class="leader-symbol">
+                👑
+            </div>
 
             <span>
                 CAPTAIN
@@ -3181,14 +2894,12 @@ footer {
 
         <article
             class="leader-card"
-            onclick="openProfile('vice.png')"
+            onclick="openProfile('vice.png','Vice Captain')"
         >
 
-            <img
-                src="vice.png"
-                class="leader-pfp"
-                alt="Vice Captain"
-            >
+            <div class="leader-symbol">
+                🌘
+            </div>
 
             <span>
                 VICE CAPTAIN
@@ -3227,7 +2938,6 @@ footer {
         <button
             class="close-dossier"
             onclick="closeDossier()"
-            aria-label="Close dossier"
         >
             ×
         </button>
@@ -3254,10 +2964,37 @@ footer {
 
         <div class="divider"></div>
 
-        <p>
-            <strong>Lord:</strong>
-            <span id="dossierLord"></span>
-        </p>
+        <!-- LORD PROFILE -->
+
+        <div class="lord-profile-section">
+
+            <div class="lord-profile-label">
+                LORD OF THE HOUSE
+            </div>
+
+            <button
+                class="lord-profile-button"
+                id="lordProfileButton"
+                onclick="openLordProfile()"
+                aria-label="View Lord profile"
+            >
+
+                <img
+                    id="lordProfileImage"
+                    src=""
+                    alt="Lord profile"
+                >
+
+            </button>
+
+            <div
+                class="lord-name"
+                id="dossierLord"
+            ></div>
+
+        </div>
+
+        <div class="divider"></div>
 
         <button
             class="btn btn-primary"
@@ -3311,6 +3048,9 @@ footer {
     <br>
 
     CLOVER ORIGINS
+    <br><br>
+
+    THE NINE GREAT HOUSES
 
 </footer>
 
@@ -3330,7 +3070,11 @@ const introStars =
 
 if (introStars) {
 
-    for (let i = 0; i < 100; i++) {
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
 
         const star =
             document.createElement("div");
@@ -3348,7 +3092,10 @@ if (introStars) {
             Math.random() * 5 + "s";
 
         star.style.animationDuration =
-            (2 + Math.random() * 5) + "s";
+            (
+                2 +
+                Math.random() * 5
+            ) + "s";
 
         introStars.appendChild(star);
     }
@@ -3382,9 +3129,11 @@ function startMusic() {
     musicMain.volume = 0.75;
     musicDark.volume = 0.75;
 
-    musicIntro.play().catch(() => {
-        musicStarted = false;
-    });
+    musicIntro
+        .play()
+        .catch(() => {
+            musicStarted = false;
+        });
 }
 
 musicIntro.addEventListener(
@@ -3393,7 +3142,9 @@ musicIntro.addEventListener(
 
         musicMain.currentTime = 0;
 
-        musicMain.play().catch(() => {});
+        musicMain
+            .play()
+            .catch(() => {});
 
     }
 );
@@ -3404,7 +3155,9 @@ musicMain.addEventListener(
 
         musicDark.currentTime = 0;
 
-        musicDark.play().catch(() => {});
+        musicDark
+            .play()
+            .catch(() => {});
 
     }
 );
@@ -3415,7 +3168,9 @@ musicDark.addEventListener(
 
         musicDark.currentTime = 0;
 
-        musicDark.play().catch(() => {});
+        musicDark
+            .play()
+            .catch(() => {});
 
     }
 );
@@ -3499,7 +3254,11 @@ const stars =
 
 if (stars) {
 
-    for (let i = 0; i < 180; i++) {
+    for (
+        let i = 0;
+        i < 180;
+        i++
+    ) {
 
         const star =
             document.createElement("div");
@@ -3514,7 +3273,10 @@ if (stars) {
             Math.random() * 100 + "%";
 
         star.style.animationDuration =
-            (3 + Math.random() * 7) + "s";
+            (
+                3 +
+                Math.random() * 7
+            ) + "s";
 
         star.style.animationDelay =
             Math.random() * 5 + "s";
@@ -3533,7 +3295,11 @@ const particles =
 
 if (particles) {
 
-    for (let i = 0; i < 35; i++) {
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
 
         const particle =
             document.createElement("div");
@@ -3545,7 +3311,10 @@ if (particles) {
             Math.random() * 100 + "%";
 
         particle.style.animationDuration =
-            (8 + Math.random() * 12) + "s";
+            (
+                8 +
+                Math.random() * 12
+            ) + "s";
 
         particle.style.animationDelay =
             Math.random() * 10 + "s";
@@ -3556,14 +3325,17 @@ if (particles) {
 
 
 /* =========================================================
-   DOSSIERS
+   DOSSIER
 ========================================================= */
+
+let currentLordImage = "";
 
 function openDossier(
     symbol,
     name,
     role,
     lord,
+    lordImage,
     text
 ) {
 
@@ -3587,10 +3359,23 @@ function openDossier(
         "dossierText"
     ).textContent = text;
 
+    currentLordImage =
+        lordImage;
+
+    document.getElementById(
+        "lordProfileImage"
+    ).src = lordImage;
+
+    document.getElementById(
+        "lordProfileImage"
+    ).alt =
+        lord + " profile";
+
     document.getElementById(
         "dossier"
     ).classList.add("active");
 }
+
 
 function closeDossier() {
 
@@ -3601,10 +3386,30 @@ function closeDossier() {
 
 
 /* =========================================================
-   PROFILE POPUPS
+   LORD PROFILE
 ========================================================= */
 
-function openProfile(image) {
+function openLordProfile() {
+
+    if (!currentLordImage) {
+        return;
+    }
+
+    openProfile(
+        currentLordImage,
+        "Lord"
+    );
+}
+
+
+/* =========================================================
+   CAPTAIN / VICE / LORD PROFILE
+========================================================= */
+
+function openProfile(
+    image,
+    title
+) {
 
     const modal =
         document.getElementById(
@@ -3616,34 +3421,24 @@ function openProfile(image) {
             "profileImage"
         );
 
-    profileImage.src = image;
+    profileImage.src =
+        image;
+
+    profileImage.alt =
+        title + " profile";
 
     modal.classList.add(
         "active"
     );
 }
 
+
 function closeProfile() {
 
-    const modal =
-        document.getElementById(
-            "profileModal"
-        );
-
-    const profileImage =
-        document.getElementById(
-            "profileImage"
-        );
-
-    modal.classList.remove(
+    document.getElementById(
+        "profileModal"
+    ).classList.remove(
         "active"
-    );
-
-    setTimeout(
-        function() {
-            profileImage.src = "";
-        },
-        300
     );
 }
 
@@ -3656,12 +3451,13 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closeDossier();
 
             closeProfile();
-
         }
 
     }
@@ -3669,7 +3465,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   OUTSIDE DOSSIER
+   CLICK OUTSIDE DOSSIER
 ========================================================= */
 
 document.getElementById(
@@ -3678,10 +3474,11 @@ document.getElementById(
     "click",
     function(event) {
 
-        if (event.target === this) {
+        if (
+            event.target === this
+        ) {
 
             closeDossier();
-
         }
 
     }
@@ -3689,7 +3486,7 @@ document.getElementById(
 
 
 /* =========================================================
-   OUTSIDE PROFILE
+   CLICK OUTSIDE PROFILE
 ========================================================= */
 
 document.getElementById(
@@ -3698,10 +3495,11 @@ document.getElementById(
     "click",
     function(event) {
 
-        if (event.target === this) {
+        if (
+            event.target === this
+        ) {
 
             closeProfile();
-
         }
 
     }

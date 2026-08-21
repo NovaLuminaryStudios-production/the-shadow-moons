@@ -3,200 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020107">
+
 <title>The Shadow Moons | Clover Origins</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    background:#020107;
-    color:#fff;
-    font-family:Georgia,"Times New Roman",serif;
-    overflow-x:hidden;
+body {
+    background: #020107;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
 }
 
-body.intro-active{
-    overflow:hidden;
+body.intro-active {
+    overflow: hidden;
 }
 
-button,a{
-    font-family:inherit;
+button,
+a {
+    font-family: inherit;
 }
 
 /* =========================================================
    INTRO
 ========================================================= */
 
-#intro{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(91,34,130,.22),
+            rgba(91,34,130,.25),
             transparent 35%
         ),
         #020107;
+
+    overflow: hidden;
 
     transition:
         opacity 1.5s ease,
         visibility 1.5s ease;
 }
 
-#intro.hidden{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+#intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-.intro-stars{
-    position:absolute;
-    inset:0;
+.intro-stars {
+    position: absolute;
+    inset: 0;
 }
 
-.intro-star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
-    background:white;
-    opacity:.3;
-    animation:introStar 4s ease-in-out infinite;
+.intro-star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+    background: white;
+
+    opacity: .3;
+
+    animation:
+        introStar
+        4s
+        ease-in-out
+        infinite;
 }
 
-@keyframes introStar{
-    0%,100%{
-        opacity:.15;
-        transform:scale(.5);
+@keyframes introStar {
+    0%,100% {
+        opacity: .15;
+        transform: scale(.5);
     }
-    50%{
-        opacity:1;
-        transform:scale(1.7);
-    }
-}
 
-.intro-content{
-    position:relative;
-    z-index:5;
-    text-align:center;
-    width:min(900px,90%);
-}
-
-.credit{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    width:90%;
-
-    opacity:0;
-
-    color:#aaa2b1;
-    font-size:12px;
-    letter-spacing:6px;
-    text-transform:uppercase;
-
-    animation:creditRoll 14s ease forwards;
-}
-
-.credit-one{animation-delay:.5s;}
-.credit-two{animation-delay:3s;}
-.credit-three{animation-delay:5.5s;}
-.credit-four{animation-delay:8s;}
-
-@keyframes creditRoll{
-    0%{
-        opacity:0;
-        transform:translate(-50%,25px);
-    }
-    10%{
-        opacity:1;
-        transform:translate(-50%,0);
-    }
-    22%{
-        opacity:1;
-        transform:translate(-50%,-10px);
-    }
-    30%,100%{
-        opacity:0;
-        transform:translate(-50%,-30px);
+    50% {
+        opacity: 1;
+        transform: scale(1.7);
     }
 }
 
-.intro-logo{
-    width:280px;
-    max-width:65vw;
-    opacity:0;
+.intro-content {
+    position: relative;
+    z-index: 5;
+
+    width: min(900px,90%);
+
+    text-align: center;
+}
+
+.credit {
+    position: absolute;
+
+    left: 50%;
+
+    width: 90%;
+
+    transform: translateX(-50%);
+
+    color: #aaa2b1;
+
+    font-size: 12px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        creditRoll
+        14s
+        ease
+        forwards;
+}
+
+.credit-one {
+    animation-delay: .5s;
+}
+
+.credit-two {
+    animation-delay: 3s;
+}
+
+.credit-three {
+    animation-delay: 5.5s;
+}
+
+.credit-four {
+    animation-delay: 8s;
+}
+
+@keyframes creditRoll {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%,25px);
+    }
+
+    10% {
+        opacity: 1;
+        transform:
+            translate(-50%,0);
+    }
+
+    22% {
+        opacity: 1;
+        transform:
+            translate(-50%,-10px);
+    }
+
+    30%,100% {
+        opacity: 0;
+        transform:
+            translate(-50%,-30px);
+    }
+}
+
+.intro-logo {
+    width: 280px;
+    max-width: 65vw;
+
+    opacity: 0;
 
     filter:
-        drop-shadow(0 0 15px rgba(165,70,230,.8))
-        drop-shadow(0 0 60px rgba(120,40,180,.5));
+        drop-shadow(
+            0 0 15px
+            rgba(165,70,230,.8)
+        )
+        drop-shadow(
+            0 0 60px
+            rgba(120,40,180,.5)
+        );
 
-    animation:introLogo 4s ease forwards;
-    animation-delay:9.5s;
+    animation:
+        introLogo
+        4s
+        ease
+        forwards;
+
+    animation-delay: 9.5s;
 }
 
-@keyframes introLogo{
-    0%{
-        opacity:0;
-        transform:scale(.65);
-        filter:brightness(0);
+@keyframes introLogo {
+
+    0% {
+        opacity: 0;
+
+        transform: scale(.65);
+
+        filter:
+            brightness(0)
+            drop-shadow(
+                0 0 0 transparent
+            );
     }
-    45%{
-        opacity:1;
-        transform:scale(1.08);
+
+    45% {
+        opacity: 1;
+        transform: scale(1.08);
     }
-    70%,100%{
-        opacity:1;
-        transform:scale(1);
+
+    70%,100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
-.intro-title{
-    margin-top:28px;
-    opacity:0;
+.intro-title {
+    margin-top: 28px;
 
-    font-size:clamp(30px,6vw,70px);
-    letter-spacing:12px;
-    font-weight:400;
+    opacity: 0;
+
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            70px
+        );
+
+    letter-spacing: 12px;
+
+    font-weight: 400;
+
+    text-transform: uppercase;
 
     text-shadow:
         0 0 20px rgba(190,110,245,.45),
         0 0 60px rgba(130,50,190,.25);
 
-    animation:introTitle 3s ease forwards;
-    animation-delay:11s;
+    animation:
+        introTitle
+        3s
+        ease
+        forwards;
+
+    animation-delay: 11s;
 }
 
-@keyframes introTitle{
-    from{
-        opacity:0;
-        letter-spacing:25px;
+@keyframes introTitle {
+
+    from {
+        opacity: 0;
+        letter-spacing: 25px;
     }
-    to{
-        opacity:1;
-        letter-spacing:12px;
+
+    to {
+        opacity: 1;
+        letter-spacing: 12px;
     }
 }
 
-.intro-line{
-    width:150px;
-    height:1px;
-    margin:28px auto;
+.intro-line {
+    width: 150px;
+    height: 1px;
+
+    margin: 28px auto;
 
     background:
         linear-gradient(
@@ -206,66 +286,106 @@ button,a{
             transparent
         );
 
-    box-shadow:0 0 18px rgba(176,97,228,.8);
+    box-shadow:
+        0 0 18px
+        rgba(176,97,228,.8);
 
-    opacity:0;
-    animation:introLine 2s ease forwards;
-    animation-delay:11.8s;
+    opacity: 0;
+
+    animation:
+        introLine
+        2s
+        ease
+        forwards;
+
+    animation-delay: 11.8s;
 }
 
-@keyframes introLine{
-    to{opacity:1;}
+@keyframes introLine {
+    to {
+        opacity: 1;
+    }
 }
 
-.intro-subtitle{
-    color:#8f8798;
-    font-size:11px;
-    letter-spacing:5px;
-    opacity:0;
+.intro-subtitle {
+    color: #8f8798;
 
-    animation:fadeIn 2s ease forwards;
-    animation-delay:12.3s;
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    opacity: 0;
+
+    animation:
+        fadeIn
+        2s
+        ease
+        forwards;
+
+    animation-delay: 12.3s;
 }
 
-@keyframes fadeIn{
-    to{opacity:1;}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
-.skip-intro{
-    position:absolute;
-    bottom:35px;
-    right:40px;
+.skip-intro {
+    position: absolute;
 
-    padding:10px 18px;
+    bottom: 35px;
+    right: 40px;
 
-    border:1px solid rgba(180,90,240,.35);
-    background:rgba(80,30,110,.12);
+    padding: 10px 18px;
 
-    color:#8d8495;
+    border:
+        1px solid
+        rgba(180,90,240,.35);
 
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    background:
+        rgba(80,30,110,.12);
 
-    cursor:pointer;
-    transition:.3s;
+    color: #8d8495;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: .3s;
 }
 
-.skip-intro:hover{
-    color:#fff;
-    border-color:#c478ff;
-    box-shadow:0 0 20px rgba(168,76,226,.25);
+.skip-intro:hover {
+    color: #fff;
+
+    border-color: #c478ff;
+
+    box-shadow:
+        0 0 20px
+        rgba(168,76,226,.25);
 }
 
 /* =========================================================
-   SPACE
+   MUSIC
 ========================================================= */
 
-.space{
-    position:fixed;
-    inset:0;
-    z-index:-10;
-    overflow:hidden;
+audio {
+    display: none;
+}
+
+/* =========================================================
+   COSMIC BACKGROUND
+========================================================= */
+
+.space {
+    position: fixed;
+    inset: 0;
+
+    z-index: -10;
+
+    overflow: hidden;
 
     background:
         radial-gradient(
@@ -281,17 +401,19 @@ button,a{
         #020107;
 }
 
-.moon{
-    position:absolute;
+.moon {
+    position: absolute;
 
-    width:620px;
-    height:620px;
+    width: 620px;
+    height: 620px;
 
-    left:50%;
-    top:43%;
+    left: 50%;
+    top: 43%;
 
-    transform:translate(-50%,-50%);
-    border-radius:50%;
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
@@ -303,42 +425,68 @@ button,a{
         );
 
     box-shadow:
-        0 0 30px rgba(220,210,230,.25),
-        0 0 100px rgba(133,70,182,.22),
-        0 0 180px rgba(102,39,150,.15);
+        0 0 30px
+        rgba(220,210,230,.25),
 
-    opacity:.18;
+        0 0 100px
+        rgba(133,70,182,.22),
+
+        0 0 180px
+        rgba(102,39,150,.15);
+
+    opacity: .18;
 
     animation:
-        moonFloat 12s ease-in-out infinite,
-        moonPulse 7s ease-in-out infinite;
+        moonFloat
+        12s
+        ease-in-out
+        infinite,
+
+        moonPulse
+        7s
+        ease-in-out
+        infinite;
 }
 
-@keyframes moonFloat{
-    0%,100%{
-        transform:translate(-50%,-50%) scale(1);
+@keyframes moonFloat {
+
+    0%,100% {
+        transform:
+            translate(-50%,-50%)
+            scale(1);
     }
-    50%{
-        transform:translate(-50%,-52%) scale(1.04);
+
+    50% {
+        transform:
+            translate(-50%,-52%)
+            scale(1.04);
     }
 }
 
-@keyframes moonPulse{
-    0%,100%{opacity:.13;}
-    50%{opacity:.22;}
+@keyframes moonPulse {
+
+    0%,100% {
+        opacity: .13;
+    }
+
+    50% {
+        opacity: .22;
+    }
 }
 
-.moon-glow{
-    position:absolute;
+.moon-glow {
+    position: absolute;
 
-    width:900px;
-    height:900px;
+    width: 900px;
+    height: 900px;
 
-    left:50%;
-    top:43%;
+    left: 50%;
+    top: 43%;
 
-    transform:translate(-50%,-50%);
-    border-radius:50%;
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
@@ -347,15 +495,25 @@ button,a{
             transparent 65%
         );
 
-    animation:glowPulse 8s ease-in-out infinite;
+    animation:
+        glowPulse
+        8s
+        ease-in-out
+        infinite;
 }
 
-@keyframes glowPulse{
-    0%,100%{
-        transform:translate(-50%,-50%) scale(.9);
+@keyframes glowPulse {
+
+    0%,100% {
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
     }
-    50%{
-        transform:translate(-50%,-50%) scale(1.1);
+
+    50% {
+        transform:
+            translate(-50%,-50%)
+            scale(1.1);
     }
 }
 
@@ -364,73 +522,108 @@ button,a{
 ========================================================= */
 
 .stars,
-.particles{
-    position:absolute;
-    inset:0;
+.particles {
+    position: absolute;
+    inset: 0;
 }
 
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
-    background:#fff;
-    opacity:.4;
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: .4;
 
     animation:
-        starFloat linear infinite,
-        starTwinkle ease-in-out infinite;
+        starFloat
+        linear
+        infinite,
+
+        starTwinkle
+        ease-in-out
+        infinite;
 }
 
-@keyframes starFloat{
-    from{
-        transform:translateY(0) translateX(0);
-    }
-    to{
-        transform:translateY(-120px) translateX(30px);
-    }
-}
+@keyframes starFloat {
 
-@keyframes starTwinkle{
-    0%,100%{
-        opacity:.15;
-        transform:scale(.7);
+    from {
+        transform:
+            translateY(0)
+            translateX(0);
     }
-    50%{
-        opacity:1;
-        transform:scale(1.5);
+
+    to {
+        transform:
+            translateY(-120px)
+            translateX(30px);
     }
 }
 
-.particle{
-    position:absolute;
+@keyframes starTwinkle {
 
-    width:3px;
-    height:3px;
+    0%,100% {
+        opacity: .15;
+        transform: scale(.7);
+    }
 
-    border-radius:50%;
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
 
-    background:#a95ee4;
+.particle {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #a95ee4;
 
     box-shadow:
         0 0 8px #a95ee4,
-        0 0 18px rgba(169,94,228,.5);
+        0 0 18px
+        rgba(169,94,228,.5);
 
-    opacity:.5;
+    opacity: .5;
 
-    animation:particleMove linear infinite;
+    animation:
+        particleMove
+        linear
+        infinite;
 }
 
-@keyframes particleMove{
-    0%{
-        transform:translateY(110vh) translateX(0);
-        opacity:0;
+@keyframes particleMove {
+
+    0% {
+        transform:
+            translateY(110vh)
+            translateX(0);
+
+        opacity: 0;
     }
-    10%{opacity:.6;}
-    90%{opacity:.4;}
-    100%{
-        transform:translateY(-20vh) translateX(80px);
-        opacity:0;
+
+    10% {
+        opacity: .6;
+    }
+
+    90% {
+        opacity: .4;
+    }
+
+    100% {
+        transform:
+            translateY(-20vh)
+            translateX(80px);
+
+        opacity: 0;
     }
 }
 
@@ -438,21 +631,23 @@ button,a{
    NAV
 ========================================================= */
 
-nav{
-    position:fixed;
-    top:0;
-    left:0;
+nav {
+    position: fixed;
 
-    width:100%;
-    height:82px;
+    top: 0;
+    left: 0;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    width: 100%;
+    height: 82px;
 
-    padding:0 6%;
+    display: flex;
 
-    z-index:100;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    z-index: 100;
 
     background:
         linear-gradient(
@@ -461,23 +656,28 @@ nav{
             rgba(2,1,7,0)
         );
 
-    backdrop-filter:blur(8px);
+    backdrop-filter: blur(8px);
 }
 
-.nav-logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.nav-logo {
+    display: flex;
 
-    font-size:14px;
-    letter-spacing:4px;
-    font-weight:bold;
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
 }
 
-.nav-logo img{
-    width:44px;
-    height:44px;
-    object-fit:contain;
+.nav-logo img {
+    width: 44px;
+    height: 44px;
+
+    object-fit: contain;
 
     filter:
         drop-shadow(
@@ -486,127 +686,73 @@ nav{
         );
 }
 
-.nav-links{
-    display:flex;
-    gap:26px;
-    align-items:center;
+.nav-links {
+    display: flex;
+
+    gap: 26px;
 }
 
-.nav-links a{
-    color:#aaa3b0;
-    text-decoration:none;
+.nav-links a {
+    color: #aaa3b0;
 
-    font-size:10px;
-    letter-spacing:2px;
-    text-transform:uppercase;
+    text-decoration: none;
 
-    transition:.35s ease;
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: .35s ease;
 }
 
-.nav-links a:hover{
-    color:#c478ff;
-    text-shadow:0 0 15px rgba(196,120,255,.8);
+.nav-links a:hover {
+    color: #c478ff;
+
+    text-shadow:
+        0 0 15px
+        rgba(196,120,255,.8);
 }
 
-.discord-nav{
-    color:#c478ff !important;
-}
-
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
-
-.music-control{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-
-    z-index:900;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    padding:12px 17px;
-
-    border:1px solid rgba(194,110,255,.45);
-
-    background:rgba(9,4,15,.82);
-
-    color:#b978e6;
-
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-
-    cursor:pointer;
-
-    backdrop-filter:blur(12px);
-
-    box-shadow:
-        0 0 20px rgba(130,50,190,.1);
-
-    transition:.3s;
-}
-
-.music-control:hover{
-    color:#fff;
-    border-color:#c478ff;
-    box-shadow:
-        0 0 25px rgba(168,76,226,.3);
-}
-
-.music-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#5e5666;
-    transition:.3s;
-}
-
-.music-control.playing .music-dot{
-    background:#c478ff;
-
-    box-shadow:
-        0 0 8px #c478ff,
-        0 0 15px rgba(196,120,255,.7);
-
-    animation:musicPulse 1s infinite;
-}
-
-@keyframes musicPulse{
-    0%,100%{transform:scale(.8);}
-    50%{transform:scale(1.3);}
+.discord-nav {
+    color: #c478ff !important;
 }
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.hero{
-    min-height:100vh;
+.hero {
+    min-height: 100vh;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
 
-    text-align:center;
+    align-items: center;
+    justify-content: center;
 
-    position:relative;
+    text-align: center;
 
-    padding:120px 20px 80px;
+    position: relative;
+
+    padding:
+        120px
+        20px
+        80px;
 }
 
-.hero-content{
-    position:relative;
-    z-index:5;
-    max-width:1000px;
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1000px;
 }
 
-.hero-logo{
-    width:280px;
-    max-width:65vw;
-    margin-bottom:30px;
+.hero-logo {
+    width: 280px;
+    max-width: 65vw;
+
+    margin-bottom: 30px;
 
     filter:
         drop-shadow(
@@ -618,41 +764,65 @@ nav{
             rgba(120,40,180,.35)
         );
 
-    animation:logoFloat 6s ease-in-out infinite;
+    animation:
+        logoFloat
+        6s
+        ease-in-out
+        infinite;
 }
 
-@keyframes logoFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
+@keyframes logoFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
 }
 
-.eyebrow{
-    color:#a45fd1;
-    font-size:11px;
-    letter-spacing:7px;
-    text-transform:uppercase;
+.eyebrow {
+    color: #a45fd1;
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
 }
 
-h1{
-    margin-top:18px;
+h1 {
+    margin-top: 18px;
 
-    font-size:clamp(42px,8vw,94px);
+    font-size:
+        clamp(
+            42px,
+            8vw,
+            94px
+        );
 
-    letter-spacing:9px;
-    line-height:1;
+    letter-spacing: 9px;
 
-    font-weight:400;
+    line-height: 1;
+
+    font-weight: 400;
+
+    text-transform: uppercase;
 
     text-shadow:
-        0 0 15px rgba(190,112,245,.25),
-        0 0 50px rgba(130,50,190,.2);
+        0 0 15px
+        rgba(190,112,245,.25),
+
+        0 0 50px
+        rgba(130,50,190,.2);
 }
 
-.divider{
-    width:120px;
-    height:1px;
+.divider {
+    width: 120px;
+    height: 1px;
 
-    margin:32px auto;
+    margin: 32px auto;
 
     background:
         linear-gradient(
@@ -667,138 +837,178 @@ h1{
         rgba(176,97,228,.7);
 }
 
-.tagline{
-    color:#aaa2b1;
+.tagline {
+    color: #aaa2b1;
 
-    max-width:600px;
+    max-width: 600px;
 
-    margin:0 auto 40px;
+    margin:
+        0 auto
+        40px;
 
-    font-size:17px;
-    line-height:1.8;
-    letter-spacing:1px;
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
 }
 
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
 }
 
-.btn{
-    position:relative;
-    overflow:hidden;
+.btn {
+    display: inline-block;
 
-    display:inline-block;
+    position: relative;
 
-    padding:15px 28px;
+    overflow: hidden;
 
-    border:1px solid rgba(177,91,232,.55);
+    padding:
+        15px
+        28px;
 
-    background:rgba(100,38,140,.13);
+    border:
+        1px solid
+        rgba(177,91,232,.55);
 
-    color:#fff;
+    background:
+        rgba(100,38,140,.13);
 
-    text-decoration:none;
+    color: #fff;
 
-    font-size:10px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    text-decoration: none;
 
-    transition:.4s ease;
+    font-size: 10px;
 
-    backdrop-filter:blur(5px);
+    letter-spacing: 3px;
 
-    cursor:pointer;
+    text-transform: uppercase;
+
+    transition: .4s ease;
+
+    backdrop-filter: blur(5px);
+
+    cursor: pointer;
 }
 
-.btn:hover{
-    transform:translateY(-4px);
+.btn:hover {
+    transform: translateY(-4px);
 
-    border-color:#c47aff;
+    border-color: #c47aff;
 
     box-shadow:
         0 0 20px
         rgba(168,76,226,.35);
 }
 
-.btn-primary{
-    background:rgba(117,45,167,.28);
+.btn-primary {
+    background:
+        rgba(117,45,167,.28);
 }
 
-.discord-btn{
-    border-color:rgba(196,120,255,.75);
-    background:rgba(117,45,167,.38);
+.discord-btn {
+    border-color:
+        rgba(196,120,255,.75);
+
+    background:
+        rgba(117,45,167,.38);
 }
 
 /* =========================================================
    SECTIONS
 ========================================================= */
 
-section:not(.hero){
-    position:relative;
+section:not(.hero) {
+    position: relative;
 
-    padding:130px 6%;
+    padding:
+        130px
+        6%;
 
-    max-width:1500px;
+    max-width: 1500px;
 
-    margin:auto;
+    margin: auto;
 }
 
-.section-heading{
-    text-align:center;
-    margin-bottom:70px;
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 70px;
 }
 
-.section-heading h2{
-    margin-top:15px;
+.section-heading h2 {
+    margin-top: 15px;
 
-    font-size:clamp(32px,5vw,58px);
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            58px
+        );
 
-    letter-spacing:6px;
+    letter-spacing: 6px;
 
-    font-weight:400;
+    font-weight: 400;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 }
 
-.section-heading p{
-    max-width:650px;
-    margin:auto;
+.section-heading p {
+    max-width: 650px;
 
-    color:#8f8798;
+    margin: auto;
 
-    line-height:1.8;
-    font-size:15px;
+    color: #8f8798;
+
+    line-height: 1.8;
+
+    font-size: 15px;
 }
 
 /* =========================================================
    HOUSES
 ========================================================= */
 
-.houses-grid{
-    display:grid;
+.houses-grid {
+    display: grid;
 
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(280px,1fr)
+            minmax(
+                280px,
+                1fr
+            )
         );
 
-    gap:24px;
+    gap: 24px;
 }
 
-.house-card{
-    position:relative;
+.house-card {
+    position: relative;
 
-    min-height:410px;
+    min-height: 390px;
 
-    padding:32px 28px;
+    padding:
+        38px
+        28px;
 
-    text-align:center;
+    text-align: center;
 
-    border:1px solid rgba(161,83,214,.20);
+    border:
+        1px solid
+        rgba(161,83,214,.20);
 
     background:
         linear-gradient(
@@ -807,9 +1017,9 @@ section:not(.hero){
             rgba(10,5,18,.65)
         );
 
-    backdrop-filter:blur(12px);
+    backdrop-filter: blur(12px);
 
-    overflow:hidden;
+    overflow: hidden;
 
     transition:
         transform .5s ease,
@@ -817,264 +1027,33 @@ section:not(.hero){
         box-shadow .5s ease;
 }
 
-.house-card::before{
-    content:"";
-
-    position:absolute;
-    inset:-2px;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent,
-            rgba(183,93,239,.15),
-            transparent
-        );
-
-    transform:translateX(-100%);
-    transition:.8s ease;
-}
-
-.house-card:hover::before{
-    transform:translateX(100%);
-}
-
-.house-card:hover{
-    transform:translateY(-12px) scale(1.02);
-
-    border-color:rgba(194,110,255,.65);
-
-    box-shadow:
-        0 20px 60px rgba(90,30,130,.25),
-        0 0 30px rgba(160,70,220,.12);
-}
-
-.house-pfp{
-    position:relative;
-    z-index:2;
-
-    width:90px;
-    height:90px;
-
-    margin:0 auto 18px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:1px solid rgba(194,110,255,.5);
-
-    box-shadow:
-        0 0 25px rgba(160,70,220,.25);
-
-    transition:.5s;
-}
-
-.house-card:hover .house-pfp{
-    transform:scale(1.08);
-
-    box-shadow:
-        0 0 35px rgba(194,110,255,.45);
-}
-
-.house-symbol{
-    display:none;
-}
-
-.house-card h3{
-    position:relative;
-    z-index:2;
-
-    font-size:24px;
-
-    font-weight:400;
-
-    letter-spacing:2px;
-
-    margin-bottom:12px;
-}
-
-.house-card > span{
-    position:relative;
-    z-index:2;
-
-    color:#a45fd1;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-}
-
-.house-stars{
-    position:relative;
-    z-index:2;
-
-    margin:24px 0;
-
-    font-size:24px;
-
-    color:#f1d68a;
-
-    text-shadow:
-        0 0 15px rgba(241,214,138,.4);
-}
-
-.house-card p{
-    position:relative;
-    z-index:2;
-
-    color:#82798b;
-
-    font-size:13px;
-
-    margin-bottom:25px;
-}
-
-.house-card .btn{
-    position:relative;
-    z-index:2;
-    font-size:8px;
-}
-
-/* =========================================================
-   LEADERBOARD
-========================================================= */
-
-.leaderboard{
-    max-width:950px;
-    margin:auto;
-
-    border:1px solid rgba(161,83,214,.20);
-
-    background:rgba(9,4,15,.65);
-
-    backdrop-filter:blur(14px);
-}
-
-.leader-row{
-    display:grid;
-
-    grid-template-columns:
-        80px
-        1fr
-        150px;
-
-    align-items:center;
-
-    padding:22px 28px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.05);
-
-    transition:.35s ease;
-}
-
-.leader-row:last-child{
-    border-bottom:none;
-}
-
-.leader-row:hover{
-    background:rgba(147,71,201,.08);
-    padding-left:38px;
-}
-
-.leader-row strong{
-    color:#756c7e;
-
-    font-size:14px;
-    letter-spacing:2px;
-}
-
-.leader-row span{
-    font-size:16px;
-    letter-spacing:1px;
-}
-
-.leader-row b{
-    text-align:right;
-
-    color:#f1d68a;
-
-    font-size:17px;
-
-    text-shadow:
-        0 0 12px rgba(241,214,138,.35);
-}
-
-.first{
-    border-left:3px solid #e8c96a;
-}
-
-.second{
-    border-left:3px solid #c8c8d0;
-}
-
-.third{
-    border-left:3px solid #b87955;
-}
-
-/* =========================================================
-   LORDS
-========================================================= */
-
-.lords-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(260px,1fr)
-        );
-
-    gap:25px;
-
-    max-width:1200px;
-
-    margin:auto;
-}
-
-.lord-card{
-    position:relative;
-
-    padding:35px 25px;
-
-    text-align:center;
-
-    border:1px solid rgba(161,83,214,.22);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(85,30,120,.18),
-            rgba(5,3,10,.72)
-        );
-
-    backdrop-filter:blur(12px);
-
-    overflow:hidden;
-
-    transition:.5s ease;
-}
-
-.lord-card:hover{
-    transform:translateY(-10px);
+.house-card:hover {
+    transform:
+        translateY(-12px)
+        scale(1.02);
 
     border-color:
-        rgba(196,120,255,.65);
+        rgba(194,110,255,.65);
 
     box-shadow:
         0 20px 60px
-        rgba(90,30,130,.25);
+        rgba(90,30,130,.25),
+
+        0 0 30px
+        rgba(160,70,220,.12);
 }
 
-.lord-pfp{
-    width:145px;
-    height:145px;
+.house-pfp {
+    width: 100px;
+    height: 100px;
 
-    border-radius:50%;
+    margin:
+        0 auto
+        20px;
 
-    object-fit:cover;
+    object-fit: cover;
+
+    border-radius: 50%;
 
     border:
         2px solid
@@ -1084,186 +1063,311 @@ section:not(.hero){
         0 0 30px
         rgba(160,70,220,.25);
 
-    margin-bottom:22px;
-
-    transition:.5s ease;
+    transition: .5s ease;
 }
 
-.lord-card:hover .lord-pfp{
-    transform:scale(1.06);
+.house-card:hover .house-pfp {
+    transform:
+        scale(1.08)
+        rotate(3deg);
+
+    border-color:
+        #c478ff;
 
     box-shadow:
-        0 0 45px
+        0 0 35px
+        rgba(194,110,255,.45);
+}
+
+.house-card h3 {
+    font-size: 24px;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.house-card > span {
+    display: block;
+
+    min-height: 30px;
+
+    color: #a45fd1;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.house-stars {
+    margin: 22px 0;
+
+    font-size: 24px;
+
+    color: #f1d68a;
+
+    text-shadow:
+        0 0 15px
+        rgba(241,214,138,.4);
+}
+
+.house-card p {
+    color: #82798b;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+.house-card .btn {
+    font-size: 8px;
+}
+
+/* =========================================================
+   LEADERBOARD
+========================================================= */
+
+.leaderboard {
+    max-width: 950px;
+
+    margin: auto;
+
+    border:
+        1px solid
+        rgba(161,83,214,.20);
+
+    background:
+        rgba(9,4,15,.65);
+
+    backdrop-filter: blur(14px);
+}
+
+.leader-row {
+    display: grid;
+
+    grid-template-columns:
+        80px
+        1fr
+        150px;
+
+    align-items: center;
+
+    padding:
+        22px
+        28px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+
+    transition: .35s ease;
+}
+
+.leader-row:last-child {
+    border-bottom: none;
+}
+
+.leader-row:hover {
+    background:
+        rgba(147,71,201,.08);
+
+    padding-left: 38px;
+}
+
+.leader-row strong {
+    color: #756c7e;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+.leader-row span {
+    font-size: 16px;
+
+    letter-spacing: 1px;
+}
+
+.leader-row b {
+    text-align: right;
+
+    color: #f1d68a;
+
+    font-size: 17px;
+
+    text-shadow:
+        0 0 12px
+        rgba(241,214,138,.35);
+}
+
+.leader-row.first {
+    border-left:
+        3px solid
+        #e8c96a;
+}
+
+.leader-row.second {
+    border-left:
+        3px solid
+        #c8c8d0;
+}
+
+.leader-row.third {
+    border-left:
+        3px solid
+        #b87955;
+}
+
+/* =========================================================
+   LORDS
+========================================================= */
+
+.lords-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                260px,
+                1fr
+            )
+        );
+
+    gap: 25px;
+}
+
+.lord-card {
+    position: relative;
+
+    padding:
+        35px
+        25px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(161,83,214,.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(85,30,120,.18),
+            rgba(5,3,10,.72)
+        );
+
+    backdrop-filter: blur(12px);
+
+    overflow: hidden;
+
+    transition: .45s ease;
+}
+
+.lord-card:hover {
+    transform: translateY(-10px);
+
+    border-color:
+        rgba(196,120,255,.7);
+
+    box-shadow:
+        0 20px 60px
+        rgba(90,30,130,.3);
+}
+
+.lord-pfp {
+    width: 135px;
+    height: 135px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(194,110,255,.55);
+
+    box-shadow:
+        0 0 35px
+        rgba(160,70,220,.3);
+
+    margin-bottom: 22px;
+
+    transition: .5s ease;
+}
+
+.lord-card:hover .lord-pfp {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 50px
         rgba(194,110,255,.5);
 }
 
-.lord-card .house-name{
-    color:#a45fd1;
+.lord-card .rank {
+    color: #a45fd1;
 
-    font-size:9px;
+    font-size: 9px;
 
-    letter-spacing:3px;
+    letter-spacing: 4px;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 }
 
-.lord-card h3{
-    margin-top:12px;
+.lord-card h3 {
+    margin-top: 12px;
 
-    font-size:25px;
+    font-size: 27px;
 
-    font-weight:400;
+    font-weight: 400;
 
-    letter-spacing:2px;
+    letter-spacing: 1px;
 }
 
-.lord-card p{
-    margin-top:10px;
+.lord-card p {
+    margin-top: 10px;
 
-    color:#82798b;
+    color: #8f8798;
 
-    font-size:13px;
+    font-size: 13px;
 }
 
 /* =========================================================
    LEADERSHIP
 ========================================================= */
 
-.leadership-grid{
-    display:grid;
+.leadership-grid {
+    display: grid;
 
     grid-template-columns:
         repeat(
             2,
-            minmax(280px,1fr)
+            minmax(
+                280px,
+                1fr
+            )
         );
 
-    gap:30px;
+    gap: 30px;
 
-    max-width:900px;
+    max-width: 900px;
 
-    margin:auto;
+    margin: auto;
 }
 
-.leader-card{
-    position:relative;
+.leader-card {
+    position: relative;
 
-    padding:40px 30px;
+    padding:
+        45px
+        30px;
 
-    text-align:center;
-
-    border:1px solid rgba(161,83,214,.22);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(85,30,120,.18),
-            rgba(5,3,10,.7)
-        );
-
-    backdrop-filter:blur(12px);
-
-    transition:.5s ease;
-
-    cursor:pointer;
-
-    overflow:hidden;
-}
-
-.leader-card:hover{
-    transform:translateY(-10px);
-
-    border-color:
-        rgba(196,120,255,.65);
-
-    box-shadow:
-        0 20px 60px
-        rgba(90,30,130,.25);
-}
-
-.leader-pfp{
-    width:150px;
-    height:150px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:2px solid rgba(194,110,255,.5);
-
-    box-shadow:
-        0 0 35px
-        rgba(160,70,220,.25);
-
-    margin-bottom:22px;
-}
-
-.leader-card > span{
-    color:#a45fd1;
-
-    font-size:10px;
-
-    letter-spacing:5px;
-}
-
-.leader-card h3{
-    margin-top:18px;
-
-    font-size:32px;
-
-    font-weight:400;
-}
-
-.leader-card p{
-    margin-top:10px;
-
-    color:#8f8798;
-
-    letter-spacing:1px;
-}
-
-.profile-hint{
-    display:block;
-
-    margin-top:25px;
-
-    color:#706777 !important;
-
-    font-size:8px !important;
-
-    letter-spacing:3px !important;
-}
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-.events-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px,1fr)
-        );
-
-    gap:25px;
-
-    max-width:1100px;
-
-    margin:auto;
-}
-
-.event-card{
-    position:relative;
-
-    padding:35px;
-
-    min-height:230px;
+    text-align: center;
 
     border:
-        1px
-        solid
+        1px solid
         rgba(161,83,214,.22);
 
     background:
@@ -1273,118 +1377,364 @@ section:not(.hero){
             rgba(5,3,10,.7)
         );
 
-    backdrop-filter:blur(12px);
+    backdrop-filter: blur(12px);
 
-    transition:.5s ease;
+    transition: .5s ease;
 
-    overflow:hidden;
+    cursor: pointer;
 }
 
-.event-card:hover{
-    transform:translateY(-8px);
+.leader-card:hover {
+    transform: translateY(-10px);
 
     border-color:
         rgba(196,120,255,.65);
 
     box-shadow:
-        0 20px 50px
+        0 20px 60px
         rgba(90,30,130,.25);
 }
 
-.event-icon{
-    font-size:35px;
+.leader-pfp {
+    width: 150px;
+    height: 150px;
 
-    margin-bottom:20px;
+    object-fit: cover;
 
-    filter:
-        drop-shadow(
-            0 0 10px
-            rgba(194,110,255,.5)
-        );
-}
-
-.event-card h3{
-    font-size:23px;
-
-    font-weight:400;
-
-    letter-spacing:2px;
-
-    margin-bottom:12px;
-}
-
-.event-card p{
-    color:#82798b;
-
-    font-size:13px;
-
-    line-height:1.7;
-}
-
-.coming-soon{
-    display:inline-block;
-
-    margin-top:20px;
-
-    padding:7px 12px;
+    border-radius: 50%;
 
     border:
-        1px
-        solid
-        rgba(194,110,255,.35);
+        2px solid
+        rgba(194,110,255,.55);
 
-    color:#b978e6;
+    box-shadow:
+        0 0 40px
+        rgba(160,70,220,.3);
 
-    font-size:8px;
+    margin-bottom: 25px;
+}
 
-    letter-spacing:3px;
+.leader-card > span {
+    color: #a45fd1;
 
-    text-transform:uppercase;
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+.leader-card h3 {
+    margin-top: 18px;
+
+    font-size: 32px;
+
+    font-weight: 400;
+}
+
+.leader-card p {
+    margin-top: 10px;
+
+    color: #8f8798;
+
+    letter-spacing: 1px;
+}
+
+.profile-hint {
+    display: block;
+
+    margin-top: 25px;
+
+    color: #706777 !important;
+
+    font-size: 8px !important;
+
+    letter-spacing: 3px !important;
+
+    text-transform: uppercase;
 }
 
 /* =========================================================
-   MODAL
+   EVENTS
 ========================================================= */
 
-.profile-modal{
-    position:fixed;
+.events-box {
+    max-width: 950px;
 
-    inset:0;
+    margin: auto;
 
-    z-index:700;
+    display: grid;
 
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.88);
-
-    backdrop-filter:blur(16px);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.45s ease;
+    gap: 18px;
 }
 
-.profile-modal.active{
-    opacity:1;
-    visibility:visible;
-}
+.event-card {
+    display: grid;
 
-.profile-box{
-    position:relative;
+    grid-template-columns:
+        90px
+        1fr
+        auto;
 
-    width:min(520px,92vw);
+    align-items: center;
 
-    padding:20px;
+    gap: 25px;
+
+    padding:
+        25px
+        30px;
 
     border:
-        1px
-        solid
+        1px solid
+        rgba(161,83,214,.22);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(75,25,105,.2),
+            rgba(5,3,10,.7)
+        );
+
+    transition: .4s ease;
+}
+
+.event-card:hover {
+    transform: translateX(8px);
+
+    border-color:
+        rgba(196,120,255,.55);
+
+    box-shadow:
+        0 10px 40px
+        rgba(100,30,140,.2);
+}
+
+.event-icon {
+    font-size: 38px;
+
+    text-align: center;
+}
+
+.event-info h3 {
+    font-size: 21px;
+
+    font-weight: 400;
+
+    letter-spacing: 1px;
+}
+
+.event-info p {
+    margin-top: 7px;
+
+    color: #82798b;
+
+    font-size: 13px;
+}
+
+.event-status {
+    color: #c478ff;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   DOSSIER
+========================================================= */
+
+.dossier {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,.78);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+}
+
+.dossier.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.dossier-box {
+    position: relative;
+
+    width:
+        min(
+            650px,
+            100%
+        );
+
+    padding:
+        55px
+        45px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(192,103,255,.55);
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(102,38,145,.35),
+            rgba(5,3,10,.97) 65%
+        );
+
+    box-shadow:
+        0 0 80px
+        rgba(126,45,180,.25);
+
+    transform:
+        scale(.85)
+        translateY(30px);
+
+    transition:
+        transform .5s ease;
+}
+
+.dossier.active .dossier-box {
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+.dossier-symbol {
+    font-size: 55px;
+
+    margin-bottom: 20px;
+}
+
+.dossier-box h2 {
+    font-size: 38px;
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+}
+
+.dossier-role {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #a45fd1;
+
+    letter-spacing: 3px;
+
+    font-size: 10px;
+}
+
+.dossier-box p {
+    margin:
+        28px
+        auto;
+
+    max-width: 500px;
+
+    color: #a9a0b1;
+
+    line-height: 1.9;
+
+    font-size: 15px;
+}
+
+.close-dossier {
+    position: absolute;
+
+    top: 18px;
+    right: 22px;
+
+    border: none;
+
+    background: none;
+
+    color: #aaa;
+
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+.close-dossier:hover {
+    color: #d58aff;
+
+    transform: rotate(90deg);
+}
+
+/* =========================================================
+   PROFILE MODAL
+========================================================= */
+
+.profile-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 700;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,.88);
+
+    backdrop-filter: blur(16px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .45s ease,
+        visibility .45s ease;
+}
+
+.profile-modal.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.profile-box {
+    position: relative;
+
+    width:
+        min(
+            480px,
+            90vw
+        );
+
+    padding: 20px;
+
+    border:
+        1px solid
         rgba(194,110,255,.65);
 
     background:
@@ -1402,177 +1752,207 @@ section:not(.hero){
         scale(.75)
         translateY(25px);
 
-    transition:.5s ease;
+    transition:
+        transform .5s ease;
 }
 
-.profile-modal.active .profile-box{
+.profile-modal.active .profile-box {
     transform:
         scale(1)
         translateY(0);
 }
 
-.profile-box img{
-    display:block;
+.profile-box img {
+    display: block;
 
-    width:100%;
+    width: 100%;
 
-    max-height:75vh;
+    max-height: 70vh;
 
-    object-fit:contain;
+    object-fit: contain;
 
     border:
-        1px
-        solid
+        1px solid
         rgba(255,255,255,.08);
-}
-
-.close-profile{
-    position:absolute;
-
-    top:-15px;
-    right:-15px;
-
-    width:40px;
-    height:40px;
-
-    border:
-        1px
-        solid
-        rgba(194,110,255,.65);
-
-    border-radius:50%;
-
-    background:#09040f;
-
-    color:#fff;
-
-    font-size:24px;
-
-    cursor:pointer;
-
-    z-index:5;
-
-    transition:.3s;
-}
-
-.close-profile:hover{
-    transform:rotate(90deg);
-
-    color:#d58aff;
 
     box-shadow:
-        0 0 25px
-        rgba(168,76,226,.4);
+        0 0 50px
+        rgba(160,70,220,.25);
+}
+
+.close-profile {
+    position: absolute;
+
+    top: -15px;
+    right: -15px;
+
+    width: 40px;
+    height: 40px;
+
+    border:
+        1px solid
+        rgba(194,110,255,.65);
+
+    border-radius: 50%;
+
+    background: #09040f;
+
+    color: #fff;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+.close-profile:hover {
+    transform: rotate(90deg);
+
+    color: #d58aff;
 }
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
-footer{
-    padding:60px 20px;
+footer {
+    padding:
+        60px
+        20px;
 
-    text-align:center;
+    text-align: center;
 
     border-top:
-        1px
-        solid
+        1px solid
         rgba(154,78,220,.12);
 
-    color:#5e5666;
+    color: #5e5666;
 
-    font-size:10px;
+    font-size: 10px;
 
-    letter-spacing:3px;
+    letter-spacing: 3px;
 
-    line-height:2;
+    line-height: 2;
 }
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media(max-width:800px){
+@media (max-width: 800px) {
 
-    nav{
-        height:70px;
-        padding:0 20px;
+    nav {
+        height: 70px;
+
+        padding: 0 20px;
     }
 
-    .nav-links{
-        display:none;
+    .nav-links {
+        display: none;
     }
 
-    .nav-logo{
-        font-size:10px;
-        letter-spacing:2px;
+    .nav-logo {
+        font-size: 10px;
+
+        letter-spacing: 2px;
     }
 
-    .nav-logo img{
-        width:38px;
-        height:38px;
+    .nav-logo img {
+        width: 38px;
+        height: 38px;
     }
 
-    .moon{
-        width:430px;
-        height:430px;
+    .moon {
+        width: 430px;
+        height: 430px;
     }
 
-    .moon-glow{
-        width:600px;
-        height:600px;
+    .moon-glow {
+        width: 600px;
+        height: 600px;
     }
 
-    .hero-logo{
-        width:210px;
+    .hero-logo {
+        width: 210px;
     }
 
-    h1{
-        letter-spacing:4px;
+    h1 {
+        letter-spacing: 4px;
     }
 
-    .tagline{
-        font-size:14px;
+    .tagline {
+        font-size: 14px;
     }
 
-    section:not(.hero){
-        padding:90px 20px;
+    section:not(.hero) {
+        padding:
+            90px
+            20px;
     }
 
-    .leader-row{
+    .leader-row {
         grid-template-columns:
             50px
             1fr
-            100px;
+            90px;
 
-        padding:18px 15px;
+        padding:
+            18px
+            15px;
     }
 
-    .leader-row span{
-        font-size:13px;
+    .leader-row span {
+        font-size: 13px;
     }
 
-    .leader-row b{
-        font-size:13px;
+    .leader-row b {
+        font-size: 13px;
     }
 
-    .leadership-grid{
-        grid-template-columns:1fr;
+    .leadership-grid {
+        grid-template-columns: 1fr;
     }
 
-    .music-control{
-        right:15px;
-        bottom:15px;
+    .event-card {
+        grid-template-columns:
+            60px
+            1fr;
+
+        gap: 15px;
     }
 
-    .skip-intro{
-        right:20px;
-        bottom:20px;
+    .event-status {
+        grid-column: 2;
     }
 
-    .credit{
-        letter-spacing:3px;
-        font-size:9px;
+    .dossier-box {
+        padding:
+            45px
+            25px;
+    }
+
+    .profile-box {
+        width:
+            min(
+                380px,
+                88vw
+            );
+    }
+
+    .skip-intro {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .credit {
+        letter-spacing: 3px;
+        font-size: 9px;
+    }
+
+    .lord-pfp {
+        width: 115px;
+        height: 115px;
     }
 }
 </style>
@@ -1586,7 +1966,10 @@ footer{
 
 <div id="intro">
 
-    <div class="intro-stars" id="introStars"></div>
+    <div
+        class="intro-stars"
+        id="introStars"
+    ></div>
 
     <div class="intro-content">
 
@@ -1626,7 +2009,7 @@ footer{
 
     <button
         class="skip-intro"
-        id="skipIntro"
+        onclick="skipIntro()"
     >
         Skip Intro
     </button>
@@ -1636,14 +2019,6 @@ footer{
 
 <!-- =========================================================
      MUSIC
-     
-     IMPORTANT:
-     Put the "music" folder beside this index.html.
-     
-     music/
-       kulakovka-epic-trailer-277924.mp3
-       the_mountain-epic-trailer-576568.mp3
-       audiocopper-dark-571483.mp3
 ========================================================= -->
 
 <audio
@@ -1675,20 +2050,6 @@ footer{
         type="audio/mpeg"
     >
 </audio>
-
-
-<!-- MUSIC BUTTON -->
-
-<button
-    class="music-control"
-    id="musicControl"
-    type="button"
->
-    <span class="music-dot"></span>
-    <span id="musicLabel">
-        Music Off
-    </span>
-</button>
 
 
 <!-- =========================================================
@@ -1735,17 +2096,29 @@ footer{
 
     <div class="nav-links">
 
-        <a href="#home">Home</a>
+        <a href="#home">
+            Home
+        </a>
 
-        <a href="#houses">Houses</a>
+        <a href="#houses">
+            Houses
+        </a>
 
-        <a href="#leaderboard">Leaderboard</a>
+        <a href="#leaderboard">
+            Rankings
+        </a>
 
-        <a href="#lords">Lords</a>
+        <a href="#lords">
+            Lords
+        </a>
 
-        <a href="#events">Events</a>
+        <a href="#events">
+            Events
+        </a>
 
-        <a href="#leadership">Leadership</a>
+        <a href="#leadership">
+            Leadership
+        </a>
 
         <a
             href="https://discord.gg/8nP5gZ5uD"
@@ -1811,13 +2184,12 @@ footer{
                 Discover The Houses
             </a>
 
-            <button
+            <a
+                href="#leaderboard"
                 class="btn"
-                id="heroMusicButton"
-                type="button"
             >
-                Start Music
-            </button>
+                View Rankings
+            </a>
 
         </div>
 
@@ -1846,13 +2218,16 @@ footer{
 
         <p>
             Nine great houses stand beneath
-            the banner of the guild. Each has
-            its own purpose, lord, and legacy.
+            the banner of The Shadow Moons.
+            Each house has its own purpose,
+            lord, stars, and legacy.
         </p>
 
     </div>
 
     <div class="houses-grid">
+
+        <!-- AETHERION -->
 
         <article class="house-card">
 
@@ -1878,8 +2253,23 @@ footer{
                 Lord: Yami Sukehiro
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '🌸',
+                    'House Aetherion',
+                    'PVP',
+                    'Yami Sukehiro',
+                    'The distinguished house of combat and competition.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- KIRA -->
 
         <article class="house-card">
 
@@ -1905,8 +2295,23 @@ footer{
                 Lord: Damnatio Kira
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💫',
+                    'House Kira',
+                    'Internal Affairs & Political Diplomacy',
+                    'Damnatio Kira',
+                    'The dignified house entrusted with internal affairs and political diplomacy. House Kira currently holds 304 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- LUCIFERO -->
 
         <article class="house-card">
 
@@ -1932,8 +2337,23 @@ footer{
                 Lord: Lucifer
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '🌀',
+                    'House Lucifero',
+                    'External Affairs',
+                    'Lucifer',
+                    'The house responsible for external affairs and dealings beyond the guild. House Lucifero currently holds 185 stars.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- SHADOW -->
 
         <article class="house-card">
 
@@ -1959,8 +2379,23 @@ footer{
                 Lord: Vangeance
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '✨',
+                    'House Shadow',
+                    'Intelligence & Reconnaissance',
+                    'Vangeance',
+                    'The house dedicated to intelligence, reconnaissance, and information gathering.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- CHRONOAETERNA -->
 
         <article class="house-card">
 
@@ -1986,8 +2421,23 @@ footer{
                 Lord: Chrono Lord Kai
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💫',
+                    'House Chronoaeterna',
+                    'Wisdom & Guidance',
+                    'Chrono Lord Kai',
+                    'The house of the Great Chronos, devoted to wisdom and guidance.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- SILVA -->
 
         <article class="house-card">
 
@@ -2013,8 +2463,23 @@ footer{
                 Lord: Nozel Silva
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💎',
+                    'House Silva',
+                    'Administration',
+                    'Nozel Silva',
+                    'One of the two great royal houses, entrusted with administration.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- VERMILLION -->
 
         <article class="house-card">
 
@@ -2040,8 +2505,23 @@ footer{
                 Lord: Fuegoleon Vermillion
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '🔥',
+                    'House Vermillion',
+                    'Defense & Military Affairs',
+                    'Fuegoleon Vermillion',
+                    'One of the two great royal houses, responsible for defense and military affairs.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- LUNARETH -->
 
         <article class="house-card">
 
@@ -2067,8 +2547,23 @@ footer{
                 Lord: Aizen
             </p>
 
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '💮',
+                    'House Lunareth',
+                    'Recruitment & Training',
+                    'Aizen',
+                    'The house responsible for recruitment and training new members.'
+                )"
+            >
+                Open Dossier
+            </button>
+
         </article>
 
+
+        <!-- ECLIPSE -->
 
         <article class="house-card">
 
@@ -2093,6 +2588,19 @@ footer{
             <p>
                 Lord: Sir Prime
             </p>
+
+            <button
+                class="btn"
+                onclick="openDossier(
+                    '♣️',
+                    'House Eclipse',
+                    'Resources & Development',
+                    'Sir Prime',
+                    'The house responsible for resources and development within the guild.'
+                )"
+            >
+                Open Dossier
+            </button>
 
         </article>
 
@@ -2121,7 +2629,7 @@ footer{
 
         <p>
             The current standing of the Nine Great Houses,
-            determined by their accumulated stars.
+            determined by accumulated stars.
         </p>
 
     </div>
@@ -2206,7 +2714,8 @@ footer{
         <div class="divider"></div>
 
         <p>
-            The lords who command the Nine Great Houses.
+            The lords entrusted with guiding
+            the Nine Great Houses.
         </p>
 
     </div>
@@ -2221,16 +2730,16 @@ footer{
                 alt="Yami Sukehiro"
             >
 
-            <div class="house-name">
-                House Aetherion
-            </div>
+            <span class="rank">
+                LORD — HOUSE AETHERION
+            </span>
 
             <h3>
                 Yami Sukehiro
             </h3>
 
             <p>
-                Lord of Aetherion
+                Lord of PVP
             </p>
 
         </article>
@@ -2244,16 +2753,16 @@ footer{
                 alt="Damnatio Kira"
             >
 
-            <div class="house-name">
-                House Kira
-            </div>
+            <span class="rank">
+                LORD — HOUSE KIRA
+            </span>
 
             <h3>
                 Damnatio Kira
             </h3>
 
             <p>
-                Lord of Kira
+                Lord of Internal Affairs
             </p>
 
         </article>
@@ -2267,16 +2776,16 @@ footer{
                 alt="Lucifer"
             >
 
-            <div class="house-name">
-                House Lucifero
-            </div>
+            <span class="rank">
+                LORD — HOUSE LUCIFERO
+            </span>
 
             <h3>
                 Lucifer
             </h3>
 
             <p>
-                Lord of Lucifero
+                Lord of External Affairs
             </p>
 
         </article>
@@ -2290,16 +2799,16 @@ footer{
                 alt="Vangeance"
             >
 
-            <div class="house-name">
-                House Shadow
-            </div>
+            <span class="rank">
+                LORD — HOUSE SHADOW
+            </span>
 
             <h3>
                 Vangeance
             </h3>
 
             <p>
-                Lord of Shadow
+                Lord of Intelligence
             </p>
 
         </article>
@@ -2313,16 +2822,16 @@ footer{
                 alt="Chrono Lord Kai"
             >
 
-            <div class="house-name">
-                House Chronoaeterna
-            </div>
+            <span class="rank">
+                LORD — HOUSE CHRONOAETERNA
+            </span>
 
             <h3>
                 Chrono Lord Kai
             </h3>
 
             <p>
-                Lord of Chronoaeterna
+                Lord of Wisdom
             </p>
 
         </article>
@@ -2336,16 +2845,16 @@ footer{
                 alt="Nozel Silva"
             >
 
-            <div class="house-name">
-                House Silva
-            </div>
+            <span class="rank">
+                LORD — HOUSE SILVA
+            </span>
 
             <h3>
                 Nozel Silva
             </h3>
 
             <p>
-                Lord of Silva
+                Lord of Administration
             </p>
 
         </article>
@@ -2359,16 +2868,16 @@ footer{
                 alt="Fuegoleon Vermillion"
             >
 
-            <div class="house-name">
-                House Vermillion
-            </div>
+            <span class="rank">
+                LORD — HOUSE VERMILLION
+            </span>
 
             <h3>
                 Fuegoleon Vermillion
             </h3>
 
             <p>
-                Lord of Vermillion
+                Lord of Defense
             </p>
 
         </article>
@@ -2382,16 +2891,16 @@ footer{
                 alt="Aizen"
             >
 
-            <div class="house-name">
-                House Lunareth
-            </div>
+            <span class="rank">
+                LORD — HOUSE LUNARETH
+            </span>
 
             <h3>
                 Aizen
             </h3>
 
             <p>
-                Lord of Lunareth
+                Lord of Recruitment
             </p>
 
         </article>
@@ -2405,16 +2914,16 @@ footer{
                 alt="Sir Prime"
             >
 
-            <div class="house-name">
-                House Eclipse
-            </div>
+            <span class="rank">
+                LORD — HOUSE ECLIPSE
+            </span>
 
             <h3>
                 Sir Prime
             </h3>
 
             <p>
-                Lord of Eclipse
+                Lord of Resources
             </p>
 
         </article>
@@ -2443,13 +2952,13 @@ footer{
         <div class="divider"></div>
 
         <p>
-            Battles, competitions, missions and
-            major guild activities will be announced here.
+            Battles, competitions, missions,
+            and gatherings of the Nine Great Houses.
         </p>
 
     </div>
 
-    <div class="events-grid">
+    <div class="events-box">
 
         <article class="event-card">
 
@@ -2457,18 +2966,22 @@ footer{
                 ⚔️
             </div>
 
-            <h3>
-                Guild War
-            </h3>
+            <div class="event-info">
 
-            <p>
-                A battle between the houses to determine
-                which force dominates the battlefield.
-            </p>
+                <h3>
+                    House War
+                </h3>
 
-            <span class="coming-soon">
-                Coming Soon
-            </span>
+                <p>
+                    The Nine Great Houses will
+                    eventually clash for supremacy.
+                </p>
+
+            </div>
+
+            <div class="event-status">
+                COMING SOON
+            </div>
 
         </article>
 
@@ -2476,21 +2989,25 @@ footer{
         <article class="event-card">
 
             <div class="event-icon">
-                ⭐
+                🏆
             </div>
 
-            <h3>
-                Star Tournament
-            </h3>
+            <div class="event-info">
 
-            <p>
-                Houses compete to earn stars and rise
-                through the Shadow Moons leaderboard.
-            </p>
+                <h3>
+                    Shadow Moons Tournament
+                </h3>
 
-            <span class="coming-soon">
-                Coming Soon
-            </span>
+                <p>
+                    A tournament where members
+                    fight for glory and stars.
+                </p>
+
+            </div>
+
+            <div class="event-status">
+                COMING SOON
+            </div>
 
         </article>
 
@@ -2501,18 +3018,22 @@ footer{
                 🌑
             </div>
 
-            <h3>
-                Shadow Moon Trials
-            </h3>
+            <div class="event-info">
 
-            <p>
-                A mysterious challenge reserved for
-                those willing to prove themselves.
-            </p>
+                <h3>
+                    Moonlit Gathering
+                </h3>
 
-            <span class="coming-soon">
-                Coming Soon
-            </span>
+                <p>
+                    A gathering beneath the banner
+                    of The Shadow Moons.
+                </p>
+
+            </div>
+
+            <div class="event-status">
+                COMING SOON
+            </div>
 
         </article>
 
@@ -2523,18 +3044,22 @@ footer{
                 👑
             </div>
 
-            <h3>
-                Royal Assembly
-            </h3>
+            <div class="event-info">
 
-            <p>
-                The lords of the Nine Great Houses gather
-                under the banner of the Shadow Moons.
-            </p>
+                <h3>
+                    Royal Decree
+                </h3>
 
-            <span class="coming-soon">
-                Coming Soon
-            </span>
+                <p>
+                    A future guild-wide announcement
+                    from the leadership.
+                </p>
+
+            </div>
+
+            <div class="event-status">
+                COMING SOON
+            </div>
 
         </article>
 
@@ -2570,9 +3095,11 @@ footer{
 
     <div class="leadership-grid">
 
+        <!-- CAPTAIN -->
+
         <article
             class="leader-card"
-            onclick="openProfile('captain.png','Captain')"
+            onclick="openProfile('captain.png')"
         >
 
             <img
@@ -2600,9 +3127,11 @@ footer{
         </article>
 
 
+        <!-- VICE -->
+
         <article
             class="leader-card"
-            onclick="openProfile('vice.png','Vice Captain')"
+            onclick="openProfile('vice.png')"
         >
 
             <img
@@ -2635,6 +3164,63 @@ footer{
 
 
 <!-- =========================================================
+     DOSSIER MODAL
+========================================================= -->
+
+<div
+    class="dossier"
+    id="dossier"
+>
+
+    <div class="dossier-box">
+
+        <button
+            class="close-dossier"
+            onclick="closeDossier()"
+        >
+            ×
+        </button>
+
+        <div
+            class="dossier-symbol"
+            id="dossierSymbol"
+        ></div>
+
+        <div class="eyebrow">
+            HOUSE DOSSIER
+        </div>
+
+        <h2 id="dossierName">
+            House
+        </h2>
+
+        <span
+            class="dossier-role"
+            id="dossierRole"
+        ></span>
+
+        <p id="dossierText"></p>
+
+        <div class="divider"></div>
+
+        <p>
+            <strong>Lord:</strong>
+            <span id="dossierLord"></span>
+        </p>
+
+        <button
+            class="btn btn-primary"
+            onclick="closeDossier()"
+        >
+            Close Archive
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      PROFILE MODAL
 ========================================================= -->
 
@@ -2647,8 +3233,7 @@ footer{
 
         <button
             class="close-profile"
-            id="closeProfile"
-            type="button"
+            onclick="closeProfile()"
             aria-label="Close profile"
         >
             ×
@@ -2672,9 +3257,14 @@ footer{
 <footer>
 
     THE SHADOW MOONS
+
     <br>
 
     CLOVER ORIGINS
+
+    <br><br>
+
+    NINE HOUSES • ONE LEGACY
 
 </footer>
 
@@ -2688,204 +3278,132 @@ footer{
 const introStars =
     document.getElementById("introStars");
 
-for(let i=0;i<100;i++){
+if (introStars) {
 
-    const star=document.createElement("div");
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
 
-    star.className="intro-star";
+        const star =
+            document.createElement("div");
 
-    star.style.left=Math.random()*100+"%";
-    star.style.top=Math.random()*100+"%";
+        star.className =
+            "intro-star";
 
-    star.style.animationDelay=
-        Math.random()*5+"s";
+        star.style.left =
+            Math.random() * 100 + "%";
 
-    star.style.animationDuration=
-        (2+Math.random()*5)+"s";
+        star.style.top =
+            Math.random() * 100 + "%";
 
-    introStars.appendChild(star);
+        star.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        star.style.animationDuration =
+            (2 + Math.random() * 5) + "s";
+
+        introStars.appendChild(star);
+
+    }
+
 }
 
 
 /* =========================================================
-   BACKGROUND STARS
-========================================================= */
-
-const stars =
-    document.getElementById("stars");
-
-for(let i=0;i<180;i++){
-
-    const star=document.createElement("div");
-
-    star.className="star";
-
-    star.style.left=Math.random()*100+"%";
-    star.style.top=Math.random()*100+"%";
-
-    star.style.animationDuration=
-        (3+Math.random()*7)+"s";
-
-    star.style.animationDelay=
-        Math.random()*5+"s";
-
-    stars.appendChild(star);
-}
-
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
-const particles =
-    document.getElementById("particles");
-
-for(let i=0;i<35;i++){
-
-    const particle=document.createElement("div");
-
-    particle.className="particle";
-
-    particle.style.left=
-        Math.random()*100+"%";
-
-    particle.style.animationDuration=
-        (8+Math.random()*12)+"s";
-
-    particle.style.animationDelay=
-        Math.random()*10+"s";
-
-    particles.appendChild(particle);
-}
-
-
-/* =========================================================
-   MUSIC ENGINE
+   MUSIC SYSTEM
 ========================================================= */
 
 const musicIntro =
-    document.getElementById("musicIntro");
+    document.getElementById(
+        "musicIntro"
+    );
 
 const musicMain =
-    document.getElementById("musicMain");
+    document.getElementById(
+        "musicMain"
+    );
 
 const musicDark =
-    document.getElementById("musicDark");
-
-const musicControl =
-    document.getElementById("musicControl");
-
-const musicLabel =
-    document.getElementById("musicLabel");
-
-const heroMusicButton =
-    document.getElementById("heroMusicButton");
-
-let musicPlaying=false;
-let currentTrack=0;
-
-
-/*
-   Make sure only one audio element
-   can play at once.
-*/
-
-function stopAllMusic(){
-
-    [musicIntro,musicMain,musicDark].forEach(
-        audio=>{
-            audio.pause();
-        }
+    document.getElementById(
+        "musicDark"
     );
-}
+
+const musicTracks = [
+    musicIntro,
+    musicMain,
+    musicDark
+];
+
+let currentTrack = 0;
+let musicStarted = false;
 
 
 /*
-   Update music UI.
+   Prepare all tracks.
 */
 
-function updateMusicUI(){
+musicTracks.forEach(
+    track => {
 
-    if(musicPlaying){
+        if (track) {
 
-        musicControl.classList.add("playing");
+            track.volume = 0.75;
 
-        musicLabel.textContent=
-            "Music On";
-
-    }else{
-
-        musicControl.classList.remove("playing");
-
-        musicLabel.textContent=
-            "Music Off";
+        }
 
     }
+);
+
+
+/*
+   Play current track.
+*/
+
+function playCurrentTrack() {
+
+    const track =
+        musicTracks[currentTrack];
+
+    if (!track) return;
+
+    track.volume = 0.75;
+
+    const promise =
+        track.play();
+
+    if (promise !== undefined) {
+
+        promise
+            .then(() => {
+
+                musicStarted = true;
+
+            })
+            .catch(() => {
+
+                musicStarted = false;
+
+            });
+
+    }
+
 }
 
 
 /*
-   Start the first track.
+   Start music.
 */
 
-async function startMusic(){
+function startMusic() {
 
-    if(musicPlaying){
+    if (musicStarted) {
         return;
     }
 
-    stopAllMusic();
+    playCurrentTrack();
 
-    musicIntro.currentTime=0;
-    musicIntro.volume=.75;
-
-    try{
-
-        await musicIntro.play();
-
-        musicPlaying=true;
-        currentTrack=1;
-
-        updateMusicUI();
-
-    }catch(error){
-
-        /*
-           Browser autoplay restriction.
-
-           The user can press the Music button,
-           which will be treated as a direct interaction.
-        */
-
-        musicPlaying=false;
-
-        updateMusicUI();
-
-        console.log(
-            "Music autoplay was blocked. Click the Music button to start it."
-        );
-    }
-}
-
-
-/*
-   Toggle music.
-*/
-
-async function toggleMusic(){
-
-    if(musicPlaying){
-
-        stopAllMusic();
-
-        musicPlaying=false;
-
-        updateMusicUI();
-
-        return;
-    }
-
-    await startMusic();
 }
 
 
@@ -2895,30 +3413,11 @@ async function toggleMusic(){
 
 musicIntro.addEventListener(
     "ended",
-    async function(){
+    function () {
 
-        if(!musicPlaying){
-            return;
-        }
+        currentTrack = 1;
 
-        stopAllMusic();
-
-        musicMain.currentTime=0;
-        musicMain.volume=.75;
-
-        try{
-
-            await musicMain.play();
-
-            currentTrack=2;
-
-        }catch(error){
-
-            musicPlaying=false;
-
-            updateMusicUI();
-
-        }
+        playCurrentTrack();
 
     }
 );
@@ -2930,115 +3429,59 @@ musicIntro.addEventListener(
 
 musicMain.addEventListener(
     "ended",
-    async function(){
+    function () {
 
-        if(!musicPlaying){
-            return;
-        }
+        currentTrack = 2;
 
-        stopAllMusic();
-
-        musicDark.currentTime=0;
-        musicDark.volume=.75;
-
-        try{
-
-            await musicDark.play();
-
-            currentTrack=3;
-
-        }catch(error){
-
-            musicPlaying=false;
-
-            updateMusicUI();
-
-        }
+        playCurrentTrack();
 
     }
 );
 
 
 /*
-   Track 3 loops forever.
+   Track 3 loops.
 */
 
 musicDark.addEventListener(
     "ended",
-    async function(){
+    function () {
 
-        if(!musicPlaying){
-            return;
-        }
+        currentTrack = 2;
 
-        musicDark.currentTime=0;
+        musicDark.currentTime = 0;
 
-        try{
+        musicDark.play()
+            .then(() => {
 
-            await musicDark.play();
+                musicStarted = true;
 
-        }catch(error){
+            })
+            .catch(() => {
 
-            musicPlaying=false;
+                musicStarted = false;
 
-            updateMusicUI();
-
-        }
+            });
 
     }
 );
 
 
 /*
-   Music buttons.
-*/
-
-musicControl.addEventListener(
-    "click",
-    toggleMusic
-);
-
-heroMusicButton.addEventListener(
-    "click",
-    toggleMusic
-);
-
-
-/*
-   Skip intro also starts music.
-
-   This is a real user interaction,
-   so browsers normally allow audio here.
-*/
-
-document.getElementById(
-    "skipIntro"
-).addEventListener(
-    "click",
-    function(){
-
-        finishIntro();
-
-        startMusic();
-
-    }
-);
-
-
-/*
-   Try autoplay once after loading.
-
-   If the browser blocks it,
-   nothing breaks.
+   Attempt autoplay.
 */
 
 window.addEventListener(
     "load",
-    function(){
+    function () {
 
         setTimeout(
-            startMusic,
-            800
+            function () {
+
+                startMusic();
+
+            },
+            700
         );
 
     }
@@ -3046,39 +3489,75 @@ window.addEventListener(
 
 
 /*
-   First interaction fallback.
+   Browsers block audible autoplay.
 
-   We intentionally do NOT use once:true
-   so clicking around can still start music
-   if the first event was something the browser
-   did not accept for media playback.
+   There is NO music button.
+
+   The first normal interaction with the
+   website unlocks the music automatically.
 */
 
-[
-    "click",
-    "pointerdown",
-    "touchstart",
-    "keydown"
-].forEach(
-    eventName=>{
+function unlockMusic() {
 
-        document.addEventListener(
-            eventName,
-            function(){
+    if (!musicStarted) {
 
-                if(!musicPlaying){
+        startMusic();
 
-                    startMusic();
+    }
 
-                }
+    /*
+       Once playback succeeds, remove
+       unnecessary listeners.
+    */
 
-            },
-            {
-                passive:true
-            }
+    if (musicStarted) {
+
+        document.removeEventListener(
+            "click",
+            unlockMusic
+        );
+
+        document.removeEventListener(
+            "pointerdown",
+            unlockMusic
+        );
+
+        document.removeEventListener(
+            "touchstart",
+            unlockMusic
+        );
+
+        document.removeEventListener(
+            "keydown",
+            unlockMusic
         );
 
     }
+
+}
+
+
+document.addEventListener(
+    "click",
+    unlockMusic
+);
+
+document.addEventListener(
+    "pointerdown",
+    unlockMusic
+);
+
+document.addEventListener(
+    "touchstart",
+    unlockMusic,
+    {
+        passive: true
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    unlockMusic
 );
 
 
@@ -3087,29 +3566,40 @@ window.addEventListener(
 ========================================================= */
 
 const intro =
-    document.getElementById("intro");
+    document.getElementById(
+        "intro"
+    );
 
-let introFinished=false;
+let introFinished = false;
 
-function finishIntro(){
 
-    if(introFinished){
+function finishIntro() {
+
+    if (introFinished) {
         return;
     }
 
-    introFinished=true;
+    introFinished = true;
 
-    intro.classList.add("hidden");
+    intro.classList.add(
+        "hidden"
+    );
 
     document.body.classList.remove(
         "intro-active"
     );
+
 }
 
 
-/*
-   Automatically finish intro.
-*/
+function skipIntro() {
+
+    finishIntro();
+
+    startMusic();
+
+}
+
 
 setTimeout(
     finishIntro,
@@ -3118,57 +3608,202 @@ setTimeout(
 
 
 /* =========================================================
+   BACKGROUND STARS
+========================================================= */
+
+const stars =
+    document.getElementById(
+        "stars"
+    );
+
+if (stars) {
+
+    for (
+        let i = 0;
+        i < 180;
+        i++
+    ) {
+
+        const star =
+            document.createElement(
+                "div"
+            );
+
+        star.className =
+            "star";
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+        star.style.animationDuration =
+            (3 + Math.random() * 7) + "s";
+
+        star.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        stars.appendChild(star);
+
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particles =
+    document.getElementById(
+        "particles"
+    );
+
+if (particles) {
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+        particle.style.animationDuration =
+            (8 + Math.random() * 12) + "s";
+
+        particle.style.animationDelay =
+            Math.random() * 10 + "s";
+
+        particles.appendChild(
+            particle
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DOSSIERS
+========================================================= */
+
+function openDossier(
+    symbol,
+    name,
+    role,
+    lord,
+    text
+) {
+
+    document.getElementById(
+        "dossierSymbol"
+    ).textContent =
+        symbol;
+
+    document.getElementById(
+        "dossierName"
+    ).textContent =
+        name;
+
+    document.getElementById(
+        "dossierRole"
+    ).textContent =
+        role;
+
+    document.getElementById(
+        "dossierLord"
+    ).textContent =
+        lord;
+
+    document.getElementById(
+        "dossierText"
+    ).textContent =
+        text;
+
+    document.getElementById(
+        "dossier"
+    ).classList.add(
+        "active"
+    );
+
+}
+
+
+function closeDossier() {
+
+    document.getElementById(
+        "dossier"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+/* =========================================================
    PROFILE MODAL
 ========================================================= */
 
-const profileModal =
-    document.getElementById("profileModal");
-
-const profileImage =
-    document.getElementById("profileImage");
-
 function openProfile(
-    image,
-    name
-){
+    image
+) {
 
-    profileImage.src=image;
+    const modal =
+        document.getElementById(
+            "profileModal"
+        );
 
-    profileImage.alt=name;
+    const profileImage =
+        document.getElementById(
+            "profileImage"
+        );
 
-    profileModal.classList.add(
+    profileImage.src =
+        image;
+
+    modal.classList.add(
         "active"
     );
 
 }
 
 
-function closeProfile(){
+function closeProfile() {
 
-    profileModal.classList.remove(
+    document.getElementById(
+        "profileModal"
+    ).classList.remove(
         "active"
     );
 
 }
 
 
-document.getElementById(
-    "closeProfile"
-).addEventListener(
-    "click",
-    closeProfile
-);
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
 
+document.addEventListener(
+    "keydown",
+    function (event) {
 
-/*
-   Click outside image.
-*/
+        if (
+            event.key ===
+            "Escape"
+        ) {
 
-profileModal.addEventListener(
-    "click",
-    function(event){
-
-        if(event.target===profileModal){
+            closeDossier();
 
             closeProfile();
 
@@ -3178,15 +3813,43 @@ profileModal.addEventListener(
 );
 
 
-/*
-   Escape key.
-*/
+/* =========================================================
+   CLICK OUTSIDE DOSSIER
+========================================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event){
+document.getElementById(
+    "dossier"
+).addEventListener(
+    "click",
+    function (event) {
 
-        if(event.key==="Escape"){
+        if (
+            event.target ===
+            this
+        ) {
+
+            closeDossier();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CLICK OUTSIDE PROFILE
+========================================================= */
+
+document.getElementById(
+    "profileModal"
+).addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target ===
+            this
+        ) {
 
             closeProfile();
 

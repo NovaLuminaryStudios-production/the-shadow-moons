@@ -3,229 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020107">
 <title>The Shadow Moons | Clover Origins</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    background: #020107;
-    color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
-    overflow-x: hidden;
+body{
+    background:#020107;
+    color:#fff;
+    font-family:Georgia,"Times New Roman",serif;
+    overflow-x:hidden;
 }
 
-body.intro-active {
-    overflow: hidden;
+body.intro-active{
+    overflow:hidden;
 }
 
 button,
-a {
-    font-family: inherit;
+a{
+    font-family:inherit;
 }
 
 /* =========================================================
-   INTRO / CREDITS
+   GLOBAL EFFECTS
 ========================================================= */
 
-#intro {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
+::selection{
+    background:rgba(177,91,232,.35);
+    color:#fff;
+}
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#020107;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(#6d3294,#b061e4);
+    border-radius:10px;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+
     background:
-        radial-gradient(circle at center,
-            rgba(91, 34, 130, 0.22),
-            transparent 35%),
+        radial-gradient(circle at 50% 45%,
+            rgba(104,38,150,.24),
+            transparent 30%),
+        radial-gradient(circle at 50% 50%,
+            rgba(55,20,80,.18),
+            transparent 55%),
         #020107;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
     transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
+        opacity 1.6s ease,
+        visibility 1.6s ease;
 }
 
-#intro.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+#intro.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
 
-.intro-stars {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+#intro::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(176,97,228,.025) 7deg,
+            transparent 14deg
+        );
+    animation:introRotation 35s linear infinite;
 }
 
-.intro-star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background: white;
-    opacity: 0.3;
-    animation: introStar 4s ease-in-out infinite;
-}
-
-@keyframes introStar {
-    0%,100% {
-        opacity: 0.15;
-        transform: scale(0.5);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.7);
+@keyframes introRotation{
+    to{
+        transform:rotate(360deg);
     }
 }
 
-.intro-content {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    width: min(900px, 90%);
+.intro-stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
 }
 
-.credit {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-
-    opacity: 0;
-
-    color: #aaa2b1;
-    font-size: 12px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-
-    animation: creditRoll 14s ease forwards;
+.intro-star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:#fff;
+    opacity:.3;
+    animation:introStar 4s ease-in-out infinite;
 }
 
-.credit-one {
-    animation-delay: 0.5s;
-}
-
-.credit-two {
-    animation-delay: 3s;
-}
-
-.credit-three {
-    animation-delay: 5.5s;
-}
-
-.credit-four {
-    animation-delay: 8s;
-}
-
-@keyframes creditRoll {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, 25px);
+@keyframes introStar{
+    0%,100%{
+        opacity:.1;
+        transform:scale(.5);
     }
-
-    10% {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
-
-    22% {
-        opacity: 1;
-        transform: translate(-50%, -10px);
-    }
-
-    30%,
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -30px);
+    50%{
+        opacity:1;
+        transform:scale(1.8);
     }
 }
 
-.intro-logo {
-    width: 280px;
-    max-width: 65vw;
+.intro-content{
+    position:relative;
+    z-index:5;
+    width:min(900px,90%);
+    text-align:center;
+}
 
-    opacity: 0;
+.credit{
+    position:absolute;
+    left:50%;
+    width:90%;
+
+    color:#aaa2b1;
+    font-size:12px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+
+    opacity:0;
+
+    animation:creditRoll 14s ease forwards;
+}
+
+.credit-one{
+    animation-delay:.5s;
+}
+
+.credit-two{
+    animation-delay:3s;
+}
+
+.credit-three{
+    animation-delay:5.5s;
+}
+
+.credit-four{
+    animation-delay:8s;
+}
+
+@keyframes creditRoll{
+    0%{
+        opacity:0;
+        transform:translate(-50%,25px);
+    }
+
+    10%{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+
+    22%{
+        opacity:1;
+        transform:translate(-50%,-10px);
+    }
+
+    30%,100%{
+        opacity:0;
+        transform:translate(-50%,-30px);
+    }
+}
+
+.intro-logo{
+    width:280px;
+    max-width:65vw;
+
+    opacity:0;
 
     filter:
-        drop-shadow(0 0 15px rgba(165,70,230,0.8))
-        drop-shadow(0 0 60px rgba(120,40,180,0.5));
+        drop-shadow(0 0 15px rgba(165,70,230,.8))
+        drop-shadow(0 0 60px rgba(120,40,180,.5));
 
-    animation: introLogo 4s ease forwards;
-    animation-delay: 9.5s;
+    animation:introLogo 4s ease forwards;
+    animation-delay:9.5s;
 }
 
-@keyframes introLogo {
-    0% {
-        opacity: 0;
-        transform: scale(0.65);
-        filter:
-            brightness(0)
-            drop-shadow(0 0 0 transparent);
+@keyframes introLogo{
+    0%{
+        opacity:0;
+        transform:scale(.65);
+        filter:brightness(0);
     }
 
-    45% {
-        opacity: 1;
-        transform: scale(1.08);
+    45%{
+        opacity:1;
+        transform:scale(1.08);
     }
 
-    70% {
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
+    70%,100%{
+        opacity:1;
+        transform:scale(1);
     }
 }
 
-.intro-title {
-    margin-top: 28px;
+.intro-title{
+    margin-top:28px;
 
-    opacity: 0;
+    opacity:0;
 
-    font-size: clamp(30px, 6vw, 70px);
-    letter-spacing: 12px;
-    font-weight: 400;
+    font-size:clamp(30px,6vw,70px);
+    letter-spacing:12px;
+    font-weight:400;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
     text-shadow:
-        0 0 20px rgba(190,110,245,0.45),
-        0 0 60px rgba(130,50,190,0.25);
+        0 0 20px rgba(190,110,245,.45),
+        0 0 60px rgba(130,50,190,.25);
 
-    animation: introTitle 3s ease forwards;
-    animation-delay: 11s;
+    animation:introTitle 3s ease forwards;
+    animation-delay:11s;
 }
 
-@keyframes introTitle {
-    from {
-        opacity: 0;
-        letter-spacing: 25px;
+@keyframes introTitle{
+    from{
+        opacity:0;
+        letter-spacing:25px;
     }
 
-    to {
-        opacity: 1;
-        letter-spacing: 12px;
+    to{
+        opacity:1;
+        letter-spacing:12px;
     }
 }
 
-.intro-line {
-    width: 150px;
-    height: 1px;
-    margin: 28px auto;
+.intro-line{
+    width:150px;
+    height:1px;
+    margin:28px auto;
 
     background:
         linear-gradient(
@@ -235,264 +271,262 @@ a {
             transparent
         );
 
-    box-shadow: 0 0 18px rgba(176,97,228,0.8);
+    box-shadow:0 0 18px rgba(176,97,228,.8);
 
-    opacity: 0;
+    opacity:0;
 
-    animation: introLine 2s ease forwards;
-    animation-delay: 11.8s;
+    animation:introLine 2s ease forwards;
+    animation-delay:11.8s;
 }
 
-@keyframes introLine {
-    to {
-        opacity: 1;
+@keyframes introLine{
+    to{
+        opacity:1;
     }
 }
 
-.intro-subtitle {
-    color: #8f8798;
-    font-size: 11px;
-    letter-spacing: 5px;
+.intro-subtitle{
+    color:#8f8798;
+    font-size:11px;
+    letter-spacing:5px;
 
-    opacity: 0;
+    opacity:0;
 
-    animation: fadeIn 2s ease forwards;
-    animation-delay: 12.3s;
+    animation:fadeIn 2s ease forwards;
+    animation-delay:12.3s;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
+@keyframes fadeIn{
+    to{
+        opacity:1;
     }
 }
 
-.skip-intro {
-    position: absolute;
-    bottom: 35px;
-    right: 40px;
+.skip-intro{
+    position:absolute;
+    right:40px;
+    bottom:35px;
 
-    padding: 10px 18px;
+    padding:10px 18px;
 
-    border: 1px solid rgba(180,90,240,0.35);
-    background: rgba(80,30,110,0.12);
+    border:1px solid rgba(180,90,240,.35);
 
-    color: #8d8495;
+    background:rgba(80,30,110,.12);
 
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    color:#8d8495;
 
-    cursor: pointer;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
 
-    transition: 0.3s;
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-.skip-intro:hover {
-    color: #fff;
-    border-color: #c478ff;
-    box-shadow: 0 0 20px rgba(168,76,226,0.25);
+.skip-intro:hover{
+    color:#fff;
+    border-color:#c478ff;
+    box-shadow:0 0 20px rgba(168,76,226,.25);
 }
 
 /* =========================================================
    COSMIC BACKGROUND
 ========================================================= */
 
-.space {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    overflow: hidden;
+.space{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
 
     background:
         radial-gradient(
             circle at 50% 40%,
-            rgba(100,38,155,0.16),
+            rgba(100,38,155,.16),
             transparent 28%
         ),
         radial-gradient(
             circle at 20% 80%,
-            rgba(71,28,110,0.10),
+            rgba(71,28,110,.10),
             transparent 30%
         ),
         #020107;
 }
 
-.moon {
-    position: absolute;
+.moon{
+    position:absolute;
 
-    width: 620px;
-    height: 620px;
+    width:620px;
+    height:620px;
 
-    left: 50%;
-    top: 43%;
+    left:50%;
+    top:43%;
 
-    transform: translate(-50%, -50%);
+    transform:translate(-50%,-50%);
 
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
         radial-gradient(
             circle at 35% 30%,
-            rgba(255,255,255,0.95),
-            rgba(210,203,218,0.9) 28%,
-            rgba(124,113,134,0.7) 58%,
-            rgba(31,25,39,0.95) 100%
+            rgba(255,255,255,.95),
+            rgba(210,203,218,.9) 28%,
+            rgba(124,113,134,.7) 58%,
+            rgba(31,25,39,.95) 100%
         );
 
     box-shadow:
-        0 0 30px rgba(220,210,230,0.25),
-        0 0 100px rgba(133,70,182,0.22),
-        0 0 180px rgba(102,39,150,0.15);
+        0 0 30px rgba(220,210,230,.25),
+        0 0 100px rgba(133,70,182,.22),
+        0 0 180px rgba(102,39,150,.15);
 
-    opacity: 0.18;
+    opacity:.18;
 
     animation:
         moonFloat 12s ease-in-out infinite,
         moonPulse 7s ease-in-out infinite;
 }
 
-@keyframes moonFloat {
-    0%,100% {
-        transform: translate(-50%,-50%) scale(1);
+@keyframes moonFloat{
+    0%,100%{
+        transform:translate(-50%,-50%) scale(1);
     }
 
-    50% {
-        transform: translate(-50%,-52%) scale(1.04);
-    }
-}
-
-@keyframes moonPulse {
-    0%,100% {
-        opacity: 0.13;
-    }
-
-    50% {
-        opacity: 0.22;
+    50%{
+        transform:translate(-50%,-52%) scale(1.04);
     }
 }
 
-.moon-glow {
-    position: absolute;
+@keyframes moonPulse{
+    0%,100%{
+        opacity:.13;
+    }
 
-    width: 900px;
-    height: 900px;
+    50%{
+        opacity:.22;
+    }
+}
 
-    left: 50%;
-    top: 43%;
+.moon-glow{
+    position:absolute;
 
-    transform: translate(-50%,-50%);
+    width:900px;
+    height:900px;
 
-    border-radius: 50%;
+    left:50%;
+    top:43%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(147,71,201,0.12),
+            rgba(147,71,201,.12),
             transparent 65%
         );
 
-    animation: glowPulse 8s ease-in-out infinite;
-    pointer-events: none;
+    animation:glowPulse 8s ease-in-out infinite;
+
+    pointer-events:none;
 }
 
-@keyframes glowPulse {
-    0%,100% {
-        transform: translate(-50%,-50%) scale(0.9);
+@keyframes glowPulse{
+    0%,100%{
+        transform:translate(-50%,-50%) scale(.9);
     }
 
-    50% {
-        transform: translate(-50%,-50%) scale(1.1);
+    50%{
+        transform:translate(-50%,-50%) scale(1.1);
     }
 }
 
 /* =========================================================
-   STARS
+   STARS / PARTICLES
 ========================================================= */
 
 .stars,
-.particles {
-    position: absolute;
-    inset: 0;
+.particles{
+    position:absolute;
+    inset:0;
 }
 
-.star {
-    position: absolute;
+.star{
+    position:absolute;
 
-    width: 2px;
-    height: 2px;
+    width:2px;
+    height:2px;
 
-    border-radius: 50%;
-    background: #fff;
+    border-radius:50%;
+    background:#fff;
 
-    opacity: 0.4;
+    opacity:.4;
 
     animation:
         starFloat linear infinite,
         starTwinkle ease-in-out infinite;
 }
 
-@keyframes starFloat {
-    from {
-        transform: translateY(0) translateX(0);
+@keyframes starFloat{
+    from{
+        transform:translateY(0) translateX(0);
     }
 
-    to {
-        transform: translateY(-120px) translateX(30px);
-    }
-}
-
-@keyframes starTwinkle {
-    0%,100% {
-        opacity: 0.15;
-        transform: scale(0.7);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.5);
+    to{
+        transform:translateY(-120px) translateX(30px);
     }
 }
 
-.particle {
-    position: absolute;
+@keyframes starTwinkle{
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
 
-    width: 3px;
-    height: 3px;
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
 
-    border-radius: 50%;
+.particle{
+    position:absolute;
 
-    background: #a95ee4;
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#a95ee4;
 
     box-shadow:
         0 0 8px #a95ee4,
-        0 0 18px rgba(169,94,228,0.5);
+        0 0 18px rgba(169,94,228,.5);
 
-    opacity: 0.5;
+    opacity:.5;
 
-    animation: particleMove linear infinite;
+    animation:particleMove linear infinite;
 }
 
-@keyframes particleMove {
-    0% {
-        transform:
-            translateY(110vh)
-            translateX(0);
-        opacity: 0;
+@keyframes particleMove{
+    0%{
+        transform:translateY(110vh) translateX(0);
+        opacity:0;
     }
 
-    10% {
-        opacity: 0.6;
+    10%{
+        opacity:.6;
     }
 
-    90% {
-        opacity: 0.4;
+    90%{
+        opacity:.4;
     }
 
-    100% {
-        transform:
-            translateY(-20vh)
-            translateX(80px);
-        opacity: 0;
+    100%{
+        transform:translateY(-20vh) translateX(80px);
+        opacity:0;
     }
 }
 
@@ -500,181 +534,168 @@ a {
    NAVIGATION
 ========================================================= */
 
-nav {
-    position: fixed;
+nav{
+    position:fixed;
 
-    top: 0;
-    left: 0;
+    top:0;
+    left:0;
 
-    width: 100%;
-    height: 82px;
+    width:100%;
+    height:82px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    padding: 0 6%;
+    padding:0 6%;
 
-    z-index: 100;
+    z-index:100;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(2,1,7,0.90),
+            rgba(2,1,7,.90),
             rgba(2,1,7,0)
         );
 
-    backdrop-filter: blur(8px);
+    backdrop-filter:blur(8px);
 }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.nav-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-    font-size: 14px;
-    letter-spacing: 4px;
-    font-weight: bold;
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:bold;
 }
 
-.nav-logo img {
-    width: 44px;
-    height: 44px;
+.nav-logo img{
+    width:44px;
+    height:44px;
 
-    object-fit: contain;
+    object-fit:contain;
 
     filter:
         drop-shadow(
             0 0 8px
-            rgba(153,68,214,0.8)
+            rgba(153,68,214,.8)
         );
 }
 
-.nav-links {
-    display: flex;
-    gap: 26px;
+.nav-links{
+    display:flex;
+    gap:26px;
 }
 
-.nav-links a {
-    color: #aaa3b0;
-    text-decoration: none;
+.nav-links a{
+    color:#aaa3b0;
 
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    text-decoration:none;
 
-    transition: 0.35s ease;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    transition:.35s ease;
 }
 
-.nav-links a:hover {
-    color: #c478ff;
+.nav-links a:hover{
+    color:#c478ff;
 
     text-shadow:
         0 0 15px
-        rgba(196,120,255,0.8);
+        rgba(196,120,255,.8);
 }
 
-.discord-nav {
-    color: #c478ff !important;
-
-    text-shadow:
-        0 0 12px
-        rgba(196,120,255,0.35);
+.discord-nav{
+    color:#c478ff !important;
 }
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.hero {
-    min-height: 100vh;
+.hero{
+    min-height:100vh;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    text-align: center;
+    text-align:center;
 
-    position: relative;
+    position:relative;
 
-    padding: 120px 20px 80px;
+    padding:120px 20px 80px;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 5;
-
-    max-width: 1000px;
+.hero-content{
+    position:relative;
+    z-index:5;
+    max-width:1000px;
 }
 
-.hero-logo {
-    width: 280px;
-    max-width: 65vw;
+.hero-logo{
+    width:280px;
+    max-width:65vw;
 
-    margin-bottom: 30px;
+    margin-bottom:30px;
 
     filter:
         drop-shadow(
             0 0 10px
-            rgba(149,64,210,0.7)
+            rgba(149,64,210,.7)
         )
         drop-shadow(
             0 0 35px
-            rgba(120,40,180,0.35)
+            rgba(120,40,180,.35)
         );
 
-    animation:
-        logoFloat
-        6s
-        ease-in-out
-        infinite;
+    animation:logoFloat 6s ease-in-out infinite;
 }
 
-@keyframes logoFloat {
-    0%,100% {
-        transform: translateY(0);
+@keyframes logoFloat{
+    0%,100%{
+        transform:translateY(0);
     }
 
-    50% {
-        transform: translateY(-12px);
+    50%{
+        transform:translateY(-12px);
     }
 }
 
-.eyebrow {
-    color: #a45fd1;
+.eyebrow{
+    color:#a45fd1;
 
-    font-size: 11px;
-    letter-spacing: 7px;
-    text-transform: uppercase;
+    font-size:11px;
+    letter-spacing:7px;
+    text-transform:uppercase;
 }
 
-h1 {
-    margin-top: 18px;
+h1{
+    margin-top:18px;
 
-    font-size:
-        clamp(
-            42px,
-            8vw,
-            94px
-        );
+    font-size:clamp(42px,8vw,94px);
 
-    letter-spacing: 9px;
-    line-height: 1;
+    letter-spacing:9px;
+    line-height:1;
 
-    font-weight: 400;
+    font-weight:400;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
     text-shadow:
-        0 0 15px rgba(190,112,245,0.25),
-        0 0 50px rgba(130,50,190,0.2);
+        0 0 15px rgba(190,112,245,.25),
+        0 0 50px rgba(130,50,190,.2);
 }
 
-.divider {
-    width: 120px;
-    height: 1px;
+.divider{
+    width:120px;
+    height:1px;
 
-    margin: 32px auto;
+    margin:32px auto;
 
     background:
         linear-gradient(
@@ -686,934 +707,917 @@ h1 {
 
     box-shadow:
         0 0 15px
-        rgba(176,97,228,0.7);
+        rgba(176,97,228,.7);
 }
 
-.tagline {
-    color: #aaa2b1;
+.tagline{
+    color:#aaa2b1;
 
-    max-width: 600px;
+    max-width:600px;
 
-    margin: 0 auto 40px;
+    margin:0 auto 40px;
 
-    font-size: 17px;
-    line-height: 1.8;
-    letter-spacing: 1px;
+    font-size:17px;
+    line-height:1.8;
+    letter-spacing:1px;
 }
 
 /* =========================================================
    BUTTONS
 ========================================================= */
 
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-.btn {
-    position: relative;
+.btn{
+    position:relative;
+    overflow:hidden;
 
-    overflow: hidden;
+    display:inline-block;
 
-    display: inline-block;
+    padding:15px 28px;
 
-    padding: 15px 28px;
+    border:1px solid rgba(177,91,232,.55);
 
-    border:
-        1px
-        solid
-        rgba(177,91,232,0.55);
+    background:rgba(100,38,140,.13);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    transition:.4s ease;
+
+    backdrop-filter:blur(5px);
+
+    cursor:pointer;
+}
+
+.btn::after{
+    content:"";
+
+    position:absolute;
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
 
     background:
-        rgba(100,38,140,0.13);
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
 
-    color: #fff;
+    transform:skewX(-20deg);
 
-    text-decoration: none;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    transition: 0.4s ease;
-
-    backdrop-filter: blur(5px);
-
-    cursor: pointer;
+    transition:.7s;
 }
 
-.btn:hover {
-    transform: translateY(-4px);
+.btn:hover::after{
+    left:150%;
+}
 
-    border-color: #c47aff;
+.btn:hover{
+    transform:translateY(-4px);
+
+    border-color:#c47aff;
 
     box-shadow:
         0 0 20px
-        rgba(168,76,226,0.35);
+        rgba(168,76,226,.35);
 }
 
-.btn-primary {
-    background:
-        rgba(117,45,167,0.28);
+.btn-primary{
+    background:rgba(117,45,167,.28);
 }
 
-.discord-btn {
-    border-color:
-        rgba(196,120,255,0.75);
+.discord-btn{
+    border-color:rgba(196,120,255,.75);
 
-    background:
-        rgba(117,45,167,0.38);
+    background:rgba(117,45,167,.38);
 
     box-shadow:
         0 0 20px
-        rgba(168,76,226,0.12);
+        rgba(168,76,226,.12);
 }
 
 /* =========================================================
    SECTIONS
 ========================================================= */
 
-section:not(.hero) {
-    position: relative;
+section:not(.hero){
+    position:relative;
 
-    padding: 130px 6%;
+    padding:130px 6%;
 
-    max-width: 1500px;
+    max-width:1500px;
 
-    margin: auto;
+    margin:auto;
 }
 
-.section-heading {
-    text-align: center;
-
-    margin-bottom: 70px;
+.section-heading{
+    text-align:center;
+    margin-bottom:70px;
 }
 
-.section-heading h2 {
-    margin-top: 15px;
+.section-heading h2{
+    margin-top:15px;
 
-    font-size:
-        clamp(
-            32px,
-            5vw,
-            58px
-        );
+    font-size:clamp(32px,5vw,58px);
 
-    letter-spacing: 6px;
+    letter-spacing:6px;
 
-    font-weight: 400;
+    font-weight:400;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 }
 
-.section-heading p {
-    max-width: 650px;
+.section-heading p{
+    max-width:650px;
 
-    margin: auto;
+    margin:auto;
 
-    color: #8f8798;
+    color:#8f8798;
 
-    line-height: 1.8;
+    line-height:1.8;
 
-    font-size: 15px;
+    font-size:15px;
 }
 
 /* =========================================================
    HOUSES
 ========================================================= */
 
-.houses-grid {
-    display: grid;
+.houses-grid{
+    display:grid;
 
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(
-                280px,
-                1fr
-            )
+            minmax(280px,1fr)
         );
 
-    gap: 24px;
+    gap:24px;
 }
 
-.house-card {
-    position: relative;
+.house-card{
+    position:relative;
 
-    min-height: 350px;
+    min-height:350px;
 
-    padding: 38px 28px;
+    padding:38px 28px;
 
-    text-align: center;
+    text-align:center;
 
-    border:
-        1px
-        solid
-        rgba(161,83,214,0.20);
+    border:1px solid rgba(161,83,214,.20);
 
     background:
         linear-gradient(
             145deg,
-            rgba(80,30,110,0.18),
-            rgba(10,5,18,0.65)
+            rgba(80,30,110,.18),
+            rgba(10,5,18,.65)
         );
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(12px);
 
-    overflow: hidden;
+    overflow:hidden;
 
     transition:
-        transform 0.5s ease,
-        border-color 0.5s ease,
-        box-shadow 0.5s ease;
+        transform .5s ease,
+        border-color .5s ease,
+        box-shadow .5s ease;
 }
 
-.house-card::before {
-    content: "";
+.house-card::before{
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    inset: -2px;
+    inset:-2px;
 
     background:
         linear-gradient(
             120deg,
             transparent,
-            rgba(183,93,239,0.15),
+            rgba(183,93,239,.15),
             transparent
         );
 
-    transform: translateX(-100%);
+    transform:translateX(-100%);
 
-    transition: 0.8s ease;
+    transition:.8s ease;
 }
 
-.house-card:hover::before {
-    transform: translateX(100%);
+.house-card:hover::before{
+    transform:translateX(100%);
 }
 
-.house-card:hover {
-    transform:
-        translateY(-12px)
-        scale(1.02);
+.house-card:hover{
+    transform:translateY(-12px) scale(1.02);
 
-    border-color:
-        rgba(194,110,255,0.65);
+    border-color:rgba(194,110,255,.65);
 
     box-shadow:
-        0 20px 60px
-        rgba(90,30,130,0.25),
-        0 0 30px
-        rgba(160,70,220,0.12);
+        0 20px 60px rgba(90,30,130,.25),
+        0 0 30px rgba(160,70,220,.12);
 }
 
-.house-symbol {
-    font-size: 48px;
+.house-symbol{
+    font-size:48px;
 
-    margin-bottom: 20px;
+    margin-bottom:20px;
 
     filter:
         drop-shadow(
             0 0 12px
-            rgba(190,100,255,0.5)
+            rgba(190,100,255,.5)
         );
 }
 
-.house-card h3 {
-    font-size: 24px;
+.house-card h3{
+    font-size:24px;
 
-    font-weight: 400;
+    font-weight:400;
 
-    letter-spacing: 2px;
+    letter-spacing:2px;
 
-    margin-bottom: 12px;
+    margin-bottom:12px;
 }
 
-.house-card > span {
-    color: #a45fd1;
+.house-card > span{
+    color:#a45fd1;
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 }
 
-.house-stars {
-    margin: 24px 0;
+.house-stars{
+    margin:24px 0;
 
-    font-size: 24px;
+    font-size:24px;
 
-    color: #f1d68a;
+    color:#f1d68a;
 
     text-shadow:
         0 0 15px
-        rgba(241,214,138,0.4);
+        rgba(241,214,138,.4);
 }
 
-.house-card p {
-    color: #82798b;
+.house-card p{
+    color:#82798b;
 
-    font-size: 13px;
+    font-size:13px;
 
-    margin-bottom: 25px;
+    margin-bottom:25px;
 }
 
-.house-card .btn {
-    font-size: 8px;
+.house-card .btn{
+    font-size:8px;
 }
 
 /* =========================================================
    LEADERBOARD
 ========================================================= */
 
-.leaderboard {
-    max-width: 950px;
+.leaderboard{
+    max-width:950px;
 
-    margin: auto;
+    margin:auto;
 
-    border:
-        1px
-        solid
-        rgba(161,83,214,0.20);
+    border:1px solid rgba(161,83,214,.20);
 
-    background:
-        rgba(9,4,15,0.65);
+    background:rgba(9,4,15,.65);
 
-    backdrop-filter: blur(14px);
+    backdrop-filter:blur(14px);
+
+    overflow:hidden;
 }
 
-.leader-row {
-    display: grid;
+.leader-row{
+    display:grid;
 
-    grid-template-columns:
-        80px
-        1fr
-        150px;
+    grid-template-columns:80px 1fr 150px;
 
-    align-items: center;
+    align-items:center;
 
-    padding: 22px 28px;
+    padding:22px 28px;
 
     border-bottom:
-        1px
-        solid
-        rgba(255,255,255,0.05);
+        1px solid
+        rgba(255,255,255,.05);
 
-    transition: 0.35s ease;
+    transition:.35s ease;
 }
 
-.leader-row:last-child {
-    border-bottom: none;
+.leader-row:last-child{
+    border-bottom:none;
 }
 
-.leader-row:hover {
-    background:
-        rgba(147,71,201,0.08);
+.leader-row:hover{
+    background:rgba(147,71,201,.08);
 
-    padding-left: 38px;
+    padding-left:38px;
 }
 
-.leader-row strong {
-    color: #756c7e;
+.leader-row strong{
+    color:#756c7e;
 
-    font-size: 14px;
+    font-size:14px;
 
-    letter-spacing: 2px;
+    letter-spacing:2px;
 }
 
-.leader-row span {
-    font-size: 16px;
-
-    letter-spacing: 1px;
+.leader-row span{
+    font-size:16px;
+    letter-spacing:1px;
 }
 
-.leader-row b {
-    text-align: right;
+.leader-row b{
+    text-align:right;
 
-    color: #f1d68a;
+    color:#f1d68a;
 
-    font-size: 17px;
+    font-size:17px;
 
     text-shadow:
         0 0 12px
-        rgba(241,214,138,0.35);
+        rgba(241,214,138,.35);
 }
 
-.leader-row.first {
-    border-left:
-        3px
-        solid
-        #e8c96a;
+.leader-row.first{
+    border-left:3px solid #e8c96a;
 
     box-shadow:
         inset 25px 0 50px
-        rgba(232,201,106,0.035);
+        rgba(232,201,106,.035);
 }
 
-.leader-row.second {
-    border-left:
-        3px
-        solid
-        #c8c8d0;
+.leader-row.second{
+    border-left:3px solid #c8c8d0;
 }
 
-.leader-row.third {
-    border-left:
-        3px
-        solid
-        #b87955;
+.leader-row.third{
+    border-left:3px solid #b87955;
 }
 
 /* =========================================================
    LEADERSHIP
 ========================================================= */
 
-.leadership-grid {
-    display: grid;
+.leadership-grid{
+    display:grid;
 
     grid-template-columns:
         repeat(
             2,
-            minmax(
-                280px,
-                1fr
-            )
+            minmax(280px,1fr)
         );
 
-    gap: 30px;
+    gap:30px;
 
-    max-width: 900px;
+    max-width:900px;
 
-    margin: auto;
+    margin:auto;
 }
 
-.leader-card {
-    position: relative;
+.leader-card{
+    position:relative;
 
-    padding: 55px 30px;
+    padding:55px 30px;
 
-    text-align: center;
+    text-align:center;
 
-    border:
-        1px
-        solid
-        rgba(161,83,214,0.22);
+    border:1px solid rgba(161,83,214,.22);
 
     background:
         linear-gradient(
             145deg,
-            rgba(85,30,120,0.18),
-            rgba(5,3,10,0.7)
+            rgba(85,30,120,.18),
+            rgba(5,3,10,.7)
         );
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(12px);
 
-    transition: 0.5s ease;
+    transition:.5s ease;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    overflow: hidden;
+    overflow:hidden;
 }
 
-.leader-card::before {
-    content: "";
+.leader-card::before{
+    content:"";
 
-    position: absolute;
-
-    inset: 0;
+    position:absolute;
+    inset:0;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(180,90,240,0.12),
+            rgba(180,90,240,.12),
             transparent 60%
         );
 
-    opacity: 0;
+    opacity:0;
 
-    transition: 0.5s;
+    transition:.5s;
 }
 
-.leader-card:hover::before {
-    opacity: 1;
+.leader-card:hover::before{
+    opacity:1;
 }
 
-.leader-card:hover {
-    transform: translateY(-10px);
+.leader-card:hover{
+    transform:translateY(-10px);
 
-    border-color:
-        rgba(196,120,255,0.65);
+    border-color:rgba(196,120,255,.65);
 
     box-shadow:
         0 20px 60px
-        rgba(90,30,130,0.25);
+        rgba(90,30,130,.25);
 }
 
-.leader-symbol {
-    position: relative;
-    z-index: 2;
+.leader-symbol{
+    position:relative;
+    z-index:2;
 
-    font-size: 55px;
+    font-size:55px;
 
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
-.leader-card > span {
-    position: relative;
-    z-index: 2;
+.leader-card > span{
+    position:relative;
+    z-index:2;
 
-    color: #a45fd1;
+    color:#a45fd1;
 
-    font-size: 10px;
+    font-size:10px;
 
-    letter-spacing: 5px;
+    letter-spacing:5px;
 }
 
-.leader-card h3 {
-    position: relative;
-    z-index: 2;
+.leader-card h3{
+    position:relative;
+    z-index:2;
 
-    margin-top: 18px;
+    margin-top:18px;
 
-    font-size: 32px;
+    font-size:32px;
 
-    font-weight: 400;
+    font-weight:400;
 }
 
-.leader-card p {
-    position: relative;
-    z-index: 2;
+.leader-card p{
+    position:relative;
+    z-index:2;
 
-    margin-top: 10px;
+    margin-top:10px;
 
-    color: #8f8798;
+    color:#8f8798;
 
-    letter-spacing: 1px;
+    letter-spacing:1px;
 }
 
-.profile-hint {
-    position: relative;
-    z-index: 2;
+.profile-hint{
+    display:block;
 
-    display: block;
+    margin-top:25px;
 
-    margin-top: 25px;
+    color:#706777 !important;
 
-    color: #706777;
+    font-size:8px !important;
 
-    font-size: 8px;
+    letter-spacing:3px !important;
 
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
+    text-transform:uppercase;
 }
 
 /* =========================================================
-   HOUSE DOSSIER MODAL
+   DOSSIER MODAL
 ========================================================= */
 
-.dossier {
-    position: fixed;
+.dossier{
+    position:fixed;
+    inset:0;
 
-    inset: 0;
+    z-index:500;
 
-    z-index: 500;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    display: flex;
+    padding:20px;
 
-    align-items: center;
-    justify-content: center;
+    background:rgba(0,0,0,.78);
 
-    padding: 20px;
+    backdrop-filter:blur(12px);
 
-    background:
-        rgba(0,0,0,0.78);
-
-    backdrop-filter: blur(12px);
-
-    opacity: 0;
-
-    visibility: hidden;
+    opacity:0;
+    visibility:hidden;
 
     transition:
-        opacity 0.4s ease,
-        visibility 0.4s ease;
+        opacity .4s ease,
+        visibility .4s ease;
 }
 
-.dossier.active {
-    opacity: 1;
-    visibility: visible;
+.dossier.active{
+    opacity:1;
+    visibility:visible;
 }
 
-.dossier-box {
-    position: relative;
+.dossier-box{
+    position:relative;
 
-    width: min(650px, 100%);
+    width:min(650px,100%);
 
-    padding: 55px 45px;
+    padding:55px 45px;
 
-    text-align: center;
+    text-align:center;
 
-    border:
-        1px
-        solid
-        rgba(192,103,255,0.55);
+    border:1px solid rgba(192,103,255,.55);
 
     background:
         radial-gradient(
             circle at top,
-            rgba(102,38,145,0.35),
-            rgba(5,3,10,0.97) 65%
+            rgba(102,38,145,.35),
+            rgba(5,3,10,.97) 65%
         );
 
     box-shadow:
         0 0 80px
-        rgba(126,45,180,0.25);
+        rgba(126,45,180,.25);
 
-    transform:
-        scale(0.85)
-        translateY(30px);
+    transform:scale(.85) translateY(30px);
 
-    transition:
-        transform 0.5s ease;
+    transition:transform .5s ease;
 }
 
-.dossier.active .dossier-box {
-    transform:
-        scale(1)
-        translateY(0);
+.dossier.active .dossier-box{
+    transform:scale(1) translateY(0);
 }
 
-.dossier-symbol {
-    font-size: 65px;
-
-    margin-bottom: 20px;
+.dossier-symbol{
+    font-size:65px;
+    margin-bottom:20px;
 }
 
-.dossier-box h2 {
-    font-size: 38px;
-
-    font-weight: 400;
-
-    letter-spacing: 3px;
+.dossier-box h2{
+    font-size:38px;
+    font-weight:400;
+    letter-spacing:3px;
 }
 
-.dossier-box .dossier-role {
-    display: block;
+.dossier-role{
+    display:block;
 
-    margin-top: 12px;
+    margin-top:12px;
 
-    color: #a45fd1;
+    color:#a45fd1;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    font-size: 10px;
+    font-size:10px;
 }
 
-.dossier-box p {
-    margin:
-        28px
-        auto;
+.dossier-box p{
+    margin:28px auto;
 
-    max-width: 500px;
+    max-width:500px;
 
-    color: #a9a0b1;
+    color:#a9a0b1;
 
-    line-height: 1.9;
+    line-height:1.9;
 
-    font-size: 15px;
+    font-size:15px;
 }
 
-.close-dossier {
-    position: absolute;
+.close-dossier{
+    position:absolute;
 
-    top: 18px;
-    right: 22px;
+    top:18px;
+    right:22px;
 
-    border: none;
+    border:none;
 
-    background: none;
+    background:none;
 
-    color: #aaa;
+    color:#aaa;
 
-    font-size: 26px;
+    font-size:26px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: 0.3s;
+    transition:.3s;
 }
 
-.close-dossier:hover {
-    color: #d58aff;
+.close-dossier:hover{
+    color:#d58aff;
 
-    transform: rotate(90deg);
+    transform:rotate(90deg);
 }
 
 /* =========================================================
-   PROFILE MODAL
+   CAPTAIN / VICE PROFILE
 ========================================================= */
 
-.profile-modal {
-    position: fixed;
+.profile-modal{
+    position:fixed;
+    inset:0;
 
-    inset: 0;
+    z-index:700;
 
-    z-index: 700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    display: flex;
+    padding:20px;
 
-    align-items: center;
-    justify-content: center;
+    background:rgba(0,0,0,.88);
 
-    padding: 20px;
+    backdrop-filter:blur(16px);
 
-    background:
-        rgba(0,0,0,0.88);
-
-    backdrop-filter: blur(16px);
-
-    opacity: 0;
-
-    visibility: hidden;
+    opacity:0;
+    visibility:hidden;
 
     transition:
-        opacity 0.45s ease,
-        visibility 0.45s ease;
+        opacity .45s ease,
+        visibility .45s ease;
 }
 
-.profile-modal.active {
-    opacity: 1;
-
-    visibility: visible;
+.profile-modal.active{
+    opacity:1;
+    visibility:visible;
 }
 
-.profile-box {
-    position: relative;
+.profile-box{
+    position:relative;
 
-    width: min(480px, 90vw);
+    width:min(480px,90vw);
 
-    padding: 25px;
+    padding:25px;
 
-    display: flex;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px
-        solid
-        rgba(194,110,255,0.65);
+    border:1px solid rgba(194,110,255,.65);
 
     background:
         radial-gradient(
             circle,
-            rgba(78,25,110,0.3),
-            rgba(3,2,8,0.98) 72%
+            rgba(78,25,110,.3),
+            rgba(3,2,8,.98) 72%
         );
 
     box-shadow:
         0 0 100px
-        rgba(126,45,180,0.3);
+        rgba(126,45,180,.3);
 
-    transform:
-        scale(0.75)
-        translateY(25px);
+    transform:scale(.75) translateY(25px);
 
-    transition:
-        transform 0.5s ease;
+    transition:transform .5s ease;
 }
 
-.profile-modal.active .profile-box {
-    transform:
-        scale(1)
-        translateY(0);
+.profile-modal.active .profile-box{
+    transform:scale(1) translateY(0);
 }
 
-.profile-box img {
-    display: block;
+.profile-box img{
+    display:block;
 
-    width: 100%;
+    width:100%;
+    max-height:70vh;
 
-    max-height: 70vh;
+    object-fit:contain;
 
-    object-fit: contain;
-
-    border:
-        1px
-        solid
-        rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,.08);
 
     box-shadow:
         0 0 50px
-        rgba(160,70,220,0.25);
+        rgba(160,70,220,.25);
 }
 
-.close-profile {
-    position: absolute;
+.close-profile{
+    position:absolute;
 
-    top: -15px;
-    right: -15px;
+    top:-15px;
+    right:-15px;
 
-    width: 40px;
-    height: 40px;
+    width:40px;
+    height:40px;
 
-    border:
-        1px
-        solid
-        rgba(194,110,255,0.65);
+    border:1px solid rgba(194,110,255,.65);
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background:
-        #09040f;
+    background:#09040f;
 
-    color: #fff;
+    color:#fff;
 
-    font-size: 24px;
+    font-size:24px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    z-index: 5;
+    z-index:5;
 
-    transition: 0.3s;
+    transition:.3s;
 }
 
-.close-profile:hover {
-    transform: rotate(90deg);
+.close-profile:hover{
+    transform:rotate(90deg);
 
-    color: #d58aff;
+    color:#d58aff;
 
     box-shadow:
         0 0 25px
-        rgba(168,76,226,0.4);
+        rgba(168,76,226,.4);
+}
+
+/* =========================================================
+   MUSIC CONTROL
+========================================================= */
+
+.music-control{
+    position:fixed;
+
+    right:24px;
+    bottom:24px;
+
+    z-index:300;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 15px;
+
+    border:1px solid rgba(177,91,232,.35);
+
+    background:rgba(5,2,10,.78);
+
+    backdrop-filter:blur(12px);
+
+    color:#aaa2b1;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    box-shadow:
+        0 0 25px
+        rgba(100,30,150,.12);
+}
+
+.music-control button{
+    border:0;
+
+    background:none;
+
+    color:#c478ff;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.music-control button:hover{
+    color:#fff;
+
+    transform:scale(1.15);
+}
+
+.music-status{
+    min-width:100px;
 }
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
-footer {
-    padding: 60px 20px;
+footer{
+    padding:60px 20px;
 
-    text-align: center;
+    text-align:center;
 
     border-top:
-        1px
-        solid
-        rgba(154,78,220,0.12);
+        1px solid
+        rgba(154,78,220,.12);
 
-    color: #5e5666;
+    color:#5e5666;
 
-    font-size: 10px;
+    font-size:10px;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    line-height: 2;
+    line-height:2;
 }
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 800px) {
+@media(max-width:800px){
 
-    nav {
-        height: 70px;
-
-        padding: 0 20px;
+    nav{
+        height:70px;
+        padding:0 20px;
     }
 
-    .nav-links {
-        display: none;
+    .nav-links{
+        display:none;
     }
 
-    .nav-logo {
-        font-size: 10px;
-
-        letter-spacing: 2px;
+    .nav-logo{
+        font-size:10px;
+        letter-spacing:2px;
     }
 
-    .nav-logo img {
-        width: 38px;
-        height: 38px;
+    .nav-logo img{
+        width:38px;
+        height:38px;
     }
 
-    .moon {
-        width: 430px;
-        height: 430px;
+    .moon{
+        width:430px;
+        height:430px;
     }
 
-    .moon-glow {
-        width: 600px;
-        height: 600px;
+    .moon-glow{
+        width:600px;
+        height:600px;
     }
 
-    .hero-logo {
-        width: 210px;
+    .hero-logo{
+        width:210px;
     }
 
-    h1 {
-        letter-spacing: 4px;
+    h1{
+        letter-spacing:4px;
     }
 
-    .tagline {
-        font-size: 14px;
+    .tagline{
+        font-size:14px;
     }
 
-    section:not(.hero) {
-        padding:
-            90px
-            20px;
+    section:not(.hero){
+        padding:90px 20px;
     }
 
-    .leader-row {
-        grid-template-columns:
-            50px
-            1fr
-            100px;
-
-        padding:
-            18px
-            15px;
+    .leader-row{
+        grid-template-columns:50px 1fr 100px;
+        padding:18px 15px;
     }
 
-    .leader-row span {
-        font-size: 13px;
+    .leader-row span{
+        font-size:13px;
     }
 
-    .leader-row b {
-        font-size: 13px;
+    .leader-row b{
+        font-size:13px;
     }
 
-    .leadership-grid {
-        grid-template-columns: 1fr;
+    .leadership-grid{
+        grid-template-columns:1fr;
     }
 
-    .dossier-box {
-        padding:
-            45px
-            25px;
+    .dossier-box{
+        padding:45px 25px;
     }
 
-    .profile-box {
-        width: min(380px, 88vw);
-
-        padding: 15px;
+    .profile-box{
+        width:min(380px,88vw);
+        padding:15px;
     }
 
-    .skip-intro {
-        right: 20px;
-        bottom: 20px;
+    .skip-intro{
+        right:20px;
+        bottom:20px;
     }
 
-    .credit {
-        letter-spacing: 3px;
-        font-size: 9px;
+    .credit{
+        letter-spacing:3px;
+        font-size:9px;
+    }
+
+    .music-control{
+        right:12px;
+        bottom:12px;
     }
 }
 </style>
@@ -1622,7 +1626,7 @@ footer {
 <body class="intro-active">
 
 <!-- =========================================================
-     INTRO / CREDITS
+     INTRO
 ========================================================= -->
 
 <div id="intro">
@@ -1667,7 +1671,8 @@ footer {
 
     <button
         class="skip-intro"
-        onclick="skipIntro()"
+        id="skipIntro"
+        type="button"
     >
         Skip Intro
     </button>
@@ -1708,6 +1713,26 @@ footer {
         type="audio/mpeg"
     >
 </audio>
+
+
+<div class="music-control">
+
+    <button
+        id="musicToggle"
+        type="button"
+        aria-label="Toggle music"
+    >
+        ▶
+    </button>
+
+    <span
+        class="music-status"
+        id="musicStatus"
+    >
+        MUSIC OFF
+    </span>
+
+</div>
 
 
 <!-- =========================================================
@@ -1754,21 +1779,13 @@ footer {
 
     <div class="nav-links">
 
-        <a href="#home">
-            Home
-        </a>
+        <a href="#home">Home</a>
 
-        <a href="#houses">
-            Houses
-        </a>
+        <a href="#houses">Houses</a>
 
-        <a href="#leaderboard">
-            Leaderboard
-        </a>
+        <a href="#leaderboard">Leaderboard</a>
 
-        <a href="#leadership">
-            Leadership
-        </a>
+        <a href="#leadership">Leadership</a>
 
         <a
             href="https://discord.gg/8nP5gZ5uD"
@@ -1876,22 +1893,13 @@ footer {
 
     <div class="houses-grid">
 
-
-        <!-- HOUSE 1 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                🌸
-            </div>
+            <div class="house-symbol">🌸</div>
 
-            <h3>
-                House Aetherion
-            </h3>
+            <h3>House Aetherion</h3>
 
-            <span>
-                PVP
-            </span>
+            <span>PVP</span>
 
             <div class="house-stars">
                 308 ⭐
@@ -1917,17 +1925,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 2 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                💫
-            </div>
+            <div class="house-symbol">💫</div>
 
-            <h3>
-                House Kira
-            </h3>
+            <h3>House Kira</h3>
 
             <span>
                 INTERNAL AFFAIRS & POLITICAL DIPLOMACY
@@ -1957,17 +1959,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 3 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                🌀
-            </div>
+            <div class="house-symbol">🌀</div>
 
-            <h3>
-                House Lucifero
-            </h3>
+            <h3>House Lucifero</h3>
 
             <span>
                 EXTERNAL AFFAIRS
@@ -1997,17 +1993,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 4 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                ✨
-            </div>
+            <div class="house-symbol">✨</div>
 
-            <h3>
-                House Shadow
-            </h3>
+            <h3>House Shadow</h3>
 
             <span>
                 INTELLIGENCE & RECONNAISSANCE
@@ -2037,17 +2027,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 5 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                💫
-            </div>
+            <div class="house-symbol">💫</div>
 
-            <h3>
-                House Chronoaeterna
-            </h3>
+            <h3>House Chronoaeterna</h3>
 
             <span>
                 WISDOM & GUIDANCE
@@ -2077,17 +2061,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 6 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                💎
-            </div>
+            <div class="house-symbol">💎</div>
 
-            <h3>
-                House Silva
-            </h3>
+            <h3>House Silva</h3>
 
             <span>
                 ADMINISTRATION
@@ -2117,17 +2095,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 7 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                🔥
-            </div>
+            <div class="house-symbol">🔥</div>
 
-            <h3>
-                House Vermillion
-            </h3>
+            <h3>House Vermillion</h3>
 
             <span>
                 DEFENSE & MILITARY AFFAIRS
@@ -2157,17 +2129,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 8 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                💮
-            </div>
+            <div class="house-symbol">💮</div>
 
-            <h3>
-                House Lunareth
-            </h3>
+            <h3>House Lunareth</h3>
 
             <span>
                 RECRUITMENT & TRAINING
@@ -2197,17 +2163,11 @@ footer {
         </article>
 
 
-        <!-- HOUSE 9 -->
-
         <article class="house-card">
 
-            <div class="house-symbol">
-                ♣️
-            </div>
+            <div class="house-symbol">♣️</div>
 
-            <h3>
-                House Eclipse
-            </h3>
+            <h3>House Eclipse</h3>
 
             <span>
                 RESOURCES & DEVELOPMENT
@@ -2354,11 +2314,9 @@ footer {
 
     <div class="leadership-grid">
 
-        <!-- CAPTAIN -->
-
         <article
             class="leader-card"
-            onclick="openProfile('captain.png')"
+            onclick="openProfile('captain.png','CAPTAIN')"
         >
 
             <div class="leader-symbol">
@@ -2384,11 +2342,9 @@ footer {
         </article>
 
 
-        <!-- VICE CAPTAIN -->
-
         <article
             class="leader-card"
-            onclick="openProfile('vice.png')"
+            onclick="openProfile('vice.png','VICE CAPTAIN')"
         >
 
             <div class="leader-symbol">
@@ -2425,6 +2381,7 @@ footer {
 <div
     class="dossier"
     id="dossier"
+    aria-hidden="true"
 >
 
     <div class="dossier-box">
@@ -2432,6 +2389,7 @@ footer {
         <button
             class="close-dossier"
             onclick="closeDossier()"
+            aria-label="Close dossier"
         >
             ×
         </button>
@@ -2466,6 +2424,7 @@ footer {
         <button
             class="btn btn-primary"
             onclick="closeDossier()"
+            type="button"
         >
             Close Archive
         </button>
@@ -2482,6 +2441,7 @@ footer {
 <div
     class="profile-modal"
     id="profileModal"
+    aria-hidden="true"
 >
 
     <div class="profile-box">
@@ -2497,7 +2457,7 @@ footer {
         <img
             id="profileImage"
             src=""
-            alt="Profile"
+            alt="Leadership profile"
         >
 
     </div>
@@ -2519,49 +2479,31 @@ footer {
 </footer>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
-
 /* =========================================================
-   INTRO STARS
+   ELEMENTS
 ========================================================= */
+
+const intro =
+    document.getElementById("intro");
 
 const introStars =
     document.getElementById("introStars");
 
-if (introStars) {
+const stars =
+    document.getElementById("stars");
 
-    for (let i = 0; i < 100; i++) {
+const particles =
+    document.getElementById("particles");
 
-        const star =
-            document.createElement("div");
+const dossier =
+    document.getElementById("dossier");
 
-        star.className =
-            "intro-star";
+const profileModal =
+    document.getElementById("profileModal");
 
-        star.style.left =
-            Math.random() * 100 + "%";
-
-        star.style.top =
-            Math.random() * 100 + "%";
-
-        star.style.animationDelay =
-            Math.random() * 5 + "s";
-
-        star.style.animationDuration =
-            (2 + Math.random() * 5) + "s";
-
-        introStars.appendChild(star);
-    }
-}
-
-
-/* =========================================================
-   MUSIC SYSTEM
-========================================================= */
+const profileImage =
+    document.getElementById("profileImage");
 
 const musicIntro =
     document.getElementById("musicIntro");
@@ -2572,104 +2514,325 @@ const musicMain =
 const musicDark =
     document.getElementById("musicDark");
 
-let musicStarted = false;
+const musicToggle =
+    document.getElementById("musicToggle");
+
+const musicStatus =
+    document.getElementById("musicStatus");
 
 
-/*
-   Browsers normally block autoplay with sound.
+/* =========================================================
+   INTRO STARS
+========================================================= */
 
-   We attempt autoplay first.
+for(let i = 0; i < 120; i++){
 
-   If blocked, the first user interaction with
-   the page starts the music.
-*/
+    const star =
+        document.createElement("div");
 
-function startMusic() {
+    star.className =
+        "intro-star";
 
-    if (musicStarted) {
-        return;
-    }
+    star.style.left =
+        Math.random() * 100 + "%";
 
-    musicStarted = true;
+    star.style.top =
+        Math.random() * 100 + "%";
 
-    musicIntro.volume = 0.75;
-    musicMain.volume = 0.75;
-    musicDark.volume = 0.75;
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
 
-    musicIntro.play().catch(() => {
-        musicStarted = false;
-    });
+    star.style.animationDuration =
+        (2 + Math.random() * 5) + "s";
+
+    introStars.appendChild(star);
 }
 
 
+/* =========================================================
+   BACKGROUND STARS
+========================================================= */
+
+for(let i = 0; i < 180; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className =
+        "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDuration =
+        (3 + Math.random() * 7) + "s";
+
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================================================
+   PURPLE PARTICLES
+========================================================= */
+
+for(let i = 0; i < 35; i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (8 + Math.random() * 12) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+    particles.appendChild(particle);
+}
+
+
+/* =========================================================
+   INTRO CONTROL
+========================================================= */
+
+let introFinished = false;
+
+function finishIntro(){
+
+    if(introFinished){
+        return;
+    }
+
+    introFinished = true;
+
+    intro.classList.add("hidden");
+
+    document.body.classList.remove(
+        "intro-active"
+    );
+
+    startMusic();
+}
+
+
+function skipIntro(){
+
+    finishIntro();
+}
+
+
+document
+    .getElementById("skipIntro")
+    .addEventListener(
+        "click",
+        skipIntro
+    );
+
+
 /*
-   Track 1 -> Track 2
+   Let the complete cinematic intro play.
+*/
+
+setTimeout(
+    finishIntro,
+    16500
+);
+
+
+/* =========================================================
+   MUSIC SYSTEM
+========================================================= */
+
+let musicStarted = false;
+let musicPlaying = false;
+
+const tracks = [
+    musicIntro,
+    musicMain,
+    musicDark
+];
+
+tracks.forEach(track => {
+
+    track.volume = 0.72;
+
+});
+
+
+function getCurrentTrack(){
+
+    return tracks.find(
+        track => !track.paused
+    );
+}
+
+
+function startMusic(){
+
+    if(musicStarted && musicPlaying){
+        return;
+    }
+
+    const current =
+        getCurrentTrack() || musicIntro;
+
+    musicStarted = true;
+
+    current.play()
+        .then(() => {
+
+            musicPlaying = true;
+
+            updateMusicUI();
+
+        })
+        .catch(() => {
+
+            musicStarted = false;
+
+            musicPlaying = false;
+
+            updateMusicUI();
+
+        });
+}
+
+
+function pauseMusic(){
+
+    tracks.forEach(
+        track => track.pause()
+    );
+
+    musicPlaying = false;
+
+    updateMusicUI();
+}
+
+
+function updateMusicUI(){
+
+    if(musicPlaying){
+
+        musicToggle.textContent = "Ⅱ";
+
+        musicStatus.textContent =
+            "MUSIC ON";
+
+    }else{
+
+        musicToggle.textContent = "▶";
+
+        musicStatus.textContent =
+            "MUSIC OFF";
+
+    }
+
+}
+
+
+musicToggle.addEventListener(
+    "click",
+    function(){
+
+        if(musicPlaying){
+
+            pauseMusic();
+
+        }else{
+
+            startMusic();
+
+        }
+
+    }
+);
+
+
+/*
+   INTRO TRACK -> MAIN TRACK
 */
 
 musicIntro.addEventListener(
     "ended",
-    function() {
+    function(){
 
         musicMain.currentTime = 0;
 
-        musicMain.play().catch(() => {});
+        musicMain.play()
+            .then(() => {
+
+                musicPlaying = true;
+                updateMusicUI();
+
+            })
+            .catch(() => {});
 
     }
 );
 
 
 /*
-   Track 2 -> Track 3
+   MAIN TRACK -> DARK TRACK
 */
 
 musicMain.addEventListener(
     "ended",
-    function() {
+    function(){
 
         musicDark.currentTime = 0;
 
-        musicDark.play().catch(() => {});
+        musicDark.play()
+            .then(() => {
+
+                musicPlaying = true;
+                updateMusicUI();
+
+            })
+            .catch(() => {});
 
     }
 );
 
 
 /*
-   Track 3 loops after finishing.
+   DARK TRACK loops.
 */
 
 musicDark.addEventListener(
     "ended",
-    function() {
+    function(){
 
         musicDark.currentTime = 0;
 
-        musicDark.play().catch(() => {});
+        musicDark.play()
+            .then(() => {
+
+                musicPlaying = true;
+                updateMusicUI();
+
+            })
+            .catch(() => {});
 
     }
 );
 
 
 /*
-   Try autoplay.
-*/
+   Browser autoplay fallback.
 
-window.addEventListener(
-    "load",
-    function() {
-
-        setTimeout(
-            startMusic,
-            700
-        );
-
-    }
-);
-
-
-/*
-   If browser blocks autoplay,
-   first interaction starts music.
+   The first interaction starts music.
 */
 
 [
@@ -2682,10 +2845,16 @@ window.addEventListener(
 
         document.addEventListener(
             eventName,
-            startMusic,
+            function(){
+
+                if(!musicPlaying){
+                    startMusic();
+                }
+
+            },
             {
-                once: true,
-                passive: true
+                once:true,
+                passive:true
             }
         );
 
@@ -2693,124 +2862,21 @@ window.addEventListener(
 );
 
 
-/* =========================================================
-   INTRO
-========================================================= */
-
-const intro =
-    document.getElementById("intro");
-
-
-let introFinished = false;
-
-
 /*
-   Intro automatically ends after the credits
-   and logo sequence.
-
-   The timing is approximately 16 seconds.
+   Try starting after page load.
 */
 
-function finishIntro() {
+window.addEventListener(
+    "load",
+    function(){
 
-    if (introFinished) {
-        return;
+        setTimeout(
+            startMusic,
+            700
+        );
+
     }
-
-    introFinished = true;
-
-    intro.classList.add("hidden");
-
-    document.body.classList.remove(
-        "intro-active"
-    );
-}
-
-
-function skipIntro() {
-
-    finishIntro();
-
-    startMusic();
-
-}
-
-
-/*
-   Automatically finish the intro.
-*/
-
-setTimeout(
-    finishIntro,
-    16500
 );
-
-
-/* =========================================================
-   BACKGROUND STARS
-========================================================= */
-
-const stars =
-    document.getElementById("stars");
-
-if (stars) {
-
-    for (let i = 0; i < 180; i++) {
-
-        const star =
-            document.createElement("div");
-
-        star.className =
-            "star";
-
-        star.style.left =
-            Math.random() * 100 + "%";
-
-        star.style.top =
-            Math.random() * 100 + "%";
-
-        star.style.animationDuration =
-            (3 + Math.random() * 7) + "s";
-
-        star.style.animationDelay =
-            Math.random() * 5 + "s";
-
-        stars.appendChild(star);
-
-    }
-}
-
-
-/* =========================================================
-   PURPLE PARTICLES
-========================================================= */
-
-const particles =
-    document.getElementById("particles");
-
-if (particles) {
-
-    for (let i = 0; i < 35; i++) {
-
-        const particle =
-            document.createElement("div");
-
-        particle.className =
-            "particle";
-
-        particle.style.left =
-            Math.random() * 100 + "%";
-
-        particle.style.animationDuration =
-            (8 + Math.random() * 12) + "s";
-
-        particle.style.animationDelay =
-            Math.random() * 10 + "s";
-
-        particles.appendChild(particle);
-
-    }
-}
 
 
 /* =========================================================
@@ -2823,7 +2889,7 @@ function openDossier(
     role,
     lord,
     text
-) {
+){
 
     document.getElementById(
         "dossierSymbol"
@@ -2845,19 +2911,35 @@ function openDossier(
         "dossierText"
     ).textContent = text;
 
-    document.getElementById(
-        "dossier"
-    ).classList.add("active");
+    dossier.classList.add("active");
 
+    dossier.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow =
+        "hidden";
 }
 
 
-function closeDossier() {
+function closeDossier(){
 
-    document.getElementById(
-        "dossier"
-    ).classList.remove("active");
+    dossier.classList.remove(
+        "active"
+    );
 
+    dossier.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    if(!profileModal.classList.contains("active")){
+
+        document.body.style.overflow =
+            "";
+
+    }
 }
 
 
@@ -2866,71 +2948,81 @@ function closeDossier() {
 ========================================================= */
 
 function openProfile(
-    image
-) {
+    image,
+    role
+){
 
-    const modal =
-        document.getElementById(
-            "profileModal"
-        );
+    profileImage.src = image;
 
-    const profileImage =
-        document.getElementById(
-            "profileImage"
-        );
+    profileImage.alt =
+        role + " profile";
 
-    profileImage.src =
-        image;
-
-    modal.classList.add(
+    profileModal.classList.add(
         "active"
     );
 
+    profileModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow =
+        "hidden";
 }
 
 
-function closeProfile() {
+function closeProfile(){
 
-    document.getElementById(
-        "profileModal"
-    ).classList.remove(
+    profileModal.classList.remove(
         "active"
     );
 
-}
+    profileModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
+    /*
+       Clear the source after the closing
+       animation so the image remains visible
+       during the transition.
+    */
 
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
+    setTimeout(
+        function(){
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+            if(
+                !profileModal.classList.contains(
+                    "active"
+                )
+            ){
 
-        if (event.key === "Escape") {
+                profileImage.src = "";
 
-            closeDossier();
+            }
 
-            closeProfile();
+        },
+        500
+    );
 
-        }
+    if(!dossier.classList.contains("active")){
+
+        document.body.style.overflow =
+            "";
 
     }
-);
+}
 
 
 /* =========================================================
    CLICK OUTSIDE DOSSIER
 ========================================================= */
 
-document.getElementById(
-    "dossier"
-).addEventListener(
+dossier.addEventListener(
     "click",
-    function(event) {
+    function(event){
 
-        if (event.target === this) {
+        if(event.target === dossier){
 
             closeDossier();
 
@@ -2944,13 +3036,11 @@ document.getElementById(
    CLICK OUTSIDE PROFILE
 ========================================================= */
 
-document.getElementById(
-    "profileModal"
-).addEventListener(
+profileModal.addEventListener(
     "click",
-    function(event) {
+    function(event){
 
-        if (event.target === this) {
+        if(event.target === profileModal){
 
             closeProfile();
 
@@ -2958,6 +3048,33 @@ document.getElementById(
 
     }
 );
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeDossier();
+
+            closeProfile();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL MUSIC UI
+========================================================= */
+
+updateMusicUI();
 
 </script>
 

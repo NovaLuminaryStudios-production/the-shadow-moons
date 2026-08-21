@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Shadow Moons | Clover Origins</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#020107"
+>
+
+<title>
+    The Shadow Moons | Clover Origins
+</title>
+
 
 <style>
 
@@ -24,13 +38,9 @@ html {
 
 body {
     background: #020107;
-    color: #fff;
+    color: #ffffff;
     font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
-}
-
-body.intro-active {
-    overflow: hidden;
 }
 
 button,
@@ -38,403 +48,6 @@ a {
     font-family: inherit;
 }
 
-/* =========================================================
-   CINEMATIC INTRO
-========================================================= */
-
-.intro {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(93, 35, 130, 0.18),
-            transparent 35%
-        ),
-        #010106;
-
-    opacity: 1;
-    visibility: visible;
-
-    transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
-}
-
-.intro.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.intro-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    overflow: hidden;
-}
-
-.intro-stars {
-    position: absolute;
-    inset: 0;
-}
-
-.intro-star {
-    position: absolute;
-
-    width: 2px;
-    height: 2px;
-
-    border-radius: 50%;
-
-    background: #fff;
-
-    opacity: 0;
-
-    animation: introStarAppear 4s ease forwards;
-}
-
-@keyframes introStarAppear {
-
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
-
-    50% {
-        opacity: 0.8;
-    }
-
-    100% {
-        opacity: 0.35;
-        transform: scale(1);
-    }
-}
-
-.intro-credit {
-    position: absolute;
-
-    top: 42%;
-
-    width: 100%;
-
-    color: rgba(255,255,255,0.72);
-
-    font-size: 11px;
-
-    letter-spacing: 7px;
-
-    text-transform: uppercase;
-
-    opacity: 0;
-
-    animation:
-        creditFade 4s ease forwards;
-}
-
-@keyframes creditFade {
-
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    25% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    75% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-}
-
-.intro-main {
-    position: absolute;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    opacity: 0;
-
-    animation:
-        introReveal 3s ease 3.5s forwards;
-}
-
-@keyframes introReveal {
-
-    0% {
-        opacity: 0;
-        transform: scale(0.85);
-    }
-
-    45% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.intro-logo {
-    width: 260px;
-    max-width: 65vw;
-
-    filter:
-        drop-shadow(
-            0 0 15px
-            rgba(169,82,230,0.8)
-        )
-        drop-shadow(
-            0 0 55px
-            rgba(125,45,180,0.45)
-        );
-
-    animation:
-        introLogoFloat 5s ease-in-out infinite;
-}
-
-@keyframes introLogoFloat {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.intro-title {
-    margin-top: 25px;
-
-    font-size:
-        clamp(
-            28px,
-            5vw,
-            55px
-        );
-
-    letter-spacing:
-        clamp(5px, 1vw, 12px);
-
-    font-weight: 400;
-
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 20px
-        rgba(194,112,255,0.35);
-}
-
-.intro-subtitle {
-    margin-top: 15px;
-
-    color: #a45fd1;
-
-    font-size: 10px;
-
-    letter-spacing: 6px;
-
-    text-transform: uppercase;
-}
-
-.enter-screen {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 20;
-
-    display: flex;
-
-    align-items: flex-end;
-    justify-content: center;
-
-    padding-bottom: 11vh;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(1,1,6,0.95),
-            transparent 45%
-        );
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    animation:
-        enterAppear 2s ease 6.5s forwards;
-}
-
-@keyframes enterAppear {
-
-    to {
-        opacity: 1;
-        pointer-events: auto;
-    }
-}
-
-.enter-button {
-    position: relative;
-
-    padding:
-        17px
-        38px;
-
-    border:
-        1px
-        solid
-        rgba(196,120,255,0.65);
-
-    background:
-        rgba(85,30,120,0.18);
-
-    color: #fff;
-
-    cursor: pointer;
-
-    letter-spacing: 4px;
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    backdrop-filter: blur(10px);
-
-    transition:
-        0.4s ease;
-
-    box-shadow:
-        0 0 25px
-        rgba(150,60,210,0.12);
-}
-
-.enter-button:hover {
-    transform: translateY(-5px);
-
-    border-color: #d28aff;
-
-    background:
-        rgba(115,40,160,0.32);
-
-    box-shadow:
-        0 0 35px
-        rgba(170,75,230,0.3);
-}
-
-.enter-hint {
-    position: absolute;
-
-    bottom: 6vh;
-
-    color: rgba(255,255,255,0.25);
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   MUSIC STATUS
-========================================================= */
-
-.music-status {
-    position: fixed;
-
-    right: 25px;
-    bottom: 25px;
-
-    z-index: 200;
-
-    padding:
-        10px
-        15px;
-
-    border:
-        1px
-        solid
-        rgba(177,91,232,0.2);
-
-    background:
-        rgba(5,3,10,0.65);
-
-    backdrop-filter: blur(8px);
-
-    color: #81778c;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    opacity: 0;
-
-    transition: 0.5s ease;
-}
-
-.music-status.active {
-    opacity: 1;
-}
-
-.music-dot {
-    display: inline-block;
-
-    width: 6px;
-    height: 6px;
-
-    margin-right: 7px;
-
-    border-radius: 50%;
-
-    background: #a95ee4;
-
-    box-shadow:
-        0 0 8px
-        #a95ee4;
-
-    animation:
-        musicPulse 1.2s ease-in-out infinite;
-}
-
-@keyframes musicPulse {
-
-    0%, 100% {
-        transform: scale(0.7);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-}
 
 /* =========================================================
    COSMIC BACKGROUND
@@ -459,6 +72,7 @@ a {
         ),
         #020107;
 }
+
 
 .moon {
     position: absolute;
@@ -495,6 +109,7 @@ a {
         moonPulse 7s ease-in-out infinite;
 }
 
+
 @keyframes moonFloat {
 
     0%, 100% {
@@ -508,7 +123,9 @@ a {
             translate(-50%, -52%)
             scale(1.04);
     }
+
 }
+
 
 @keyframes moonPulse {
 
@@ -519,7 +136,13 @@ a {
     50% {
         opacity: 0.22;
     }
+
 }
+
+
+/* =========================================================
+   MOON GLOW
+========================================================= */
 
 .moon-glow {
     position: absolute;
@@ -548,6 +171,7 @@ a {
     pointer-events: none;
 }
 
+
 @keyframes glowPulse {
 
     0%, 100% {
@@ -561,7 +185,9 @@ a {
             translate(-50%, -50%)
             scale(1.1);
     }
+
 }
+
 
 /* =========================================================
    STARS
@@ -572,6 +198,7 @@ a {
     inset: 0;
 }
 
+
 .star {
     position: absolute;
 
@@ -580,7 +207,7 @@ a {
 
     border-radius: 50%;
 
-    background: #fff;
+    background: #ffffff;
 
     opacity: 0.4;
 
@@ -588,6 +215,7 @@ a {
         starFloat linear infinite,
         starTwinkle ease-in-out infinite;
 }
+
 
 @keyframes starFloat {
 
@@ -602,7 +230,9 @@ a {
             translateY(-120px)
             translateX(30px);
     }
+
 }
+
 
 @keyframes starTwinkle {
 
@@ -615,7 +245,9 @@ a {
         opacity: 1;
         transform: scale(1.5);
     }
+
 }
+
 
 /* =========================================================
    PURPLE PARTICLES
@@ -625,6 +257,7 @@ a {
     position: absolute;
     inset: 0;
 }
+
 
 .particle {
     position: absolute;
@@ -646,14 +279,17 @@ a {
         particleMove linear infinite;
 }
 
+
 @keyframes particleMove {
 
     0% {
+
         transform:
             translateY(110vh)
             translateX(0);
 
         opacity: 0;
+
     }
 
     10% {
@@ -665,19 +301,24 @@ a {
     }
 
     100% {
+
         transform:
             translateY(-20vh)
             translateX(80px);
 
         opacity: 0;
+
     }
+
 }
+
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 nav {
+
     position: fixed;
 
     top: 0;
@@ -689,6 +330,7 @@ nav {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     padding: 0 6%;
@@ -703,9 +345,12 @@ nav {
         );
 
     backdrop-filter: blur(8px);
+
 }
 
+
 .nav-logo {
+
     display: flex;
 
     align-items: center;
@@ -717,9 +362,12 @@ nav {
     letter-spacing: 4px;
 
     font-weight: bold;
+
 }
 
+
 .nav-logo img {
+
     width: 44px;
     height: 44px;
 
@@ -730,15 +378,21 @@ nav {
             0 0 8px
             rgba(153,68,214,0.8)
         );
+
 }
 
+
 .nav-links {
+
     display: flex;
 
     gap: 26px;
+
 }
 
+
 .nav-links a {
+
     color: #aaa3b0;
 
     text-decoration: none;
@@ -749,35 +403,42 @@ nav {
 
     text-transform: uppercase;
 
-    transition: 0.35s ease;
+    transition:
+        0.35s ease;
+
 }
 
+
 .nav-links a:hover {
+
     color: #c478ff;
 
     text-shadow:
         0 0 15px
         rgba(196,120,255,0.8);
+
 }
+
 
 .discord-nav {
+
     color: #c478ff !important;
 
-    text-shadow:
-        0 0 12px
-        rgba(196,120,255,0.35);
 }
+
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero {
+
     min-height: 100vh;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -788,17 +449,23 @@ nav {
         120px
         20px
         80px;
+
 }
 
+
 .hero-content {
+
     position: relative;
 
     z-index: 5;
 
     max-width: 1000px;
+
 }
 
+
 .hero-logo {
+
     width: 280px;
 
     max-width: 65vw;
@@ -820,7 +487,9 @@ nav {
         6s
         ease-in-out
         infinite;
+
 }
+
 
 @keyframes logoFloat {
 
@@ -833,9 +502,12 @@ nav {
         transform:
             translateY(-12px);
     }
+
 }
 
+
 .eyebrow {
+
     color: #a45fd1;
 
     font-size: 11px;
@@ -843,9 +515,12 @@ nav {
     letter-spacing: 7px;
 
     text-transform: uppercase;
+
 }
 
+
 h1 {
+
     margin-top: 18px;
 
     font-size:
@@ -869,9 +544,12 @@ h1 {
 
         0 0 50px
         rgba(130,50,190,0.2);
+
 }
 
+
 .divider {
+
     width: 120px;
 
     height: 1px;
@@ -891,9 +569,12 @@ h1 {
     box-shadow:
         0 0 15px
         rgba(176,97,228,0.7);
+
 }
 
+
 .tagline {
+
     color: #aaa2b1;
 
     max-width: 600px;
@@ -908,13 +589,16 @@ h1 {
     line-height: 1.8;
 
     letter-spacing: 1px;
+
 }
+
 
 /* =========================================================
    BUTTONS
 ========================================================= */
 
 .hero-buttons {
+
     display: flex;
 
     justify-content: center;
@@ -922,9 +606,12 @@ h1 {
     gap: 15px;
 
     flex-wrap: wrap;
+
 }
 
+
 .btn {
+
     position: relative;
 
     overflow: hidden;
@@ -943,7 +630,7 @@ h1 {
     background:
         rgba(100,38,140,0.13);
 
-    color: #fff;
+    color: #ffffff;
 
     text-decoration: none;
 
@@ -959,9 +646,12 @@ h1 {
     backdrop-filter: blur(5px);
 
     cursor: pointer;
+
 }
 
+
 .btn:hover {
+
     transform:
         translateY(-4px);
 
@@ -971,30 +661,35 @@ h1 {
     box-shadow:
         0 0 20px
         rgba(168,76,226,0.35);
+
 }
+
 
 .btn-primary {
+
     background:
         rgba(117,45,167,0.28);
+
 }
 
+
 .discord-btn {
+
     border-color:
         rgba(196,120,255,0.75);
 
     background:
         rgba(117,45,167,0.38);
 
-    box-shadow:
-        0 0 20px
-        rgba(168,76,226,0.12);
 }
+
 
 /* =========================================================
    SECTIONS
 ========================================================= */
 
 section:not(.hero) {
+
     position: relative;
 
     padding:
@@ -1004,14 +699,21 @@ section:not(.hero) {
     max-width: 1500px;
 
     margin: auto;
+
 }
+
 
 .section-heading {
+
     text-align: center;
+
     margin-bottom: 70px;
+
 }
 
+
 .section-heading h2 {
+
     margin-top: 15px;
 
     font-size:
@@ -1026,9 +728,12 @@ section:not(.hero) {
     font-weight: 400;
 
     text-transform: uppercase;
+
 }
 
+
 .section-heading p {
+
     max-width: 650px;
 
     margin: auto;
@@ -1038,13 +743,16 @@ section:not(.hero) {
     line-height: 1.8;
 
     font-size: 15px;
+
 }
+
 
 /* =========================================================
    HOUSE GRID
 ========================================================= */
 
 .houses-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1057,14 +765,19 @@ section:not(.hero) {
         );
 
     gap: 24px;
+
 }
 
+
 .house-card {
+
     position: relative;
 
     min-height: 350px;
 
-    padding: 38px 28px;
+    padding:
+        38px
+        28px;
 
     text-align: center;
 
@@ -1088,9 +801,12 @@ section:not(.hero) {
         transform 0.5s ease,
         border-color 0.5s ease,
         box-shadow 0.5s ease;
+
 }
 
+
 .house-card::before {
+
     content: "";
 
     position: absolute;
@@ -1110,14 +826,20 @@ section:not(.hero) {
 
     transition:
         0.8s ease;
+
 }
+
 
 .house-card:hover::before {
+
     transform:
         translateX(100%);
+
 }
 
+
 .house-card:hover {
+
     transform:
         translateY(-12px)
         scale(1.02);
@@ -1130,21 +852,21 @@ section:not(.hero) {
         rgba(90,30,130,0.25),
         0 0 30px
         rgba(160,70,220,0.12);
+
 }
 
+
 .house-symbol {
+
     font-size: 48px;
 
     margin-bottom: 20px;
 
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(190,100,255,0.5)
-        );
 }
 
+
 .house-card h3 {
+
     font-size: 24px;
 
     font-weight: 400;
@@ -1152,22 +874,26 @@ section:not(.hero) {
     letter-spacing: 2px;
 
     margin-bottom: 12px;
+
 }
 
+
 .house-card > span {
-    display: block;
 
     color: #a45fd1;
 
     font-size: 9px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    line-height: 1.6;
 }
 
+
 .house-stars {
-    margin: 24px 0;
+
+    margin:
+        24px
+        0;
 
     font-size: 24px;
 
@@ -1176,25 +902,34 @@ section:not(.hero) {
     text-shadow:
         0 0 15px
         rgba(241,214,138,0.4);
+
 }
 
+
 .house-card p {
+
     color: #82798b;
 
     font-size: 13px;
 
     margin-bottom: 25px;
+
 }
 
+
 .house-card .btn {
+
     font-size: 8px;
+
 }
+
 
 /* =========================================================
    LEADERBOARD
 ========================================================= */
 
 .leaderboard {
+
     max-width: 950px;
 
     margin: auto;
@@ -1209,10 +944,11 @@ section:not(.hero) {
 
     backdrop-filter: blur(14px);
 
-    overflow: hidden;
 }
 
+
 .leader-row {
+
     display: grid;
 
     grid-template-columns:
@@ -1233,75 +969,94 @@ section:not(.hero) {
 
     transition:
         0.35s ease;
+
 }
+
 
 .leader-row:last-child {
+
     border-bottom: none;
+
 }
 
+
 .leader-row:hover {
+
     background:
         rgba(147,71,201,0.08);
 
     padding-left: 38px;
+
 }
 
+
 .leader-row strong {
+
     color: #756c7e;
 
     font-size: 14px;
 
     letter-spacing: 2px;
+
 }
 
+
 .leader-row span {
+
     font-size: 16px;
 
     letter-spacing: 1px;
+
 }
 
+
 .leader-row b {
+
     text-align: right;
 
     color: #f1d68a;
 
     font-size: 17px;
 
-    text-shadow:
-        0 0 12px
-        rgba(241,214,138,0.35);
 }
 
+
 .leader-row.first {
+
     border-left:
         3px
         solid
         #e8c96a;
 
-    box-shadow:
-        inset 25px 0 50px
-        rgba(232,201,106,0.035);
 }
 
+
 .leader-row.second {
+
     border-left:
         3px
         solid
         #c8c8d0;
+
 }
 
+
 .leader-row.third {
+
     border-left:
         3px
         solid
         #b87955;
+
 }
+
 
 /* =========================================================
    LEADERSHIP
 ========================================================= */
 
 .leadership-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1318,11 +1073,14 @@ section:not(.hero) {
     max-width: 900px;
 
     margin: auto;
+
 }
 
+
 .leader-card {
+
     padding:
-        55px
+        45px
         30px;
 
     text-align: center;
@@ -1343,9 +1101,12 @@ section:not(.hero) {
 
     transition:
         0.5s ease;
+
 }
 
+
 .leader-card:hover {
+
     transform:
         translateY(-10px);
 
@@ -1355,43 +1116,332 @@ section:not(.hero) {
     box-shadow:
         0 20px 60px
         rgba(90,30,130,0.25);
+
 }
 
+
 .leader-symbol {
+
     font-size: 55px;
 
     margin-bottom: 20px;
+
 }
 
+
 .leader-card > span {
+
     color: #a45fd1;
 
     font-size: 10px;
 
     letter-spacing: 5px;
+
 }
 
+
 .leader-card h3 {
+
     margin-top: 18px;
 
     font-size: 32px;
 
     font-weight: 400;
+
 }
 
+
 .leader-card p {
+
     margin-top: 10px;
 
     color: #8f8798;
 
     letter-spacing: 1px;
+
 }
+
+
+/* =========================================================
+   LORDS
+========================================================= */
+
+.lords-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                230px,
+                1fr
+            )
+        );
+
+    gap: 24px;
+
+}
+
+
+.lord-card {
+
+    padding:
+        35px
+        20px;
+
+    text-align: center;
+
+    border:
+        1px
+        solid
+        rgba(161,83,214,0.20);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(80,30,110,0.16),
+            rgba(10,5,18,0.7)
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        0.45s ease;
+
+}
+
+
+.lord-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(196,120,255,0.65);
+
+    box-shadow:
+        0 20px 50px
+        rgba(90,30,130,0.25);
+
+}
+
+
+.lord-pfp {
+
+    width: 115px;
+    height: 115px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        2px
+        solid
+        rgba(196,120,255,0.55);
+
+    box-shadow:
+        0 0 20px
+        rgba(168,76,226,0.35),
+        0 0 45px
+        rgba(130,50,190,0.15);
+
+    cursor: pointer;
+
+    transition:
+        0.4s ease;
+
+}
+
+
+.lord-pfp:hover {
+
+    transform:
+        scale(1.08);
+
+    border-color:
+        #d18aff;
+
+    box-shadow:
+        0 0 30px
+        rgba(196,120,255,0.65),
+        0 0 65px
+        rgba(130,50,190,0.3);
+
+}
+
+
+.lord-card h3 {
+
+    margin-top: 22px;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+}
+
+
+.lord-card span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #a45fd1;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+.profile-label {
+
+    margin-top: 12px;
+
+    color: #706779;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   PROFILE VIEWER
+========================================================= */
+
+.profile-viewer {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0,0,0,0.88);
+
+    backdrop-filter:
+        blur(15px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+
+}
+
+
+.profile-viewer.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.profile-viewer img {
+
+    max-width:
+        min(75vw, 650px);
+
+    max-height:
+        80vh;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+
+    border:
+        2px
+        solid
+        rgba(196,120,255,0.75);
+
+    box-shadow:
+        0 0 35px
+        rgba(196,120,255,0.45),
+        0 0 100px
+        rgba(130,50,190,0.35);
+
+    transform:
+        scale(0.75);
+
+    transition:
+        transform 0.5s ease;
+
+}
+
+
+.profile-viewer.active img {
+
+    transform:
+        scale(1);
+
+}
+
+
+.close-profile {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 35px;
+
+    border: none;
+
+    background: none;
+
+    color: #aaa;
+
+    font-size: 35px;
+
+    cursor: pointer;
+
+    transition:
+        0.3s;
+
+}
+
+
+.close-profile:hover {
+
+    color: #d58aff;
+
+    transform:
+        rotate(90deg);
+
+}
+
 
 /* =========================================================
    DOSSIER MODAL
 ========================================================= */
 
 .dossier {
+
     position: fixed;
 
     inset: 0;
@@ -1401,6 +1451,7 @@ section:not(.hero) {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
@@ -1408,7 +1459,8 @@ section:not(.hero) {
     background:
         rgba(0,0,0,0.78);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(12px);
 
     opacity: 0;
 
@@ -1417,22 +1469,25 @@ section:not(.hero) {
     transition:
         opacity 0.4s ease,
         visibility 0.4s ease;
+
 }
 
+
 .dossier.active {
+
     opacity: 1;
 
     visibility: visible;
+
 }
 
+
 .dossier-box {
+
     position: relative;
 
     width:
-        min(
-            650px,
-            100%
-        );
+        min(650px, 100%);
 
     padding:
         55px
@@ -1462,29 +1517,41 @@ section:not(.hero) {
 
     transition:
         transform 0.5s ease;
+
 }
 
+
 .dossier.active .dossier-box {
+
     transform:
         scale(1)
         translateY(0);
+
 }
 
+
 .dossier-symbol {
+
     font-size: 65px;
 
     margin-bottom: 20px;
+
 }
 
+
 .dossier-box h2 {
+
     font-size: 38px;
 
     font-weight: 400;
 
     letter-spacing: 3px;
+
 }
 
+
 .dossier-box .dossier-role {
+
     display: block;
 
     margin-top: 12px;
@@ -1494,9 +1561,12 @@ section:not(.hero) {
     letter-spacing: 3px;
 
     font-size: 10px;
+
 }
 
+
 .dossier-box p {
+
     margin:
         28px
         auto;
@@ -1508,12 +1578,16 @@ section:not(.hero) {
     line-height: 1.9;
 
     font-size: 15px;
+
 }
 
+
 .close-dossier {
+
     position: absolute;
 
     top: 18px;
+
     right: 22px;
 
     border: none;
@@ -1526,21 +1600,80 @@ section:not(.hero) {
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition:
+        0.3s;
+
 }
 
+
 .close-dossier:hover {
+
     color: #d58aff;
 
     transform:
         rotate(90deg);
+
 }
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.music-indicator {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    z-index: 300;
+
+    padding:
+        12px
+        18px;
+
+    border:
+        1px
+        solid
+        rgba(177,91,232,0.35);
+
+    background:
+        rgba(8,3,15,0.72);
+
+    backdrop-filter:
+        blur(10px);
+
+    color: #a45fd1;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    transition:
+        0.4s ease;
+
+}
+
+
+.music-indicator.visible {
+
+    opacity: 1;
+
+}
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer {
+
     padding:
         60px
         20px;
@@ -1559,7 +1692,9 @@ footer {
     letter-spacing: 3px;
 
     line-height: 2;
+
 }
+
 
 /* =========================================================
    MOBILE
@@ -1568,57 +1703,91 @@ footer {
 @media (max-width: 800px) {
 
     nav {
+
         height: 70px;
 
         padding:
             0
             20px;
+
     }
+
 
     .nav-links {
+
         display: none;
+
     }
 
+
     .nav-logo {
+
         font-size: 10px;
 
         letter-spacing: 2px;
+
     }
+
 
     .nav-logo img {
+
         width: 38px;
+
         height: 38px;
+
     }
+
 
     .moon {
+
         width: 430px;
+
         height: 430px;
+
     }
+
 
     .moon-glow {
+
         width: 600px;
+
         height: 600px;
+
     }
+
 
     .hero-logo {
+
         width: 210px;
+
     }
+
 
     h1 {
+
         letter-spacing: 4px;
+
     }
+
 
     .tagline {
+
         font-size: 14px;
+
     }
 
+
     section:not(.hero) {
+
         padding:
             90px
             20px;
+
     }
 
+
     .leader-row {
+
         grid-template-columns:
             50px
             1fr
@@ -1627,124 +1796,66 @@ footer {
         padding:
             18px
             15px;
+
     }
+
 
     .leader-row span {
+
         font-size: 13px;
+
     }
+
 
     .leader-row b {
+
         font-size: 13px;
+
     }
+
 
     .leadership-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
 
+
     .dossier-box {
+
         padding:
             45px
             25px;
+
     }
 
-    .music-status {
-        right: 12px;
-        bottom: 12px;
+
+    .profile-viewer img {
+
+        max-width: 82vw;
+
+        max-height: 70vh;
+
     }
 
-    .intro-logo {
-        width: 210px;
-    }
 
-    .intro-title {
-        font-size: 25px;
-    }
+    .close-profile {
 
-    .intro-credit {
-        font-size: 8px;
-        letter-spacing: 4px;
+        top: 18px;
+
+        right: 22px;
+
     }
 
 }
 
 </style>
+
 </head>
 
-<body class="intro-active">
 
-<!-- =========================================================
-     CINEMATIC INTRO
-========================================================= -->
-
-<div class="intro" id="intro">
-
-    <div class="intro-content">
-
-        <div
-            class="intro-stars"
-            id="introStars"
-        ></div>
-
-        <div class="intro-credit">
-            A LEGACY FORGED IN SHADOW
-        </div>
-
-        <div class="intro-main">
-
-            <img
-                src="Shadow moons.png"
-                alt="The Shadow Moons"
-                class="intro-logo"
-            >
-
-            <div class="intro-title">
-                THE SHADOW MOONS
-            </div>
-
-            <div class="intro-subtitle">
-                CLOVER ORIGINS
-            </div>
-
-        </div>
-
-        <div class="enter-screen">
-
-            <button
-                class="enter-button"
-                id="enterButton"
-            >
-                Enter The Shadow Moons
-            </button>
-
-            <div class="enter-hint">
-                Begin The Chronicle
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     MUSIC
-========================================================= -->
-
-<audio
-    id="musicPlayer"
-    preload="auto"
-></audio>
-
-<div
-    class="music-status"
-    id="musicStatus"
->
-    <span class="music-dot"></span>
-    <span id="musicTrackName">
-        The Shadow Moons
-    </span>
-</div>
+<body>
 
 
 <!-- =========================================================
@@ -1789,6 +1900,7 @@ footer {
 
     </div>
 
+
     <div class="nav-links">
 
         <a href="#home">
@@ -1805,6 +1917,10 @@ footer {
 
         <a href="#leadership">
             Leadership
+        </a>
+
+        <a href="#lords">
+            Lords
         </a>
 
         <a
@@ -1915,6 +2031,8 @@ footer {
     <div class="houses-grid">
 
 
+        <!-- AETHERION -->
+
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1953,6 +2071,8 @@ footer {
         </article>
 
 
+        <!-- KIRA -->
+
         <article class="house-card">
 
             <div class="house-symbol">
@@ -1968,7 +2088,7 @@ footer {
             </span>
 
             <div class="house-stars">
-                304 ⭐
+                229 ⭐
             </div>
 
             <p>
@@ -1982,7 +2102,7 @@ footer {
                     'House Kira',
                     'Internal Affairs & Political Diplomacy',
                     'Damnatio Kira',
-                    'The dignified house entrusted with matters of internal affairs and political diplomacy. House Kira currently holds second position with 304 stars.'
+                    'The dignified house entrusted with matters of internal affairs and political diplomacy. House Kira currently holds second position with 229 stars.'
                 )"
             >
                 Open Dossier
@@ -1990,6 +2110,8 @@ footer {
 
         </article>
 
+
+        <!-- LUCIFERO -->
 
         <article class="house-card">
 
@@ -2029,6 +2151,8 @@ footer {
         </article>
 
 
+        <!-- SHADOW -->
+
         <article class="house-card">
 
             <div class="house-symbol">
@@ -2066,6 +2190,8 @@ footer {
 
         </article>
 
+
+        <!-- CHRONOAETERNA -->
 
         <article class="house-card">
 
@@ -2105,6 +2231,8 @@ footer {
         </article>
 
 
+        <!-- SILVA -->
+
         <article class="house-card">
 
             <div class="house-symbol">
@@ -2142,6 +2270,8 @@ footer {
 
         </article>
 
+
+        <!-- VERMILLION -->
 
         <article class="house-card">
 
@@ -2181,6 +2311,8 @@ footer {
         </article>
 
 
+        <!-- LUNARETH -->
+
         <article class="house-card">
 
             <div class="house-symbol">
@@ -2218,6 +2350,8 @@ footer {
 
         </article>
 
+
+        <!-- ECLIPSE -->
 
         <article class="house-card">
 
@@ -2298,7 +2432,7 @@ footer {
         <div class="leader-row second">
             <strong>02</strong>
             <span>💫 House Kira</span>
-            <b>304 ⭐</b>
+            <b>229 ⭐</b>
         </div>
 
         <div class="leader-row third">
@@ -2367,14 +2501,17 @@ footer {
         <div class="divider"></div>
 
         <p>
-            The two figures who stand above
-            the Nine Great Houses.
+            The Captain and Vice Captain
+            who lead the Shadow Moons.
         </p>
 
     </div>
 
 
     <div class="leadership-grid">
+
+
+        <!-- CAPTAIN -->
 
         <article class="leader-card">
 
@@ -2394,8 +2531,25 @@ footer {
                 King of the Shadows
             </p>
 
+            <div class="profile-wrap">
+
+                <img
+                    src="profiles/captain.png"
+                    alt="Captain"
+                    class="lord-pfp"
+                    onclick="openProfile('profiles/captain.png')"
+                >
+
+                <div class="profile-label">
+                    View Portrait
+                </div>
+
+            </div>
+
         </article>
 
+
+        <!-- VICE CAPTAIN -->
 
         <article class="leader-card">
 
@@ -2415,6 +2569,21 @@ footer {
                 Twilight Sentinel
             </p>
 
+            <div class="profile-wrap">
+
+                <img
+                    src="profiles/vice.png"
+                    alt="Vice Captain"
+                    class="lord-pfp"
+                    onclick="openProfile('profiles/vice.png')"
+                >
+
+                <div class="profile-label">
+                    View Portrait
+                </div>
+
+            </div>
+
         </article>
 
     </div>
@@ -2423,7 +2592,280 @@ footer {
 
 
 <!-- =========================================================
-     DOSSIER MODAL
+     LORDS
+========================================================= -->
+
+<section id="lords">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            LORDS OF THE GREAT HOUSES
+        </div>
+
+        <h2>
+            HOUSE LORDS
+        </h2>
+
+        <div class="divider"></div>
+
+        <p>
+            The Lords who command the Great Houses
+            beneath the Shadow Moons.
+        </p>
+
+    </div>
+
+
+    <div class="lords-grid">
+
+
+        <!-- AETHERION -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/aetherion.png"
+                alt="Yami Sukehiro"
+                class="lord-pfp"
+                onclick="openProfile('profiles/aetherion.png')"
+            >
+
+            <h3>
+                Yami Sukehiro
+            </h3>
+
+            <span>
+                LORD OF HOUSE AETHERION
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- KIRA -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/kira.png"
+                alt="Damnatio Kira"
+                class="lord-pfp"
+                onclick="openProfile('profiles/kira.png')"
+            >
+
+            <h3>
+                Damnatio Kira
+            </h3>
+
+            <span>
+                LORD OF HOUSE KIRA
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- LUCIFERO -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/lucifero.png"
+                alt="Lucifer"
+                class="lord-pfp"
+                onclick="openProfile('profiles/lucifero.png')"
+            >
+
+            <h3>
+                Lucifer
+            </h3>
+
+            <span>
+                LORD OF HOUSE LUCIFERO
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- SHADOW -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/shadow.png"
+                alt="Vangeance"
+                class="lord-pfp"
+                onclick="openProfile('profiles/shadow.png')"
+            >
+
+            <h3>
+                Vangeance
+            </h3>
+
+            <span>
+                LORD OF HOUSE SHADOW
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- CHRONOAETERNA -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/chronoaeterna.png"
+                alt="Chrono Lord Kai"
+                class="lord-pfp"
+                onclick="openProfile('profiles/chronoaeterna.png')"
+            >
+
+            <h3>
+                Chrono Lord Kai
+            </h3>
+
+            <span>
+                LORD OF HOUSE CHRONOAETERNA
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- SILVA -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/silva.png"
+                alt="Nozel Silva"
+                class="lord-pfp"
+                onclick="openProfile('profiles/silva.png')"
+            >
+
+            <h3>
+                Nozel Silva
+            </h3>
+
+            <span>
+                LORD OF HOUSE SILVA
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- LUNARETH -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/lunareth.png"
+                alt="Aizen"
+                class="lord-pfp"
+                onclick="openProfile('profiles/lunareth.png')"
+            >
+
+            <h3>
+                Aizen
+            </h3>
+
+            <span>
+                LORD OF HOUSE LUNARETH
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- ECLIPSE -->
+
+        <article class="lord-card">
+
+            <img
+                src="profiles/eclipse.png"
+                alt="Sir Prime"
+                class="lord-pfp"
+                onclick="openProfile('profiles/eclipse.png')"
+            >
+
+            <h3>
+                Sir Prime
+            </h3>
+
+            <span>
+                LORD OF HOUSE ECLIPSE
+            </span>
+
+            <div class="profile-label">
+                View Portrait
+            </div>
+
+        </article>
+
+
+        <!-- VERMILLION HAS NO PFP -->
+
+        <article class="lord-card">
+
+            <div
+                class="lord-pfp"
+                style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    cursor:default;
+                    font-size:38px;
+                "
+            >
+                🔥
+            </div>
+
+            <h3>
+                Fuegoleon Vermillion
+            </h3>
+
+            <span>
+                LORD OF HOUSE VERMILLION
+            </span>
+
+            <div class="profile-label">
+                Portrait Unavailable
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DOSSIER
 ========================================================= -->
 
 <div
@@ -2463,7 +2905,10 @@ footer {
         <div class="divider"></div>
 
         <p>
-            <strong>Lord:</strong>
+            <strong>
+                Lord:
+            </strong>
+
             <span id="dossierLord"></span>
         </p>
 
@@ -2480,12 +2925,55 @@ footer {
 
 
 <!-- =========================================================
+     PROFILE VIEWER
+========================================================= -->
+
+<div
+    class="profile-viewer"
+    id="profileViewer"
+>
+
+    <button
+        class="close-profile"
+        onclick="closeProfile()"
+    >
+        ×
+    </button>
+
+    <img
+        id="profileImage"
+        src=""
+        alt="Profile"
+    >
+
+</div>
+
+
+<!-- =========================================================
+     MUSIC
+========================================================= -->
+
+<audio
+    id="musicPlayer"
+    preload="auto"
+></audio>
+
+<div
+    class="music-indicator"
+    id="musicIndicator"
+>
+    ♪ Shadow Moons
+</div>
+
+
+<!-- =========================================================
      FOOTER
 ========================================================= -->
 
 <footer>
 
     THE SHADOW MOONS
+
     <br>
 
     CLOVER ORIGINS
@@ -2500,50 +2988,20 @@ footer {
 <script>
 
 /* =========================================================
-   INTRO STARS
-========================================================= */
-
-const introStars =
-    document.getElementById("introStars");
-
-if (introStars) {
-
-    for (let i = 0; i < 140; i++) {
-
-        const star =
-            document.createElement("div");
-
-        star.className =
-            "intro-star";
-
-        star.style.left =
-            Math.random() * 100 + "%";
-
-        star.style.top =
-            Math.random() * 100 + "%";
-
-        star.style.animationDelay =
-            (Math.random() * 4) + "s";
-
-        star.style.animationDuration =
-            (2 + Math.random() * 4) + "s";
-
-        introStars.appendChild(star);
-    }
-
-}
-
-
-/* =========================================================
-   BACKGROUND STARS
+   STARS
 ========================================================= */
 
 const stars =
     document.getElementById("stars");
 
+
 if (stars) {
 
-    for (let i = 0; i < 180; i++) {
+    for (
+        let i = 0;
+        i < 180;
+        i++
+    ) {
 
         const star =
             document.createElement("div");
@@ -2564,6 +3022,7 @@ if (stars) {
             Math.random() * 5 + "s";
 
         stars.appendChild(star);
+
     }
 
 }
@@ -2576,9 +3035,14 @@ if (stars) {
 const particles =
     document.getElementById("particles");
 
+
 if (particles) {
 
-    for (let i = 0; i < 35; i++) {
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
 
         const particle =
             document.createElement("div");
@@ -2596,178 +3060,8 @@ if (particles) {
             Math.random() * 10 + "s";
 
         particles.appendChild(particle);
+
     }
-
-}
-
-
-/* =========================================================
-   MUSIC SYSTEM
-========================================================= */
-
-const musicPlayer =
-    document.getElementById("musicPlayer");
-
-const musicStatus =
-    document.getElementById("musicStatus");
-
-const musicTrackName =
-    document.getElementById("musicTrackName");
-
-const tracks = [
-
-    {
-        file:
-            "music/kulakovka-epic-trailer-277924.mp3",
-
-        name:
-            "The Awakening"
-    },
-
-    {
-        file:
-            "music/the_mountain-epic-trailer-576568.mp3",
-
-        name:
-            "The Mountain"
-    },
-
-    {
-        file:
-            "music/audiocopper-dark-571483.mp3",
-
-        name:
-            "Into The Shadows"
-    }
-
-];
-
-let currentTrack = 0;
-
-
-/* =========================================================
-   PLAY TRACK
-========================================================= */
-
-function playTrack(index) {
-
-    if (!musicPlayer) {
-        return;
-    }
-
-    currentTrack = index;
-
-    musicPlayer.src =
-        tracks[index].file;
-
-    musicPlayer.load();
-
-    musicPlayer.play()
-        .then(function() {
-
-            if (musicStatus) {
-
-                musicStatus.classList.add(
-                    "active"
-                );
-
-                musicTrackName.textContent =
-                    tracks[index].name;
-            }
-
-        })
-        .catch(function(error) {
-
-            console.log(
-                "Music playback was blocked:",
-                error
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   AUTOMATIC TRACK PROGRESSION
-========================================================= */
-
-if (musicPlayer) {
-
-    musicPlayer.addEventListener(
-        "ended",
-        function() {
-
-            if (currentTrack < tracks.length - 1) {
-
-                playTrack(
-                    currentTrack + 1
-                );
-
-            } else {
-
-                /*
-                 * Third track finished.
-                 * Restart the third track.
-                 */
-
-                playTrack(2);
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   ENTER THE SHADOW MOONS
-========================================================= */
-
-const enterButton =
-    document.getElementById("enterButton");
-
-const intro =
-    document.getElementById("intro");
-
-if (enterButton) {
-
-    enterButton.addEventListener(
-        "click",
-        function() {
-
-            document.body.classList.remove(
-                "intro-active"
-            );
-
-            /*
-             * User interaction allows
-             * audio playback.
-             */
-
-            playTrack(0);
-
-            /*
-             * Fade out cinematic intro.
-             */
-
-            intro.classList.add(
-                "hidden"
-            );
-
-            /*
-             * Bring the user to
-             * the beginning of the site.
-             */
-
-            window.scrollTo({
-                top: 0,
-                behavior: "instant"
-            });
-
-        }
-    );
 
 }
 
@@ -2806,9 +3100,7 @@ function openDossier(
 
     document.getElementById(
         "dossier"
-    ).classList.add(
-        "active"
-    );
+    ).classList.add("active");
 
 }
 
@@ -2817,6 +3109,41 @@ function closeDossier() {
 
     document.getElementById(
         "dossier"
+    ).classList.remove("active");
+
+}
+
+
+/* =========================================================
+   PROFILE VIEWER
+========================================================= */
+
+function openProfile(image) {
+
+    const viewer =
+        document.getElementById(
+            "profileViewer"
+        );
+
+    const profileImage =
+        document.getElementById(
+            "profileImage"
+        );
+
+    profileImage.src =
+        image;
+
+    viewer.classList.add(
+        "active"
+    );
+
+}
+
+
+function closeProfile() {
+
+    document.getElementById(
+        "profileViewer"
     ).classList.remove(
         "active"
     );
@@ -2825,14 +3152,18 @@ function closeDossier() {
 
 
 /* =========================================================
-   ESCAPE KEY
+   DOSSIER CLICK OUTSIDE
 ========================================================= */
 
-document.addEventListener(
-    "keydown",
+document.getElementById(
+    "dossier"
+).addEventListener(
+    "click",
     function(event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.target === this
+        ) {
 
             closeDossier();
 
@@ -2843,25 +3174,198 @@ document.addEventListener(
 
 
 /* =========================================================
-   CLICK OUTSIDE DOSSIER
+   PROFILE CLICK OUTSIDE
 ========================================================= */
 
 document.getElementById(
-    "dossier"
+    "profileViewer"
 ).addEventListener(
     "click",
     function(event) {
 
-        if (event.target === this) {
+        if (
+            event.target === this
+        ) {
 
-            closeDossier();
+            closeProfile();
 
         }
 
     }
 );
 
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeDossier();
+
+            closeProfile();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MUSIC SYSTEM
+========================================================= */
+
+const musicPlayer =
+    document.getElementById(
+        "musicPlayer"
+    );
+
+const musicIndicator =
+    document.getElementById(
+        "musicIndicator"
+    );
+
+
+const tracks = [
+
+    "music/kulakovka-epic-trailer-277924.mp3",
+
+    "music/the_mountain-epic-trailer-576568.mp3",
+
+    "music/audiocopper-dark-571483.mp3"
+
+];
+
+
+let currentTrack = 0;
+
+let musicStarted = false;
+
+
+/* PLAY CURRENT TRACK */
+
+function playCurrentTrack() {
+
+    if (!musicPlayer) {
+        return;
+    }
+
+    musicPlayer.src =
+        tracks[currentTrack];
+
+    musicPlayer.volume =
+        0.65;
+
+    musicPlayer.play()
+        .then(function() {
+
+            musicStarted = true;
+
+            if (musicIndicator) {
+
+                musicIndicator.classList.add(
+                    "visible"
+                );
+
+            }
+
+        })
+        .catch(function() {
+
+            /*
+                Browser blocked autoplay.
+                Music will start after
+                the visitor interacts.
+            */
+
+        });
+
+}
+
+
+/* NEXT TRACK */
+
+musicPlayer.addEventListener(
+    "ended",
+    function() {
+
+        currentTrack++;
+
+        if (
+            currentTrack >=
+            tracks.length
+        ) {
+
+            currentTrack = 0;
+
+        }
+
+        playCurrentTrack();
+
+    }
+);
+
+
+/* START AFTER USER INTERACTION */
+
+function startMusicAfterInteraction() {
+
+    if (
+        !musicStarted
+    ) {
+
+        playCurrentTrack();
+
+    }
+
+}
+
+
+document.addEventListener(
+    "click",
+    startMusicAfterInteraction,
+    {
+        once: true
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    startMusicAfterInteraction,
+    {
+        once: true
+    }
+);
+
+
+/* TRY AUTOPLAY */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        setTimeout(
+            function() {
+
+                playCurrentTrack();
+
+            },
+            800
+        );
+
+    }
+);
+
 </script>
 
+
 </body>
+
 </html>

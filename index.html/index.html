@@ -16,7 +16,6 @@
     --bg:#05030b;
     --bg2:#090612;
     --panel:rgba(17,10,29,.72);
-    --panel2:rgba(27,15,43,.82);
     --purple:#9d5cff;
     --purple2:#6c2cff;
     --violet:#c08cff;
@@ -24,7 +23,6 @@
     --white:#f5efff;
     --muted:#a89db8;
     --border:rgba(176,112,255,.22);
-    --shadow:0 0 45px rgba(120,40,255,.16);
 }
 
 *{
@@ -98,7 +96,6 @@ body::before{
 .intro-stars{
     position:absolute;
     inset:0;
-    overflow:hidden;
 }
 
 .intro-star{
@@ -128,7 +125,6 @@ body::before{
     position:absolute;
     inset:0;
     background:radial-gradient(circle,transparent 30%,rgba(0,0,0,.45) 75%,#000 100%);
-    pointer-events:none;
 }
 
 .eclipse{
@@ -559,7 +555,7 @@ section{
     border-radius:20px;
     background:linear-gradient(145deg,rgba(28,16,44,.8),rgba(9,5,16,.82));
     padding:28px;
-    box-shadow:var(--shadow);
+    box-shadow:0 0 45px rgba(120,40,255,.16);
     transition:.45s cubic-bezier(.16,1,.3,1);
 }
 
@@ -589,23 +585,6 @@ section{
     z-index:1;
 }
 
-.card-icon{
-    font-size:2rem;
-    margin-bottom:18px;
-}
-
-.card h3{
-    font-family:Cinzel,serif;
-    font-size:1.2rem;
-    margin-bottom:9px;
-}
-
-.card p{
-    color:var(--muted);
-    font-size:.88rem;
-    line-height:1.75;
-}
-
 /* LEADERSHIP */
 
 .leader-grid{
@@ -616,8 +595,13 @@ section{
     margin:auto;
 }
 
-.leader-card{
+.leader-card,
+.lord-card,
+.house-card{
     cursor:pointer;
+}
+
+.leader-card{
     min-height:280px;
     display:flex;
     flex-direction:column;
@@ -639,7 +623,8 @@ section{
     transition:.45s;
 }
 
-.leader-card:hover .pfp{
+.leader-card:hover .pfp,
+.lord-card:hover .pfp{
     transform:scale(1.07);
     box-shadow:
         0 0 25px rgba(181,100,255,.55),
@@ -668,7 +653,6 @@ section{
 }
 
 .lord-card{
-    cursor:pointer;
     text-align:center;
     padding:30px 20px;
 }
@@ -684,11 +668,7 @@ section{
     margin-top:8px;
 }
 
-/* HOUSES */
-
-.house-card{
-    cursor:pointer;
-}
+/* HOUSE CARDS */
 
 .house-card .house-symbol{
     font-size:2rem;
@@ -696,7 +676,14 @@ section{
 }
 
 .house-card h3{
+    font-family:Cinzel,serif;
     font-size:1rem;
+}
+
+.house-card p{
+    color:var(--muted);
+    font-size:.82rem;
+    margin-top:5px;
 }
 
 .stars{
@@ -785,6 +772,13 @@ section{
 .event-card h3{
     font-family:Cinzel,serif;
     margin-top:18px;
+    margin-bottom:12px;
+}
+
+.event-card p{
+    color:var(--muted);
+    font-size:.85rem;
+    line-height:1.7;
 }
 
 /* SOVEREIGN */
@@ -1047,13 +1041,18 @@ footer strong{
     <div class="intro-noise"></div>
     <div class="intro-vignette"></div>
 
-    <div class="intro-emblem">✦  THE SHADOW MOONS  ✦</div>
+    <div class="intro-emblem">
+        ✦ THE SHADOW MOONS ✦
+    </div>
 
     <div class="intro-symbols"></div>
     <div class="eclipse"></div>
 
     <div class="intro-content">
-        <div class="intro-kicker">UNDER THE ETERNAL MOON</div>
+
+        <div class="intro-kicker">
+            UNDER THE ETERNAL MOON
+        </div>
 
         <div class="intro-line"></div>
 
@@ -1066,10 +1065,12 @@ footer strong{
         </div>
 
         <div class="intro-motto">
-            <span>“</span> Where kingdoms rise in silence,
+            <span>“</span>
+            Where kingdoms rise in silence,
             where loyalty becomes legacy,
             and where the moon watches over those
-            who dare to carve their own destiny. <span>”</span>
+            who dare to carve their own destiny.
+            <span>”</span>
         </div>
 
         <div class="intro-credits">
@@ -1077,52 +1078,68 @@ footer strong{
             <span>THE HIGH COUNCIL <b>⚜</b></span>
             <span>THE NINE HOUSES <b>✦</b></span>
         </div>
+
     </div>
 
-    <button class="skip-intro" id="skipIntro">SKIP INTRO »</button>
+    <button class="skip-intro" id="skipIntro">
+        SKIP INTRO »
+    </button>
+
 </div>
 
 
 <!-- ======================================================
-     MAIN WEBSITE
+     MAIN SITE
 ====================================================== -->
 
 <div id="mainSite">
 
 <nav class="navbar">
     <div class="nav-inner">
-        <a href="#home" class="nav-brand">THE SHADOW MOONS</a>
+
+        <a href="#home" class="nav-brand">
+            THE SHADOW MOONS
+        </a>
 
         <ul class="nav-links">
-            <li><a href="#leadership">LEADERSHIP</a></li>
+            <li><a href="#sovereign">SOVEREIGN</a></li>
+            <li><a href="#leadership">COUNCIL</a></li>
             <li><a href="#lords">LORDS</a></li>
             <li><a href="#houses">HOUSES</a></li>
             <li><a href="#ranking">RANKING</a></li>
             <li><a href="#events">EVENTS</a></li>
         </ul>
 
-        <a class="discord-btn"
-           href="https://discord.gg/8nP5gZ5uD"
-           target="_blank">
+        <a
+            class="discord-btn"
+            href="https://discord.gg/8nP5gZ5uD"
+            target="_blank"
+            rel="noopener"
+        >
             DISCORD
         </a>
+
     </div>
 </nav>
 
 
-<!-- HERO -->
+<!-- ======================================================
+     HERO
+====================================================== -->
 
 <section class="hero" id="home">
+
     <div class="container">
 
         <img
             src="Shadow moons.png"
             alt="The Shadow Moons"
             class="hero-logo"
-            onerror="this.style.display='none'"
         >
 
-        <div class="eyebrow">CLOVER ORIGINS • GUILD ARCHIVE</div>
+        <div class="eyebrow">
+            CLOVER ORIGINS • GUILD ARCHIVE
+        </div>
 
         <h1>
             THE SHADOW
@@ -1136,17 +1153,28 @@ footer strong{
             Bound by sovereignty, protected by its houses,
             and carried forward by those who choose to leave a legacy.
         </p>
+
     </div>
+
 </section>
 
 
-<!-- SOVEREIGN -->
+<!-- ======================================================
+     SOVEREIGN
+====================================================== -->
 
 <section class="sovereign" id="sovereign">
+
     <div class="container">
 
-        <div class="section-kicker">THE ONE ABOVE ALL</div>
-        <h2 class="section-title">Sovereign Leader</h2>
+        <div class="section-kicker">
+            THE ONE ABOVE ALL
+        </div>
+
+        <h2 class="section-title">
+            Sovereign Leader
+        </h2>
+
         <p class="section-subtitle">
             The supreme authority of The Shadow Moons.
             The throne from which the guild's destiny is commanded.
@@ -1162,7 +1190,9 @@ footer strong{
 
             <div class="crown">♛</div>
 
-            <div class="role">Sovereign Leader / Captain</div>
+            <div class="role">
+                Sovereign Leader / Captain
+            </div>
 
             <div class="sovereign-name">
                 𝔇𝔯𝔞𝔤𝔬𝔫 👑
@@ -1184,17 +1214,27 @@ footer strong{
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- HIGH COUNCIL -->
+<!-- ======================================================
+     HIGH COUNCIL
+====================================================== -->
 
 <section id="leadership">
+
     <div class="container">
 
-        <div class="section-kicker">THE HANDS OF THE KING</div>
-        <h2 class="section-title">High Council</h2>
+        <div class="section-kicker">
+            THE HANDS OF THE KING
+        </div>
+
+        <h2 class="section-title">
+            High Council
+        </h2>
 
         <p class="section-subtitle">
             The two figures who stand directly beneath the Sovereign.
@@ -1204,41 +1244,77 @@ footer strong{
 
         <div class="leader-grid">
 
-            <div class="card leader-card"
-                 data-name="Reaper"
-                 data-role="High Council"
-                 data-pfp="reaper.png"
-                 data-message="A member of the High Council and one of the two figures entrusted with the second-highest authority within The Shadow Moons. The High Council observes the leadership structure, ensures order is maintained, and acts as the Sovereign's hand when matters demand it.">
+            <div
+                class="card leader-card"
+                data-name="Reaper"
+                data-role="High Council"
+                data-pfp="reaper.png"
+                data-message="A member of the High Council and one of the two figures entrusted with the second-highest authority within The Shadow Moons. The High Council observes the leadership structure, ensures order is maintained, and acts as the Sovereign's hand when matters demand it."
+            >
 
-                <img src="reaper.png" class="pfp" alt="Reaper">
-                <div class="role">High Council</div>
-                <div class="leader-name">Reaper</div>
+                <img
+                    src="reaper.png"
+                    class="pfp"
+                    alt="Reaper"
+                >
+
+                <div class="role">
+                    High Council
+                </div>
+
+                <div class="leader-name">
+                    Reaper
+                </div>
+
             </div>
 
 
-            <div class="card leader-card"
-                 data-name="Lord Vangeance"
-                 data-role="High Council"
-                 data-pfp="shadow.png"
-                 data-message="A member of the High Council and one of the two figures entrusted with the second-highest authority within The Shadow Moons. The Council exists to observe, maintain balance, and ensure that every level of leadership remains accountable to the Sovereign.">
+            <div
+                class="card leader-card"
+                data-name="Lord Vangeance"
+                data-role="High Council"
+                data-pfp="shadow.png"
+                data-message="A member of the High Council and one of the two figures entrusted with the second-highest authority within The Shadow Moons. The Council exists to observe, maintain balance, and ensure that every level of leadership remains accountable to the Sovereign."
+            >
 
-                <img src="shadow.png" class="pfp" alt="Lord Vangeance">
-                <div class="role">High Council</div>
-                <div class="leader-name">Lord Vangeance</div>
+                <img
+                    src="shadow.png"
+                    class="pfp"
+                    alt="Lord Vangeance"
+                >
+
+                <div class="role">
+                    High Council
+                </div>
+
+                <div class="leader-name">
+                    Lord Vangeance
+                </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- LORDS -->
+<!-- ======================================================
+     LORDS
+====================================================== -->
 
 <section id="lords">
+
     <div class="container">
 
-        <div class="section-kicker">THE NINE THRONES</div>
-        <h2 class="section-title">Lords</h2>
+        <div class="section-kicker">
+            THE NINE THRONES
+        </div>
+
+        <h2 class="section-title">
+            Lords
+        </h2>
 
         <p class="section-subtitle">
             The leadership of the Nine Houses. Each Lord carries the
@@ -1247,134 +1323,217 @@ footer strong{
 
         <div class="lords-grid">
 
-            <div class="card lord-card"
-                 data-name="Lord of House Aetherion"
-                 data-role="House Aetherion"
-                 data-pfp="aetherion.png"
-                 data-message="The Lord entrusted with the leadership of House Aetherion, the house of PvP. Its warriors stand at the forefront when strength must be proven.">
+
+            <div
+                class="card lord-card"
+                data-name="Lord of House Aetherion"
+                data-role="House Aetherion"
+                data-pfp="aetherion.png"
+                data-message="The Lord entrusted with the leadership of House Aetherion, the house of PvP. Its warriors stand at the forefront when strength must be proven."
+            >
 
                 <img src="aetherion.png" class="pfp" alt="Lord of Aetherion">
+
                 <div class="role">Lord</div>
+
                 <h3>House Aetherion</h3>
-                <div class="house-label">⚔️ House of PvP</div>
+
+                <div class="house-label">
+                    ⚔️ House of PvP
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Lucifero"
-                 data-role="House Lucifero"
-                 data-pfp="lucifero.png"
-                 data-message="The Lord responsible for House Lucifero and its role in external affairs. A house built around influence, diplomacy, and the guild's relations beyond its walls.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Lucifero"
+                data-role="House Lucifero"
+                data-pfp="lucifero.png"
+                data-message="The Lord responsible for House Lucifero and its role in external affairs. A house built around influence, diplomacy, and the guild's relations beyond its walls."
+            >
 
                 <img src="lucifero.png" class="pfp" alt="Lord of Lucifero">
+
                 <div class="role">Lord</div>
+
                 <h3>House Lucifero</h3>
-                <div class="house-label">🌐 External Affairs</div>
+
+                <div class="house-label">
+                    🌐 External Affairs
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Eclipse"
-                 data-role="House Eclipse"
-                 data-pfp="eclipse.png"
-                 data-message="The Lord of House Eclipse, a house operating beneath the shadow of secrecy and precision. Its leadership is responsible for guiding the house and maintaining its place within the guild.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Eclipse"
+                data-role="House Eclipse"
+                data-pfp="eclipse.png"
+                data-message="The Lord of House Eclipse, a house operating beneath the shadow of secrecy and precision. Its leadership is responsible for guiding the house and maintaining its place within the guild."
+            >
 
                 <img src="eclipse.png" class="pfp" alt="Lord of Eclipse">
+
                 <div class="role">Lord</div>
+
                 <h3>House Eclipse</h3>
-                <div class="house-label">🌑 Eclipse</div>
+
+                <div class="house-label">
+                    🌑 Eclipse
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Chrono"
-                 data-role="House Chrono"
-                 data-pfp="chronoaeterna.png"
-                 data-message="The Lord of House Chrono. A house connected to the ideals of time, discipline, and the continuation of the guild's legacy.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Chrono"
+                data-role="House Chrono"
+                data-pfp="chronoaeterna.png"
+                data-message="The Lord of House Chrono. A house connected to the ideals of time, discipline, and the continuation of the guild's legacy."
+            >
 
                 <img src="chronoaeterna.png" class="pfp" alt="Lord of Chrono">
+
                 <div class="role">Lord</div>
+
                 <h3>House Chrono</h3>
-                <div class="house-label">🍀 Chrono</div>
+
+                <div class="house-label">
+                    💫❄️ Chrono
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Vermillion"
-                 data-role="House Vermillion"
-                 data-pfp="vermillion.png"
-                 data-message="The Lord entrusted with House Vermillion, the house responsible for defense and military strength. Its leadership carries the responsibility of preparing the guild to stand against threats.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Vermillion"
+                data-role="House Vermillion"
+                data-pfp="vermillion.png"
+                data-message="The Lord entrusted with House Vermillion, the house responsible for defense and military strength. Its leadership carries the responsibility of preparing the guild to stand against threats."
+            >
 
                 <img src="vermillion.png" class="pfp" alt="Lord of Vermillion">
+
                 <div class="role">Lord</div>
+
                 <h3>House Vermillion</h3>
-                <div class="house-label">🔥 Defense & Military</div>
+
+                <div class="house-label">
+                    🔥 Defense & Military
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Shadow"
-                 data-role="House Shadow"
-                 data-pfp="shadow.png"
-                 data-message="The Lord of House Shadow, whose house specializes in intelligence, reconnaissance, scouting, monitoring rivals, and gathering information for the guild leadership.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Shadow"
+                data-role="House Shadow"
+                data-pfp="shadow.png"
+                data-message="The Lord of House Shadow, whose house specializes in intelligence, reconnaissance, scouting, monitoring rivals, and gathering information for the guild leadership."
+            >
 
                 <img src="shadow.png" class="pfp" alt="Lord of Shadow">
+
                 <div class="role">Lord</div>
+
                 <h3>House Shadow</h3>
-                <div class="house-label">🕵️ Intelligence & Reconnaissance</div>
+
+                <div class="house-label">
+                    🕵️ Intelligence & Reconnaissance
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Silva"
-                 data-role="House Silva"
-                 data-pfp="silva.png"
-                 data-message="The Lord responsible for House Silva and the administration of the guild. Its role is centered around organization, administration, and maintaining structure.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Silva"
+                data-role="House Silva"
+                data-pfp="silva.png"
+                data-message="The Lord responsible for House Silva and the administration of the guild. Its role is centered around organization, administration, and maintaining structure."
+            >
 
                 <img src="silva.png" class="pfp" alt="Lord of Silva">
+
                 <div class="role">Lord</div>
+
                 <h3>House Silva</h3>
-                <div class="house-label">📜 Administration</div>
+
+                <div class="house-label">
+                    📜 Administration
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Lunareth"
-                 data-role="House Lunareth"
-                 data-pfp="lunareth.png"
-                 data-message="The Lord of House Lunareth. A house whose leadership contributes to the strength and continuity of The Shadow Moons.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Lunareth"
+                data-role="House Lunareth"
+                data-pfp="lunareth.png"
+                data-message="The Lord of House Lunareth. A house whose leadership contributes to the strength and continuity of The Shadow Moons."
+            >
 
                 <img src="lunareth.png" class="pfp" alt="Lord of Lunareth">
+
                 <div class="role">Lord</div>
+
                 <h3>House Lunareth</h3>
-                <div class="house-label">💮 Lunareth</div>
+
+                <div class="house-label">
+                    💮 Lunareth
+                </div>
+
             </div>
 
 
-            <div class="card lord-card"
-                 data-name="Lord of House Kira"
-                 data-role="House Kira"
-                 data-pfp="kira.png"
-                 data-message="The Lord of House Kira. Its leadership is responsible for guiding its members, maintaining activity, and contributing to the guild's overall advancement.">
+            <div
+                class="card lord-card"
+                data-name="Lord of House Kira"
+                data-role="House Kira"
+                data-pfp="kira.png"
+                data-message="The Lord of House Kira. Its leadership is responsible for guiding its members, maintaining activity, and contributing to the guild's overall advancement."
+            >
 
                 <img src="kira.png" class="pfp" alt="Lord of Kira">
+
                 <div class="role">Lord</div>
+
                 <h3>House Kira</h3>
-                <div class="house-label">✨ House Kira</div>
+
+                <div class="house-label">
+                    ✨ House Kira
+                </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- HOUSES -->
+<!-- ======================================================
+     HOUSES
+====================================================== -->
 
 <section id="houses">
+
     <div class="container">
 
-        <div class="section-kicker">THE FOUNDATIONS</div>
-        <h2 class="section-title">The Nine Houses</h2>
+        <div class="section-kicker">
+            THE FOUNDATIONS
+        </div>
+
+        <h2 class="section-title">
+            The Nine Houses
+        </h2>
 
         <p class="section-subtitle">
             Nine houses. Nine identities. One guild.
@@ -1383,116 +1542,307 @@ footer strong{
 
         <div class="grid">
 
-            <div class="card house-card"
-                 data-name="House Aetherion"
-                 data-role="600 Stars"
-                 data-message="House Aetherion — House of PvP. A house built around combat, competition, and warriors who seek to prove themselves.">
-                <div class="house-symbol">🌸⚛️</div>
-                <h3>House Aetherion</h3>
-                <p>House of PvP</p>
-                <div class="stars">★★★★★ <span class="star-label">600 STARS</span></div>
+
+            <!-- 600 -->
+
+            <div
+                class="card house-card"
+                data-name="House Aetherion"
+                data-role="600 Stars"
+                data-message="House Aetherion — House of PvP. A house built around combat, competition, and warriors who seek to prove themselves."
+            >
+
+                <div class="house-symbol">
+                    🌸⚛️
+                </div>
+
+                <h3>
+                    House Aetherion
+                </h3>
+
+                <p>
+                    House of PvP
+                </p>
+
+                <div class="stars">
+                    600 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Kira"
-                 data-role="541 Stars"
-                 data-message="House Kira — A rising force within the guild whose members contribute to the advancement and strength of the house.">
-                <div class="house-symbol">💫✨</div>
-                <h3>House Kira</h3>
-                <p>House Kira</p>
-                <div class="stars">★★★★★ <span class="star-label">541 STARS</span></div>
+            <!-- 541 -->
+
+            <div
+                class="card house-card"
+                data-name="House Kira"
+                data-role="541 Stars"
+                data-message="House Kira — A powerful house whose members contribute to the advancement and strength of the guild."
+            >
+
+                <div class="house-symbol">
+                    💫✨
+                </div>
+
+                <h3>
+                    House Kira
+                </h3>
+
+                <p>
+                    House Kira
+                </p>
+
+                <div class="stars">
+                    541 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Lucifero"
-                 data-role="348 Stars"
-                 data-message="House Lucifero — House of External Affairs. Responsible for relations and influence beyond the guild.">
-                <div class="house-symbol">🌀✨</div>
-                <h3>House Lucifero</h3>
-                <p>External Affairs</p>
-                <div class="stars">★★★★★ <span class="star-label">348 STARS</span></div>
+            <!-- 348 -->
+
+            <div
+                class="card house-card"
+                data-name="House Lucifero"
+                data-role="348 Stars"
+                data-message="House Lucifero — House of External Affairs. Responsible for relations and influence beyond the guild."
+            >
+
+                <div class="house-symbol">
+                    🌀✨
+                </div>
+
+                <h3>
+                    House Lucifero
+                </h3>
+
+                <p>
+                    External Affairs
+                </p>
+
+                <div class="stars">
+                    348 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Shadow"
-                 data-role="80 Stars"
-                 data-message="House Shadow — House of Intelligence & Reconnaissance. Focused on information gathering, scouting, monitoring rivals, and informing leadership.">
-                <div class="house-symbol">✨♾️</div>
-                <h3>House Shadow</h3>
-                <p>Intelligence & Reconnaissance</p>
-                <div class="stars">★★★★★ <span class="star-label">80 STARS</span></div>
+            <!-- 80 -->
+
+            <div
+                class="card house-card"
+                data-name="House Shadow"
+                data-role="80 Stars"
+                data-message="House Shadow — House of Intelligence & Reconnaissance. Focused on information gathering, scouting, monitoring rivals, and informing leadership."
+            >
+
+                <div class="house-symbol">
+                    ✨♾️
+                </div>
+
+                <h3>
+                    House Shadow
+                </h3>
+
+                <p>
+                    Intelligence & Reconnaissance
+                </p>
+
+                <div class="stars">
+                    80 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Silva"
-                 data-role="Stars"
-                 data-message="House Silva — House of Administration. Responsible for organization, administration, and maintaining order.">
-                <div class="house-symbol">💎⚔️</div>
-                <h3>House Silva</h3>
-                <p>Administration</p>
-                <div class="stars">★★★★★ <span class="star-label">— STARS</span></div>
+            <!-- 45 -->
+
+            <div
+                class="card house-card"
+                data-name="House Chrono"
+                data-role="45 Stars"
+                data-message="House Chrono — The House of the Great Chronos. A house centered around the ideals of time, discipline, and legacy."
+            >
+
+                <div class="house-symbol">
+                    💫❄️⏳
+                </div>
+
+                <h3>
+                    House Chrono
+                </h3>
+
+                <p>
+                    House of the Great Chronos
+                </p>
+
+                <div class="stars">
+                    45 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Vermillion"
-                 data-role="Stars"
-                 data-message="House Vermillion — House of Defense & Military. Responsible for defending the guild and maintaining military readiness.">
-                <div class="house-symbol">🔥❤️‍🔥</div>
-                <h3>House Vermillion</h3>
-                <p>Defense & Military</p>
-                <div class="stars">★★★★★ <span class="star-label">— STARS</span></div>
+            <!-- 40 -->
+
+            <div
+                class="card house-card"
+                data-name="House Silva"
+                data-role="40 Stars"
+                data-message="House Silva — One of the two great royal houses. Its role is administration, organization, and maintaining the guild's structure."
+            >
+
+                <div class="house-symbol">
+                    💎⚔️✨
+                </div>
+
+                <h3>
+                    House Silva
+                </h3>
+
+                <p>
+                    Royal House • Administration
+                </p>
+
+                <div class="stars">
+                    40 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Eclipse"
-                 data-role="Stars"
-                 data-message="House Eclipse — A house carrying its own legacy beneath the shadow of the guild.">
-                <div class="house-symbol">🌑</div>
-                <h3>House Eclipse</h3>
-                <p>Eclipse</p>
-                <div class="stars">★★★★★ <span class="star-label">— STARS</span></div>
+            <!-- 40 -->
+
+            <div
+                class="card house-card"
+                data-name="House Vermillion"
+                data-role="40 Stars"
+                data-message="House Vermillion — One of the two great royal houses. Its role is defense and military strength."
+            >
+
+                <div class="house-symbol">
+                    🔥❤️‍🔥
+                </div>
+
+                <h3>
+                    House Vermillion
+                </h3>
+
+                <p>
+                    Royal House • Defense & Military
+                </p>
+
+                <div class="stars">
+                    40 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Chrono"
-                 data-role="Stars"
-                 data-message="House Chrono — A house centered around the ideals of time, discipline, and legacy.">
-                <div class="house-symbol">🍀💫</div>
-                <h3>House Chrono</h3>
-                <p>Chrono</p>
-                <div class="stars">★★★★★ <span class="star-label">— STARS</span></div>
+            <!-- 30 -->
+
+            <div
+                class="card house-card"
+                data-name="House Lunareth"
+                data-role="30 Stars"
+                data-message="House Lunareth — The honoured house, carrying its own legacy and contributing to the strength of The Shadow Moons."
+            >
+
+                <div class="house-symbol">
+                    💮♠️🌛
+                </div>
+
+                <h3>
+                    House Lunareth
+                </h3>
+
+                <p>
+                    The Honoured House
+                </p>
+
+                <div class="stars">
+                    30 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
 
-            <div class="card house-card"
-                 data-name="House Lunareth"
-                 data-role="Stars"
-                 data-message="House Lunareth — A house contributing to the guild's strength and legacy beneath the eternal moon.">
-                <div class="house-symbol">♣️💮</div>
-                <h3>House Lunareth</h3>
-                <p>Lunareth</p>
-                <div class="stars">★★★★★ <span class="star-label">— STARS</span></div>
+            <!-- 25 -->
+
+            <div
+                class="card house-card"
+                data-name="House Eclipse"
+                data-role="25 Stars"
+                data-message="House Eclipse — A house carrying its own legacy beneath the shadow of The Shadow Moons."
+            >
+
+                <div class="house-symbol">
+                    ♣️🌑
+                </div>
+
+                <h3>
+                    House Eclipse
+                </h3>
+
+                <p>
+                    House Eclipse
+                </p>
+
+                <div class="stars">
+                    25 ★
+                    <span class="star-label">
+                        STARS
+                    </span>
+                </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- LEADERBOARD -->
+<!-- ======================================================
+     LEADERBOARD
+====================================================== -->
 
 <section id="ranking">
+
     <div class="container">
 
-        <div class="section-kicker">THE HOUSE COMPETITION</div>
-        <h2 class="section-title">House Leaderboard</h2>
+        <div class="section-kicker">
+            THE HOUSE COMPETITION
+        </div>
+
+        <h2 class="section-title">
+            House Leaderboard
+        </h2>
 
         <p class="section-subtitle">
             The current ranking of the houses based on their accumulated stars.
@@ -1500,72 +1850,183 @@ footer strong{
 
         <div class="leaderboard">
 
-            <div class="leader-row">
-                <div class="rank">01</div>
-                <div class="rank-house">🌸 House Aetherion ⚛️</div>
-                <div class="rank-stars">600 ★</div>
-            </div>
 
             <div class="leader-row">
-                <div class="rank">02</div>
-                <div class="rank-house">💫 House Kira ✨</div>
-                <div class="rank-stars">541 ★</div>
+
+                <div class="rank">
+                    01
+                </div>
+
+                <div class="rank-house">
+                    🌸 House Aetherion ⚛️
+                </div>
+
+                <div class="rank-stars">
+                    600 ★
+                </div>
+
             </div>
 
-            <div class="leader-row">
-                <div class="rank">03</div>
-                <div class="rank-house">🌀 House Lucifero ☄️</div>
-                <div class="rank-stars">348 ★</div>
-            </div>
 
             <div class="leader-row">
-                <div class="rank">04</div>
-                <div class="rank-house">✨ House Shadow ♾️</div>
-                <div class="rank-stars">80 ★</div>
+
+                <div class="rank">
+                    02
+                </div>
+
+                <div class="rank-house">
+                    💫✨ House Kira
+                </div>
+
+                <div class="rank-stars">
+                    541 ★
+                </div>
+
             </div>
 
-            <div class="leader-row">
-                <div class="rank">05</div>
-                <div class="rank-house">🔥 House Vermillion ❤️‍🔥</div>
-                <div class="rank-stars">— ★</div>
-            </div>
 
             <div class="leader-row">
-                <div class="rank">06</div>
-                <div class="rank-house">💎 House Silva ⚔️</div>
-                <div class="rank-stars">— ★</div>
+
+                <div class="rank">
+                    03
+                </div>
+
+                <div class="rank-house">
+                    🌀✨ House Lucifero ☄️
+                </div>
+
+                <div class="rank-stars">
+                    348 ★
+                </div>
+
             </div>
 
-            <div class="leader-row">
-                <div class="rank">07</div>
-                <div class="rank-house">🌑 House Eclipse</div>
-                <div class="rank-stars">— ★</div>
-            </div>
 
             <div class="leader-row">
-                <div class="rank">08</div>
-                <div class="rank-house">🍀 House Chrono 💫</div>
-                <div class="rank-stars">— ★</div>
+
+                <div class="rank">
+                    04
+                </div>
+
+                <div class="rank-house">
+                    ✨ House Shadow ♾️
+                </div>
+
+                <div class="rank-stars">
+                    80 ★
+                </div>
+
             </div>
 
+
             <div class="leader-row">
-                <div class="rank">09</div>
-                <div class="rank-house">♣️ House Lunareth 💮</div>
-                <div class="rank-stars">— ★</div>
+
+                <div class="rank">
+                    05
+                </div>
+
+                <div class="rank-house">
+                    💫❄️ House Chrono ⏳
+                </div>
+
+                <div class="rank-stars">
+                    45 ★
+                </div>
+
+            </div>
+
+
+            <!-- TIE -->
+
+            <div class="leader-row">
+
+                <div class="rank">
+                    06
+                </div>
+
+                <div class="rank-house">
+                    💎 House Silva ⚔️✨
+                </div>
+
+                <div class="rank-stars">
+                    40 ★
+                </div>
+
+            </div>
+
+
+            <div class="leader-row">
+
+                <div class="rank">
+                    06
+                </div>
+
+                <div class="rank-house">
+                    🔥 House Vermillion ❤️‍🔥
+                </div>
+
+                <div class="rank-stars">
+                    40 ★
+                </div>
+
+            </div>
+
+
+            <div class="leader-row">
+
+                <div class="rank">
+                    08
+                </div>
+
+                <div class="rank-house">
+                    💮♠️ House Lunareth 🌛
+                </div>
+
+                <div class="rank-stars">
+                    30 ★
+                </div>
+
+            </div>
+
+
+            <div class="leader-row">
+
+                <div class="rank">
+                    09
+                </div>
+
+                <div class="rank-house">
+                    ♣️ House Eclipse 🌑
+                </div>
+
+                <div class="rank-stars">
+                    25 ★
+                </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- EVENTS -->
+<!-- ======================================================
+     EVENTS
+====================================================== -->
 
 <section id="events">
+
     <div class="container">
 
-        <div class="section-kicker">WHAT LIES AHEAD</div>
-        <h2 class="section-title">Events</h2>
+        <div class="section-kicker">
+            WHAT LIES AHEAD
+        </div>
+
+        <h2 class="section-title">
+            Events
+        </h2>
 
         <p class="section-subtitle">
             Upcoming battles, tournaments, guild activities, and events
@@ -1574,76 +2035,141 @@ footer strong{
 
         <div class="events-grid">
 
+
             <div class="card event-card">
+
                 <div>
-                    <span class="event-status">COMING SOON</span>
-                    <h3>Guild Tournament</h3>
+
+                    <span class="event-status">
+                        COMING SOON
+                    </span>
+
+                    <h3>
+                        Guild Tournament
+                    </h3>
+
                     <p>
                         A future competition where members will fight
                         for glory and recognition.
                     </p>
+
                 </div>
+
             </div>
 
+
             <div class="card event-card">
+
                 <div>
-                    <span class="event-status">COMING SOON</span>
-                    <h3>House Wars</h3>
+
+                    <span class="event-status">
+                        COMING SOON
+                    </span>
+
+                    <h3>
+                        House Wars
+                    </h3>
+
                     <p>
                         The Nine Houses will eventually have the opportunity
                         to compete against one another.
                     </p>
+
                 </div>
+
             </div>
 
+
             <div class="card event-card">
+
                 <div>
-                    <span class="event-status">COMING SOON</span>
-                    <h3>Guild Event</h3>
+
+                    <span class="event-status">
+                        COMING SOON
+                    </span>
+
+                    <h3>
+                        Guild Event
+                    </h3>
+
                     <p>
                         More official Shadow Moons events will be announced
                         here when they are ready.
                     </p>
+
                 </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
 <footer>
+
     <div class="container">
-        <strong>THE SHADOW MOONS</strong><br><br>
-        A guild forged beneath the eternal moon.<br><br>
+
+        <strong>
+            THE SHADOW MOONS
+        </strong>
+
+        <br><br>
+
+        A guild forged beneath the eternal moon.
+
+        <br><br>
+
         CLOVER ORIGINS • ALL RIGHTS RESERVED
+
     </div>
+
 </footer>
 
 </div>
 
 
-<!-- MUSIC -->
+<!-- ======================================================
+     MUSIC
+====================================================== -->
 
 <audio id="music1" preload="auto">
-    <source src="kulakovka-epic-trailer-277924.mp3" type="audio/mpeg">
+    <source
+        src="kulakovka-epic-trailer-277924.mp3"
+        type="audio/mpeg"
+    >
 </audio>
 
 <audio id="music2" preload="auto">
-    <source src="the_mountain-epic-trailer-576568.mp3" type="audio/mpeg">
+    <source
+        src="the_mountain-epic-trailer-576568.mp3"
+        type="audio/mpeg"
+    >
 </audio>
 
 <audio id="music3" preload="auto">
-    <source src="audiocopper-dark-571483.mp3" type="audio/mpeg">
+    <source
+        src="audiocopper-dark-571483.mp3"
+        type="audio/mpeg"
+    >
 </audio>
 
 <div class="music-player">
+
     <span class="music-dot"></span>
-    <span id="musicStatus">THE SHADOW MOONS • MUSIC</span>
+
+    <span id="musicStatus">
+        THE SHADOW MOONS • MUSIC
+    </span>
+
 </div>
 
 
-<!-- MODAL -->
+<!-- ======================================================
+     MODAL
+====================================================== -->
 
 <div class="modal" id="modal">
 
@@ -1656,13 +2182,19 @@ footer strong{
             alt=""
         >
 
-        <div class="modal-role" id="modalRole"></div>
+        <div
+            class="modal-role"
+            id="modalRole"
+        ></div>
 
         <h2 id="modalName"></h2>
 
         <p id="modalMessage"></p>
 
-        <button class="close-modal" id="closeModal">
+        <button
+            class="close-modal"
+            id="closeModal"
+        >
             CLOSE
         </button>
 
@@ -1677,27 +2209,37 @@ footer strong{
    INTRO STARS
 ========================================================= */
 
-const introStars = document.getElementById("introStars");
+const introStars =
+    document.getElementById("introStars");
 
 for(let i = 0; i < 180; i++){
 
-    const star = document.createElement("span");
+    const star =
+        document.createElement("span");
 
-    star.className = "intro-star";
+    star.className =
+        "intro-star";
 
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
+    star.style.left =
+        Math.random() * 100 + "%";
 
-    const size = Math.random() * 2.4 + .5;
+    star.style.top =
+        Math.random() * 100 + "%";
 
-    star.style.width = size + "px";
-    star.style.height = size + "px";
+    const size =
+        Math.random() * 2.4 + .5;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
 
     star.style.animationDelay =
-        (Math.random() * 5) + "s";
+        Math.random() * 5 + "s";
 
     star.style.animationDuration =
-        (2 + Math.random() * 4) + "s";
+        2 + Math.random() * 4 + "s";
 
     introStars.appendChild(star);
 }
@@ -1707,9 +2249,14 @@ for(let i = 0; i < 180; i++){
    INTRO
 ========================================================= */
 
-const intro = document.getElementById("intro");
-const mainSite = document.getElementById("mainSite");
-const skipIntro = document.getElementById("skipIntro");
+const intro =
+    document.getElementById("intro");
+
+const mainSite =
+    document.getElementById("mainSite");
+
+const skipIntro =
+    document.getElementById("skipIntro");
 
 let introFinished = false;
 
@@ -1720,16 +2267,25 @@ function finishIntro(){
     introFinished = true;
 
     intro.classList.add("hidden");
+
     mainSite.classList.add("visible");
 
-    document.body.classList.remove("intro-active");
+    document.body.classList.remove(
+        "intro-active"
+    );
 
     startMusic();
 }
 
-setTimeout(finishIntro, 8500);
+setTimeout(
+    finishIntro,
+    8500
+);
 
-skipIntro.addEventListener("click", finishIntro);
+skipIntro.addEventListener(
+    "click",
+    finishIntro
+);
 
 
 /* =========================================================
@@ -1737,60 +2293,82 @@ skipIntro.addEventListener("click", finishIntro);
 ========================================================= */
 
 const tracks = [
+
     document.getElementById("music1"),
+
     document.getElementById("music2"),
+
     document.getElementById("music3")
+
 ];
 
 let currentTrack = 0;
 
 tracks.forEach(track => {
+
     track.volume = .38;
+
 });
+
 
 function playTrack(index){
 
-    if(index >= tracks.length) return;
+    if(index >= tracks.length){
+        return;
+    }
 
     currentTrack = index;
 
     tracks[index].currentTime = 0;
 
-    const promise = tracks[index].play();
+    const promise =
+        tracks[index].play();
 
     if(promise !== undefined){
+
         promise.catch(() => {
+
             /*
-             * Browsers can block autoplay.
-             * We retry when the visitor interacts with the page.
-             */
+             Browser autoplay protection.
+             Music will retry after interaction.
+            */
+
         });
+
     }
+
 }
 
+
 function startMusic(){
-    playTrack(currentTrack);
+
+    playTrack(
+        currentTrack
+    );
+
 }
+
 
 tracks.forEach((track,index)=>{
 
-    track.addEventListener("ended",()=>{
+    track.addEventListener(
+        "ended",
+        ()=>{
 
-        const next = index + 1;
+            const next =
+                index + 1;
 
-        if(next < tracks.length){
-            playTrack(next);
+            if(next < tracks.length){
+
+                playTrack(next);
+
+            }
+
         }
-
-    });
+    );
 
 });
 
-
-/*
- * Browser autoplay fallback.
- * There is NO start-music button.
- */
 
 function musicInteraction(){
 
@@ -1798,7 +2376,11 @@ function musicInteraction(){
         tracks[currentTrack].paused &&
         introFinished
     ){
-        playTrack(currentTrack);
+
+        playTrack(
+            currentTrack
+        );
+
     }
 
     window.removeEventListener(
@@ -1815,63 +2397,122 @@ function musicInteraction(){
         "touchstart",
         musicInteraction
     );
+
 }
 
-window.addEventListener("click",musicInteraction);
-window.addEventListener("keydown",musicInteraction);
-window.addEventListener("touchstart",musicInteraction);
+
+window.addEventListener(
+    "click",
+    musicInteraction
+);
+
+window.addEventListener(
+    "keydown",
+    musicInteraction
+);
+
+window.addEventListener(
+    "touchstart",
+    musicInteraction
+);
 
 
 /* =========================================================
    MODALS
 ========================================================= */
 
-const modal = document.getElementById("modal");
-const modalPfp = document.getElementById("modalPfp");
-const modalRole = document.getElementById("modalRole");
-const modalName = document.getElementById("modalName");
-const modalMessage = document.getElementById("modalMessage");
-const closeModal = document.getElementById("closeModal");
+const modal =
+    document.getElementById("modal");
+
+const modalPfp =
+    document.getElementById("modalPfp");
+
+const modalRole =
+    document.getElementById("modalRole");
+
+const modalName =
+    document.getElementById("modalName");
+
+const modalMessage =
+    document.getElementById("modalMessage");
+
+const closeModal =
+    document.getElementById("closeModal");
 
 
 function openModal(card){
 
-    const name = card.dataset.name || "";
-    const role = card.dataset.role || "";
-    const pfp = card.dataset.pfp || "";
-    const message = card.dataset.message || "";
+    const name =
+        card.dataset.name || "";
 
-    modalName.textContent = name;
-    modalRole.textContent = role;
-    modalMessage.textContent = message;
+    const role =
+        card.dataset.role || "";
+
+    const pfp =
+        card.dataset.pfp || "";
+
+    const message =
+        card.dataset.message || "";
+
+    modalName.textContent =
+        name;
+
+    modalRole.textContent =
+        role;
+
+    modalMessage.textContent =
+        message;
 
     if(pfp){
-        modalPfp.src = pfp;
-        modalPfp.style.display = "block";
+
+        modalPfp.src =
+            pfp;
+
+        modalPfp.style.display =
+            "block";
+
     }else{
-        modalPfp.style.display = "none";
+
+        modalPfp.style.display =
+            "none";
+
     }
 
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+    modal.classList.add(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
 }
 
 
 document.querySelectorAll(
     ".leader-card,.lord-card,.house-card"
-).forEach(card=>{
+).forEach(card => {
 
-    card.addEventListener("click",()=>{
-        openModal(card);
-    });
+    card.addEventListener(
+        "click",
+        () => {
+
+            openModal(card);
+
+        }
+    );
 
 });
 
 
 function closeTheModal(){
 
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
+    modal.classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "";
+
 }
 
 
@@ -1881,67 +2522,64 @@ closeModal.addEventListener(
 );
 
 
-modal.addEventListener("click",(e)=>{
+modal.addEventListener(
+    "click",
+    e => {
 
-    if(e.target === modal){
-        closeTheModal();
-    }
+        if(e.target === modal){
 
-});
+            closeTheModal();
 
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key === "Escape"){
-        closeTheModal();
-    }
-
-});
-
-
-/* =========================================================
-   IMAGE FALLBACK
-========================================================= */
-
-document.querySelectorAll("img").forEach(img=>{
-
-    img.addEventListener("error",()=>{
-
-        if(img.classList.contains("pfp")){
-            img.style.background =
-                "linear-gradient(135deg,#1b0d2b,#08040d)";
         }
 
-    });
+    }
+);
 
-});
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if(e.key === "Escape"){
+
+            closeTheModal();
+
+        }
+
+    }
+);
 
 
 /* =========================================================
    SMOOTH NAVIGATION
 ========================================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
 
-    link.addEventListener("click",(e)=>{
+    link.addEventListener(
+        "click",
+        e => {
 
-        const target =
-            document.querySelector(
-                link.getAttribute("href")
-            );
+            const target =
+                document.querySelector(
+                    link.getAttribute("href")
+                );
 
-        if(target){
+            if(target){
 
-            e.preventDefault();
+                e.preventDefault();
 
-            target.scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
+                target.scrollIntoView({
+                    behavior:"smooth",
+                    block:"start"
+                });
+
+            }
 
         }
-
-    });
+    );
 
 });
 
